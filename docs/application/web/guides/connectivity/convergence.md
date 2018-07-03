@@ -33,7 +33,7 @@ The following Convergence services are currently provided:
 
 ## Prerequisites
 
-To use the Convergence API (in [mobile](../../../../org.tizen.web.apireference/html/device_api/mobile/tizen/convergence.html) and [wearable](../../../../org.tizen.web.apireference/html/device_api/wearable/tizen/convergence.html) applications), the application has to request permission by adding the following privileges to the `config.xml` file:
+To use the Convergence API (in [mobile](../../api/latest/device_api/mobile/tizen/convergence.html) and [wearable](../../api/latest/device_api/wearable/tizen/convergence.html) applications), the application has to request permission by adding the following privileges to the `config.xml` file:
 
 ```
 <tizen:privilege name="http://tizen.org/privilege/bluetooth"/>
@@ -306,7 +306,7 @@ To launch an application on a remote device:
 
 ## Sending an Application Control Remotely
 
-The `ApplicationControl` object is used to request applications to perform particular actions. This use case shows how to ask an image viewer to display a picture. For more information on application controls, see [Application Controls](../app-management/appcontrols.md).
+The `ApplicationControl` object is used to request applications to perform particular actions. This use case shows how to ask an image viewer to display a picture. For more information on application controls, see [Application Controls](../app-management/app-controls.md).
 
 1. Use the `startDiscovery()` method to search for and connect to a `RemoteAppControlService`:
 

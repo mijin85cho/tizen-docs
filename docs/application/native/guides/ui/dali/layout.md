@@ -5,7 +5,7 @@ DALi provides rule-based layout management (size negotiation), which is used to 
 
 ## Dimensions
 
-The notions of width and height are generalized into the concept of a dimension. Several functions take the `Dimension` parameter. The `Dali::Dimension::Type` enum (in [mobile](../../../../../org.tizen.native.mobile.apireference/namespaceDali_1_1Dimension.html#a4e123928ac3109e971b70874653d1b8b) and [wearable](../../../../../org.tizen.native.wearable.apireference/namespaceDali_1_1Dimension.html#a4e123928ac3109e971b70874653d1b8b) applications) specifies the available dimensions as bit fields:
+The notions of width and height are generalized into the concept of a dimension. Several functions take the `Dimension` parameter. The `Dali::Dimension::Type` enum (in [mobile](../../../api/mobile/latest/namespaceDali_1_1Dimension.html#a4e123928ac3109e971b70874653d1b8b) and [wearable](../../../api/wearable/latest/namespaceDali_1_1Dimension.html#a4e123928ac3109e971b70874653d1b8b) applications) specifies the available dimensions as bit fields:
 
 - `Dimension::WIDTH`
 - `Dimension::HEIGHT`
@@ -14,7 +14,7 @@ If a function can process width and height at the same time, the `Dimension::ALL
 
 ## Resize Policies
 
-The `Dali::ResizePolicy::Type` enum (in [mobile](../../../../../org.tizen.native.mobile.apireference/namespaceDali_1_1ResizePolicy.html#a8c47ec1e0b9c73e0fa8e40cfdd99276a) and [wearable](../../../../../org.tizen.native.wearable.apireference/namespaceDali_1_1ResizePolicy.html#a8c47ec1e0b9c73e0fa8e40cfdd99276a) applications) specifies a range of options for controlling the way actors resize. These rules enable automatic resizing.
+The `Dali::ResizePolicy::Type` enum (in [mobile](../../../api/mobile/latest/namespaceDali_1_1ResizePolicy.html#a8c47ec1e0b9c73e0fa8e40cfdd99276a) and [wearable](../../../api/wearable/latest/namespaceDali_1_1ResizePolicy.html#a8c47ec1e0b9c73e0fa8e40cfdd99276a) applications) specifies a range of options for controlling the way actors resize. These rules enable automatic resizing.
 
 **Table: Resizing rules**
 
@@ -62,27 +62,36 @@ The following figure shows the before and after layouts for this code example.
 
 ### Adjusting the Negotiated Size
 
-When an actor must maintain the aspect ratio of its natural size, use the `SetSizeScalePolicy()` function with the `Dali::SizeScalePolicy::Type` enum (in [mobile](../../../../../org.tizen.native.mobile.apireference/namespaceDali_1_1SizeScalePolicy.html#affa6f549dbc4400ff47af52b1675a6af) and [wearable](../../../../../org.tizen.native.wearable.apireference/namespaceDali_1_1SizeScalePolicy.html#affa6f549dbc4400ff47af52b1675a6af) applications). This is useful to ensure that images maintain their aspect ratio while still fitting the bounds they have been allocated.
+When an actor must maintain the aspect ratio of its natural size, use the `SetSizeScalePolicy()` function with the `Dali::SizeScalePolicy::Type` enum (in [mobile](../../../api/mobile/latest/namespaceDali_1_1SizeScalePolicy.html#affa6f549dbc4400ff47af52b1675a6af) and [wearable](../../../api/wearable/latest/namespaceDali_1_1SizeScalePolicy.html#affa6f549dbc4400ff47af52b1675a6af) applications). This is useful to ensure that images maintain their aspect ratio while still fitting the bounds they have been allocated.
 
 You can use the following resize policies:
 
-- `SizeScalePolicy::USE_SIZE_SET`This is the default policy.
-- `SizeScalePolicy::FIT_WITH_ASPECT_RATIO`Fits the actor within the bounds it has been allocated while maintaining the aspect ratio.
-- `SizeScalePolicy::FILL_WITH_ASPECT_RATIO`Fills all available space, potentially overflowing its bounds, while maintaining aspect ratio.
+- `SizeScalePolicy::USE_SIZE_SET`
+
+  This is the default policy.
+
+- `SizeScalePolicy::FIT_WITH_ASPECT_RATIO`
+
+  Fits the actor within the bounds it has been allocated while maintaining the aspect ratio.
+
+- `SizeScalePolicy::FILL_WITH_ASPECT_RATIO`
+
+  Fills all available space, potentially overflowing its bounds, while maintaining aspect ratio.
 
 ### Using Actors in Containers
 
 When using actors in containers, such as a table view, you can specify the padding surrounding the actor with the `SetPadding()` function. The padding specifies the left, right, bottom, and top padding value.
 
 > **Note**  
-> Beware of infinite dependency loops!For example, when the resize policy of a parent actor is set to `ResizePolicy::FIT_TO_CHILDREN` with a child that has a resize policy of `ResizePolicy::FILL_TO_PARENT`, an infinite loop occurs.Similarly, consider a situation where a parent actor has a width policy of `ResizePolicy::DIMENSION_DEPENDENCY` with a height policy of `ResizePolicy::FIT_TO_CHILDREN`. If the parent has a single child with a height policy `ResizePolicy::DIMENSION_DEPENDENCY` with width, and the child's width policy is `ResizePolicy::FILL_TO_PARENT`, a loop occurs.Loops can occur over larger spreads of parent-child relationships. These loops are detected by the relayout algorithm, which allocates the actors 0 sizes.
-
-
-## Clipping Mode
-
-## Layout Directions
+> Beware of infinite dependency loops!
+>
+> For example, when the resize policy of a parent actor is set to `ResizePolicy::FIT_TO_CHILDREN` with a child that has a resize policy of `ResizePolicy::FILL_TO_PARENT`, an infinite loop occurs.
+>
+> Similarly, consider a situation where a parent actor has a width policy of `ResizePolicy::DIMENSION_DEPENDENCY` with a height policy of `ResizePolicy::FIT_TO_CHILDREN`. If the parent has a single child with a height policy `ResizePolicy::DIMENSION_DEPENDENCY` with width, and the child's width policy is `ResizePolicy::FILL_TO_PARENT`, a loop occurs.
+>
+> Loops can occur over larger spreads of parent-child relationships. These loops are detected by the relayout algorithm, which allocates the actors 0 sizes.
 
 ## Related Information
-* Dependencies
- - Tizen 2.4 and Higher for Mobile
- - Tizen 3.0 and Higher for Wearable
+- Dependencies
+  - Tizen 2.4 and Higher for Mobile
+  - Tizen 3.0 and Higher for Wearable

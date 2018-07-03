@@ -7,8 +7,13 @@ This feature is supported in mobile applications only.
 
 The main feature of the Service Adaptor API is to connect adaptors to and disconnect them from the Service Adaptor Client though D-Bus. The Service Adaptor uses 2 path types:
 
-- **Logical path**The path of the root file system. It starts from the root path ("/"), and you can use the path like in Linux (for example, "/folder1/image1.jpg").
-- **Physical path**A specific URI used for the cloud server. Some clouds use a logical path, but others use a specific key or URL (for example, "/" is "ZmNhMWY2MTZlY2M1NDg4OGJmZDY4O" and "/folder1" is "2JI32UNJDWQEQWQWEADSSAD").
+- **Logical path**
+
+  The path of the root file system. It starts from the root path ("/"), and you can use the path like in Linux (for example, "/folder1/image1.jpg").
+
+- **Physical path**
+
+  A specific URI used for the cloud server. Some clouds use a logical path, but others use a specific key or URL (for example, "/" is "ZmNhMWY2MTZlY2M1NDg4OGJmZDY4O" and "/folder1" is "2JI32UNJDWQEQWQWEADSSAD").
 
 **Figure: Service Adaptor structure**
 
@@ -128,7 +133,7 @@ _plugin_iterator_cb(char *plugin_uri, int service_mask, void *user_data)
 
 To enable your application to use the Service Adaptor functionality:
 
-1. To use the functions and data types of the [Service Adaptor](../../../../org.tizen.native.mobile.apireference/group__SERVICE__ADAPTOR__MODULE.html) API, include the `<service_adaptor_client.h>` header file in your application:
+1. To use the functions and data types of the [Service Adaptor](../../api/mobile/latest/group__SERVICE__ADAPTOR__MODULE.html) API, include the `<service_adaptor_client.h>` header file in your application:
 
    ```
    #include <service_adaptor_client.h>
@@ -422,5 +427,5 @@ plugin_remove_file(service_plugin_h plugin, const char *file)
 ```
 
 ## Related Information
-* Dependencies
- - Tizen 2.4 and Higher for Mobile
+- Dependencies
+  - Tizen 2.4 and Higher for Mobile

@@ -61,7 +61,7 @@ label.SetProperty( TextLabel::Property::HORIZONTAL_ALIGNMENT, "BEGIN" );
 <a name="4"></a>
 ## Managing the Layout
 
-There are several resize policies commonly used with `TextLabels`.The following examples show the actual size by setting a colored background, whilst the black area represents the size of the parent control.
+There are several resize policies commonly used with `TextLabels`. The following examples show the actual size by setting a colored background, whilst the black area represents the size of the parent control.
 
 ### Natural Size Policy
 
@@ -128,7 +128,7 @@ For text decorations, `TextLabel` provides several properties. All properties ar
 **Table: TextLabel properties**
 
 | Property                 | Type      | Description                              |
-| ------------------------ | --------- | ---------------------------------------- |
+|------------------------|---------|----------------------------------------|
 | `TEXT`                   | STRING    | The text to display in UTF-8 format      |
 | `FONT_FAMILY`            | STRING    | The requested font family                |
 | `FONT_STYLE`             | STRING or MAP | The requested font style             |
@@ -213,6 +213,6 @@ label2.SetProperty( TextLabel::Property::UNDERLINE, underlineMap2 );
 ```
 
 ## Related Information
-* Dependencies
- - Tizen 2.4 and Higher for Mobile
- - Tizen 3.0 and Higher for Wearable
+- Dependencies
+  - Tizen 2.4 and Higher for Mobile
+  - Tizen 3.0 and Higher for Wearable

@@ -21,15 +21,15 @@ To enable your application to use the OpenGL&reg; ES functionality:
 
    ```
    bool opengles_support;
-   /* Check support for the OpenGL&reg; ES 2.0 version */
+   /* Check support for the OpenGL ES 2.0 version */
    system_info_get_platform_bool("http://tizen.org/feature/opengles.version.2_0", &opengles_support);
    ```
 
-3. To use the functions and data types of the OpenGL ES (in [mobile](../../../../org.tizen.native.mobile.apireference/group__OPENSRC__OPENGLES__FRAMEWORK.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__OPENSRC__OPENGLES__FRAMEWORK.html) applications) and SDL (in [mobile](../../../../org.tizen.native.mobile.apireference/group__OPENSRC__SDL__FRAMEWORK.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__OPENSRC__SDL__FRAMEWORK.html) applications) APIs, include the `<SDL.h>` header file and the appropriate OpenGL&reg; ES version header file in your application:
+3. To use the functions and data types of the OpenGL ES (in [mobile](../../api/mobile/latest/group__OPENSRC__OPENGLES__FRAMEWORK.html) and [wearable](../../api/wearable/latest/group__OPENSRC__OPENGLES__FRAMEWORK.html) applications) and SDL (in [mobile](../../api/mobile/latest/group__OPENSRC__SDL__FRAMEWORK.html) and [wearable](../../api/wearable/latest/group__OPENSRC__SDL__FRAMEWORK.html) applications) APIs, include the `<SDL.h>` header file and the appropriate OpenGL&reg; ES version header file in your application:
 
     ```
     #include <SDL.h>
-    /* Header file for the OpenGL&reg; ES 2.0 version */
+    /* Header file for the OpenGL ES 2.0 version */
     #include <GLES2/GLES2.h>
     ```
 
@@ -54,7 +54,8 @@ To render a cube using OpenGL&reg; ES in an SDL application:
 
    After SDL is initialized successfully, create the `SDL_Window` instance using the `SDL_CreateWindow()` function. The parameters define the title of the window, the X and Y position coordinates, width, height, and a set of `SDL_WindowFlags` combined using the "|" pipe operation.
 
-   > **Note**  
+   > **Note**
+   >
    > To use the OpenGL&reg; ES context, use the `SDL_WINDOW_OPENGL` flag when you create a window. Do not use both `SDL_WINDOW_VULKAN` and `SDL_WINDOW_OPENGL` simultaneously.
 
    The `SDL_main()` function is mandatory for the Tizen framework to initialize the SDL application. You must use the `SDL_main()` function instead of the usual `main()` function in your SDL application.
@@ -73,22 +74,22 @@ To render a cube using OpenGL&reg; ES in an SDL application:
 
    1. Set the context properties using the [available attributes](#attributes):
 
-    ```
-    int
-    initGL(appdata_s* ad)
-    {
-        SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
-        SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
-        SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-        SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
-        SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-        SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
-    ```
+      ```
+      int
+      initGL(appdata_s* ad)
+      {
+          SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
+          SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+          SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+          SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
+          SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+          SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+      ```
 
    2. Create the context:
 
       ```
-          /* Create context for OpenGL&reg; window */
+          /* Create context for OpenGL window */
           ad->gl = SDL_GL_CreateContext(ad->window);
           if (ad->gl == NULL) {
               SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "[SDL] GL context creation failed!");
@@ -197,7 +198,7 @@ The following table lists the attributes whose values can be set using the `SDL_
 
 | Attribute                           | Description                              | Default value           |
 |-------------------------------------|------------------------------------------|-------------------------|
-| `SDL_GL_ACCELERATED_VISUAL`         | Set to 1 to require hardware acceleration; set to 0 to force software renderingIn Tizen, hardware acceleration is used regardless of the value set to this attribute. | -                       |
+| `SDL_GL_ACCELERATED_VISUAL`         | Set to 1 to require hardware acceleration; set to 0 to force software rendering<br> In Tizen, hardware acceleration is used regardless of the value set to this attribute. | -                       |
 | `SDL_GL_ACCUM_ALPHA_SIZE`           | Minimum number of bits for the accumulation buffer alpha channel | 0                       |
 | `SDL_GL_ACCUM_BLUE_SIZE`            | Minimum number of bits for the accumulation buffer blue channel | 0                        |
 | `SDL_GL_ACCUM_GREEN_SIZE`           | Minimum number of bits for the accumulation buffer green channel | 0                        |
@@ -223,6 +224,6 @@ The following table lists the attributes whose values can be set using the `SDL_
 | `SDL_GL_STEREO`                     | Whether stereo 3D output is enabled      | `off`                   |
 
 ## Related Information
-* Dependencies
- - Tizen 4.0 and Higher for Mobile
- - Tizen 4.0 and Higher for Wearable
+- Dependencies
+  - Tizen 4.0 and Higher for Mobile
+  - Tizen 4.0 and Higher for Wearable

@@ -21,13 +21,13 @@ The main features of the External Output Manager API include:
 
     You must use the EOM attributes to set the presentation mode by defining the EOM priority. With these attributes, you can display a fullscreen window on the external output device.
 
-    **Table: Presentation mode attributes**  
+    **Table: Presentation mode attributes**
 
     | Attribute                              | Description                              |
     |----------------------------------------|------------------------------------------|
-    | `EOM_OUTPUT_ATTRIBUTE_NORMAL`          | This priority can be set, if the current priority is none (mirror mode) or `NORMAL`.This priority cannot be set, if the current priority is `EXCLUSIVE_SHARE` or `EXCLUSIVE`. |
-    | `EOM_OUTPUT_ATTRIBUTE_EXCLUSIVE_SHARE` | This priority can be set, if the current priority is none (mirror mode), `NORMAL`, or `EXCLUSIVE_SHARE`.This priority cannot be set, if the current priority is `EXCLUSIVE`. |
-    | `EOM_OUTPUT_ATTRIBUTE_EXCLUSIVE`       | This priority can be set, if the current priority is none (mirror mode), `NORMAL`, or `EXCLUSIVE`.This priority cannot be set, if the current priority is `EXCLUSIVE_SHARE`. |
+    | `EOM_OUTPUT_ATTRIBUTE_NORMAL`          | This priority can be set, if the current priority is none (mirror mode) or `NORMAL`.<br> This priority cannot be set, if the current priority is `EXCLUSIVE_SHARE` or `EXCLUSIVE`. |
+    | `EOM_OUTPUT_ATTRIBUTE_EXCLUSIVE_SHARE` | This priority can be set, if the current priority is none (mirror mode), `NORMAL`, or `EXCLUSIVE_SHARE`.<br> This priority cannot be set, if the current priority is `EXCLUSIVE`. |
+    | `EOM_OUTPUT_ATTRIBUTE_EXCLUSIVE`       | This priority can be set, if the current priority is none (mirror mode), `NORMAL`, or `EXCLUSIVE`.<br> This priority cannot be set, if the current priority is `EXCLUSIVE_SHARE`. |
 
     In most applications, the `EOM_OUTPUT_ATTRIBUTE_NORMAL` priority is the best option.
 
@@ -37,7 +37,7 @@ The main features of the External Output Manager API include:
 
 - Getting information about the external output device
 
-  You can [get information about the external output device](#getstatus) by using various functions. For example, to [get the ID of the external output device](#getid), use the `eom_get_eom_output_ids()` function, and to get attribute information, use the `eom_get_output_attribute()`function.
+  You can [get information about the external output device](#getstatus) by using various functions. For example, to [get the ID of the external output device](#getid), use the `eom_get_eom_output_ids()` function, and to get attribute information, use the `eom_get_output_attribute()` function.
 
 - Setting the external output
 
@@ -49,7 +49,7 @@ The main features of the External Output Manager API include:
 
 To enable your application to use the EOM functionality:
 
-1. To use the functions and data types of the External Output Manager API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__UI__EOM__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__UI__EOM__MODULE.html) applications), include the `<eom.h>` header file in your application:
+1. To use the functions and data types of the External Output Manager API (in [mobile](../../api/mobile/latest/group__CAPI__UI__EOM__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__UI__EOM__MODULE.html) applications), include the `<eom.h>` header file in your application:
 
     ```
     #include <eom.h>
@@ -163,9 +163,17 @@ To get information about the external output device:
 - You can retrieve information about the external output device details with the following functions:
 
   - `eom_get_output_type()`: Get the connection type of the external output.
-  - `eom_get_output_mode()`: Get the external output mode.The mirror mode is the default mode. If the `eom_set_output_attribute()` function has executed successfully, the external output works in the presentation mode.
+  - `eom_get_output_mode()`: Get the external output mode.
+
+    The mirror mode is the default mode. If the `eom_set_output_attribute()` function has executed successfully, the external output works in the presentation mode.
   - `eom_get_output_attribute()`: Get the presentation mode priority attribute information.
-  - `eom_get_output_attribute_state()`: Get the attribute state information.If the application sets the attribute, the EOM sends the current attribute state to the application:`ACTIVE`: The application can use the external output.`INACTIVE`: The application was disconnected from the external output.`LOST`: The application cannot use the external output because another application has set the attribute. The application cannot receive the attribute state anymore.
+  - `eom_get_output_attribute_state()`: Get the attribute state information.
+
+    If the application sets the attribute, the EOM sends the current attribute state to the application:
+      - `ACTIVE`: The application can use the external output.
+      - `INACTIVE`: The application was disconnected from the external output.
+      - `LOST`: The application cannot use the external output because another application has set the attribute. The application cannot receive the attribute state anymore.
+
   - `eom_get_output_resolution()`: Get the best resolution of the external output device.
   - `eom_get_output_physical_size()`: Get the physical size of the external output device.
 
@@ -297,6 +305,6 @@ To get information about the external output device:
 
 
 ## Related Information
-* Dependencies
- - Tizen 2.4 and Higher for Mobile
- - Tizen 3.0 and Higher for Wearable
+- Dependencies
+  - Tizen 2.4 and Higher for Mobile
+  - Tizen 3.0 and Higher for Wearable

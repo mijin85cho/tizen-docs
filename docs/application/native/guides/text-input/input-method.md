@@ -18,7 +18,10 @@ The main features of the Input Method API include:
   The IME application runs as follows:
 
   1. Once the IME application is started, the `create()` callback function is called.
-  2. When a text input UI control gets the focus, the `show()` callback function is called.The IME application can call Input Method APIs to interact with the UI control. The event callback functions are called when the UI control state changes. When the text input UI control loses the focus, the `hide()` callback function is called.
+  2. When a text input UI control gets the focus, the `show()` callback function is called.
+
+     The IME application can call Input Method APIs to interact with the UI control. The event callback functions are called when the UI control state changes. When the text input UI control loses the focus, the `hide()` callback function is called.
+
   3. When the IME application is finished, the `terminate()` callback function is called.
 
 - Managing the main loop and event callback functions
@@ -46,7 +49,7 @@ The main features of the Input Method API include:
 <a name="manager"></a>
 ## Input Method Manager
 
-The Input Method Manager (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__UIX__INPUTMETHOD__MANAGER__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__UIX__INPUTMETHOD__MANAGER__MODULE.html) applications) is a module used to manage the installed IMEs. You can use it to open the installed IME list or selector menu after your IME application is installed, and guide the user to select the installed IME:
+The Input Method Manager (in [mobile](../../api/mobile/latest/group__CAPI__UIX__INPUTMETHOD__MANAGER__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__UIX__INPUTMETHOD__MANAGER__MODULE.html) applications) is a module used to manage the installed IMEs. You can use it to open the installed IME list or selector menu after your IME application is installed, and guide the user to select the installed IME:
 
 - Showing the IME list
 
@@ -72,7 +75,7 @@ The Input Method Manager (in [mobile](../../../../org.tizen.native.mobile.apiref
 
 To enable your application to use the input method functionality:
 
-1. To use the Input Method Manager API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__UIX__INPUTMETHOD__MANAGER__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__UIX__INPUTMETHOD__MANAGER__MODULE.html) applications), the application has to request permission by adding the following privilege to the `tizen-manifest.xml` file:
+1. To use the Input Method Manager API (in [mobile](../../api/mobile/latest/group__CAPI__UIX__INPUTMETHOD__MANAGER__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__UIX__INPUTMETHOD__MANAGER__MODULE.html) applications), the application has to request permission by adding the following privilege to the `tizen-manifest.xml` file:
 
    ```
    <privileges>
@@ -80,7 +83,7 @@ To enable your application to use the input method functionality:
    </privileges>
    ```
 
-2. To use the functions and data types of the Input Method API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__UIX__INPUTMETHOD__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__UIX__INPUTMETHOD__MODULE.html) applications), include the `<inputmethod.h>` header file in your application:
+2. To use the functions and data types of the Input Method API (in [mobile](../../api/mobile/latest/group__CAPI__UIX__INPUTMETHOD__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__UIX__INPUTMETHOD__MODULE.html) applications), include the `<inputmethod.h>` header file in your application:
 
     ```
     #include <inputmethod.h>
@@ -121,7 +124,7 @@ To register and define event callbacks for the IME application:
 
    1. You must register the `create()`, `terminate()`, `show()`, and `hide()` callbacks.
 
-      Add the callbacks to the `ime_callback_s` structure (in [mobile](../../../../org.tizen.native.mobile.apireference/structime__callback__s.html) and [wearable](../../../../org.tizen.native.wearable.apireference/structime__callback__s.html) applications), and pass the structure as a parameter to the `ime_run()` function:
+      Add the callbacks to the `ime_callback_s` structure (in [mobile](../../api/mobile/latest/structime__callback__s.html) and [wearable](../../api/wearable/latest/structime__callback__s.html) applications), and pass the structure as a parameter to the `ime_run()` function:
 
       ```
       static void create(void *user_data);
@@ -235,31 +238,31 @@ To register and define event callbacks for the IME application:
 
       - The `focus_in()` callback is triggered when an associated text input UI control in any application gets the focus. Usually, the `focus_in()` event is followed by the `show()` event.
 
-    ```
-    static int
-    focus_in(int context_id, void *user_data)
-    {
-        /* Take action */
-    }
-    ```
+        ```
+        static int
+        focus_in(int context_id, void *user_data)
+        {
+            /* Take action */
+        }
+        ```
       - The `focus_out()` callback is triggered when an associated text input UI control in any application loses the focus. Usually, the `focus_out()` event is followed by the `hide()` event.
 
-    ```
-    static int
-    focus_out(int context_id, void *user_data)
-    {
-        /* Take action */
-    }
-    ```
+        ```
+        static int
+        focus_out(int context_id, void *user_data)
+        {
+            /* Take action */
+        }
+        ```
       - The `cursor_position_updated()` callback is triggered when the position of the cursor in an associated text input UI control changes. You can use this callback to provide, for example, auto-capitalization or predictive text features.
 
-    ```
-    static int
-    cursor_position_updated(int cursor_pos, void *user_data)
-    {
-        /* Take action */
-    }
-    ```
+        ```
+        static int
+        cursor_position_updated(int cursor_pos, void *user_data)
+        {
+            /* Take action */
+        }
+        ```
 
 <a name="menu"></a>
 ## Making a Keyboard Option Menu
@@ -288,18 +291,20 @@ To make the option menu for the keyboard:
 
 2. The option menu can be opened in 2 different ways:
 
-   - The device Settings application can open the keyboard option menu from **Settings > Language and input > Keyboard > Keyboard settings**.If the user selects the keyboard settings, the `option_window_created()` callback is executed:
+   - The device Settings application can open the keyboard option menu from **Settings > Language and input > Keyboard > Keyboard settings**.
 
-    ```
-    static void
-    option_window_created(Evas_Object *window, ime_option_window_type_e type, void *user_data)
-    {
-        /* Create the option window */
-        /* Draw the content to the given window object */
+     If the user selects the keyboard settings, the `option_window_created()` callback is executed:
 
-        evas_object_show(window);
-    }
-    ```
+     ```
+     static void
+     option_window_created(Evas_Object *window, ime_option_window_type_e type, void *user_data)
+     {
+         /* Create the option window */
+         /* Draw the content to the given window object */
+
+         evas_object_show(window);
+     }
+     ```
 
    - The keyboard can have a specific key button for its option menu, allowing the user to open the option menu directly from the keyboard.
 
@@ -381,6 +386,7 @@ To check the current default keyboard or whether a specific IME is enabled, or t
     }
     ```
 	If the function is successful, it returns 0.
+
 - To check which IME is currently selected as the default keyboard, call the `ime_manager_get_active_ime()` function:
 
     ```
@@ -398,6 +404,7 @@ To check the current default keyboard or whether a specific IME is enabled, or t
     ```
 
 	If the function is successful, it returns 0.
+
 - To get the number of enabled (usable) IMEs, call the `ime_manager_get_enabled_ime_count()` function:
 
     ```

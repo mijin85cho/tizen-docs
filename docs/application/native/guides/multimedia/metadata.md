@@ -27,7 +27,7 @@ To handle content metadata, you can use the following features:
 
 To enable your application to use the metadata functionality:
 
-1. To use the functions and data types of the Metadata Editor API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__MEDIA__METADATA__EDITOR__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__MEDIA__METADATA__EDITOR__MODULE.html) applications), include the `<metadata_editor.h>` header file in your application:
+1. To use the functions and data types of the Metadata Editor API (in [mobile](../../api/mobile/latest/group__CAPI__MEDIA__METADATA__EDITOR__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__MEDIA__METADATA__EDITOR__MODULE.html) applications), include the `<metadata_editor.h>` header file in your application:
 
    ```
    #include <metadata_editor.h>
@@ -43,7 +43,8 @@ To enable your application to use the metadata functionality:
 
 3. Make sure you have access to the file whose metadata and artwork you want to edit.
 
-   > **Note**  
+   > **Note**
+   >
    > The metadata editor APIs can use both common content in the device storage (internal or external) and private content in your application data.
 
    This guide uses an MP3 audio file, which is accessed through its file path. The following example code uses an internal storage, so you must include the `storage.h` header file for the code to work.
@@ -94,7 +95,7 @@ To enable your application to use the metadata functionality:
    }
    ```
 
-4. To use the functions and data types of the Metadata Extractor API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__METADATA__EXTRACTOR__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__METADATA__EXTRACTOR__MODULE.html) applications), include the `<metadata_extractor.h>` header file in your application:
+4. To use the functions and data types of the Metadata Extractor API (in [mobile](../../api/mobile/latest/group__CAPI__METADATA__EXTRACTOR__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__METADATA__EXTRACTOR__MODULE.html) applications), include the `<metadata_extractor.h>` header file in your application:
 
    ```
    #include <metadata_extractor.h>
@@ -112,7 +113,8 @@ To enable your application to use the metadata functionality:
 
 6. Make sure you have access to the files whose metadata you want to extract, and make sure the files contain metadata, since the Metadata Extractor API only works on files with metadata.
 
-   > **Note**  
+   > **Note**
+   >
    > The Metadata Extractor functions can use both common content in the device storage (internal or external) and private content in your application data.
 
    This guide uses 2 files: an MP3 audio file and an MP4 video file, which are accessed through their file paths. The following example code uses an internal storage, so you must include the `storage.h` header file for the code to work.
@@ -180,7 +182,7 @@ To enable your application to use the metadata functionality:
    }
    ```
 
-7. To use the functions and data types of the MIME Type API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__CONTENT__MIME__TYPE__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__CONTENT__MIME__TYPE__MODULE.html) applications), include the `<mime_type.h>` header file in your application:
+7. To use the functions and data types of the MIME Type API (in [mobile](../../api/mobile/latest/group__CAPI__CONTENT__MIME__TYPE__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__CONTENT__MIME__TYPE__MODULE.html) applications), include the `<mime_type.h>` header file in your application:
 
    ```
    #include <mime_type.h>
@@ -207,7 +209,7 @@ To edit the metadata and artwork in the file:
 
 3. Edit the metadata in the file using the `metadata_editor_set_metadata()` function. Edit each piece of metadata (each metadata attribute) individually.
 
-   As parameters, define the metadata editor handle, the attribute you want to edit, and the new value you want to set to the attribute. The possible attributes are defined in the `metadata_editor_attr_e` enumeration (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__MEDIA__METADATA__EDITOR__MODULE.html#ga1c6a8dcf861f527302e9c55152692df3) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__MEDIA__METADATA__EDITOR__MODULE.html#ga1c6a8dcf861f527302e9c55152692df3) applications).
+   As parameters, define the metadata editor handle, the attribute you want to edit, and the new value you want to set to the attribute. The possible attributes are defined in the `metadata_editor_attr_e` enumeration (in [mobile](../../api/mobile/latest/group__CAPI__MEDIA__METADATA__EDITOR__MODULE.html#ga1c6a8dcf861f527302e9c55152692df3) and [wearable](../../api/wearable/latest/group__CAPI__MEDIA__METADATA__EDITOR__MODULE.html#ga1c6a8dcf861f527302e9c55152692df3) applications).
 
    The following example code edits the title of the audio content. You can edit other attributes by defining a different attribute enumerator (and a corresponding new value).
 
@@ -219,7 +221,8 @@ To edit the metadata and artwork in the file:
 
    After calling the function, check whether the return value is `METADATA_EDITOR_ERROR_NONE`. If it is, you can check the updated metadata using the `metadata_editor_get_metadata()` function. Otherwise, the function failed because of an error, which you need to handle.
 
-   > **Note**  
+   > **Note**
+   >
    > The updated metadata is applied to the file only after you [call the `metadata_editor_update_metadata()` function](#apply).
 
 4. Add artwork to the file using the `metadata_editor_append_picture()` function.
@@ -242,10 +245,11 @@ To edit the metadata and artwork in the file:
    ret = metadata_editor_remove_picture(g_metadata_h, index);
    ```
 
-   > **Note**  
+   > **Note**
+   >
    > The artwork is added to the file or removed from the file only after you [call the `metadata_editor_update_metadata()` function](#apply).
 
-<a name="apply"></a>
+   <a name="apply"></a>
 5. Apply the metadata and artwork edits to the file using the `metadata_editor_update_metadata()` function:
 
    ```
@@ -283,7 +287,7 @@ To retrieve metadata from the file:
 
 3. Retrieve the metadata from the file using the `metadata_extractor_get_metadata()` function. Retrieve each piece of metadata (each metadata attribute) individually.
 
-   As parameters, define the metadata extractor handle, the attribute you want to retrieve, and a pointer to the `char` variable in which you want to store the attribute value. The possible attributes are defined in the `metadata_extractor_attr_e` enumeration (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__METADATA__EXTRACTOR__MODULE.html#ga5b27fedbf5aaa22106f88b831c596872)and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__METADATA__EXTRACTOR__MODULE.html#ga5b27fedbf5aaa22106f88b831c596872) applications).
+   As parameters, define the metadata extractor handle, the attribute you want to retrieve, and a pointer to the `char` variable in which you want to store the attribute value. The possible attributes are defined in the `metadata_extractor_attr_e` enumeration (in [mobile](../../api/mobile/latest/group__CAPI__METADATA__EXTRACTOR__MODULE.html#ga5b27fedbf5aaa22106f88b831c596872)and [wearable](../../api/wearable/latest/group__CAPI__METADATA__EXTRACTOR__MODULE.html#ga5b27fedbf5aaa22106f88b831c596872) applications).
 
    The following example code retrieves the duration and prints it on the screen. You can retrieve other attributes by defining a different attribute enumerator as the second parameter.
 
@@ -527,6 +531,6 @@ The following table lists the extractable metadata.
 | `METADATA_ROTATE`             | Orientation of the content           |
 
 ## Related Information
-* Dependencies
- - Tizen 2.4 and Higher for Mobile
- - Tizen 2.3.1 and Higher for Wearable
+- Dependencies
+  - Tizen 2.4 and Higher for Mobile
+  - Tizen 2.3.1 and Higher for Wearable

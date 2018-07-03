@@ -6,21 +6,11 @@ A Tizen native application is similar to a conventional Linux application, with 
 
 Tizen provides various application models to allow you to create applications targeted for specific tasks:
 
-- [UI Applications](ui-app.md)
+- [UI Applications](ui-app/index.md)
 
-  The UI application has a graphical user interface. You can create diverse applications with a variety of features, and design versatile applications and intriguing user interfaces with text and graphics while taking advantage of many device functionalities, such as sensors and call operations. In addition, you can, for example, manage content and media files, use network and social services, and provide messaging and embedded Web browsing functionality.The UI application is the most common Tizen application model.
+  The UI application has a graphical user interface. You can create diverse applications with a variety of features, and design versatile applications and intriguing user interfaces with text and graphics while taking advantage of many device functionalities, such as sensors and call operations. In addition, you can, for example, manage content and media files, use network and social services, and provide messaging and embedded Web browsing functionality.
 
-  When creating a native UI application, you can select between EFL and DALi UI frameworks:
-
-  - [EFL Applications](efl-app.md).
-
-    The EFL application is based on the Enlightenment Foundation Library. With EFL and streamlined graphic core libraries, you can create powerful 2D-based Tizen native applications. EFL needs relatively low memory but provides high performance, and supports a retained mode graphics system and user-centric features, such as themes, 2D/3D effects, and accessibility. In addition, EFL supports various resolutions with the same layout, fast and small file systems, a variety of programming language bindings, and a separate UI and logic.
-
-
-  - [DALi Applications](dali-app.md).
-
-    The DALi application is based on the Dynamic Animation Library. DALi internally defines a virtual 3D world (space) and maintains hierarchical objects in the 3D world. The hierarchical object tree is known as the scene graph. A node in the scene graph can have several children but often only a single parent, with the effect of a parent applied to all its child nodes; an operation performed on a group automatically propagates its effect to all of its members.
-
+  The UI application is the most common Tizen application model.
 
 - [Service Applications](service-app.md)
 
@@ -28,7 +18,7 @@ Tizen provides various application models to allow you to create applications ta
 
 ## Native Application Life-Cycle
 
-The Tizen native application model handles application life-cycle and system events. Tizen native application life-cycle is handled by the Application API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__APPLICATION__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__APPLICATION__MODULE.html) applications). It provides functions to manage the main event loop, the application state change events, and basic system events.
+The Tizen native application model handles application life-cycle and system events. Tizen native application life-cycle is handled by the Application API (in [mobile](../../api/mobile/latest/group__CAPI__APPLICATION__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__APPLICATION__MODULE.html) applications). It provides functions to manage the main event loop, the application state change events, and basic system events.
 
 Tizen supports both UI applications (which have a graphical user interface) and service applications (which have no graphical user interface). The UI and service applications can be packaged together, if necessary; however, a combined application package must contain only one UI application, while it can have several service applications.
 

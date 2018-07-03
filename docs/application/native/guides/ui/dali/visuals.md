@@ -2,7 +2,7 @@
 
 
 
-You can create a reusable rendering logic, which can be used by all controls, by using DALi visuals. Visuals are the main building block for controls. The `Dali::Toolkit::Visual` instance (in [mobile](http://org.tizen.native.mobile.apireference/namespaceDali_1_1Toolkit_1_1Visual.html) and [wearable](http://org.tizen.native.wearable.apireference/namespaceDali_1_1Toolkit_1_1Visual.html) applications) is used to display renderer content.
+You can create a reusable rendering logic, which can be used by all controls, by using DALi visuals. Visuals are the main building block for controls. The `Dali::Toolkit::Visual` instance (in [mobile](../../../api/mobile/latest/namespaceDali_1_1Toolkit_1_1Visual.html) and [wearable](../../../api/wearable/latest/namespaceDali_1_1Toolkit_1_1Visual.html) applications) is used to display renderer content.
 
 ## Overview
 DALi provides the following visuals:
@@ -106,7 +106,7 @@ The following table lists the supported properties. The visual type is `Visual::
 | `GradientVisual::Property::UNITS`        | `units`         | INTEGER or STRING | No              | The coordinate system.                   |
 | `GradientVisual::Property::SPREAD_METHOD`| `spreadMethod`  | INTEGER or STRING | No              | Indicates what happens if a gradient starts or ends inside bounds. |
 
-- If the `GradientVisual::Property::STOP_OFFSET` and `GradientVisual::Property::STOP_COLOR` arrays do not have the same number of elements, the minimum of the 2 is used as the stop points.
+If the `GradientVisual::Property::STOP_OFFSET` and `GradientVisual::Property::STOP_COLOR` arrays do not have the same number of elements, the minimum of the 2 is used as the stop points.
 
 ### Units
 The `GradientVisual::Property::UNITS` are used to define the coordinate system for the attributes:
@@ -323,7 +323,7 @@ The following table lists the supported properties. The visual type is `Visual::
 **Table: Animated image visual properties**
 
 | Property                             | String       | Type    | Required | Description           |
-| ------------------------------------ | ------------ | ------- | -------- | --------------------- |
+|------------------------------------|------------|-------|--------|---------------------|
 | `ImageVisual::Property::BATCH_SIZE`  | `batchSize`  | INTEGER | No       | Number of images to pre-load before starting to play. Default value: 1 |
 | `ImageVisual::Property::CACHE_SIZE`  | `cacheSize`  | INTEGER | No       | Number of images to keep cached ahead during playback. Default value: 1  |
 | `ImageVisual::Property::FRAME_DELAY` | `frameDelay` | INTEGER | No       | The number of milliseconds between each frame. |
@@ -478,14 +478,14 @@ control.SetProperty( Control::Property::BACKGROUND, map );
 **Conics:**
 
 | Frustrum   |      Cone    |   Cylinder |
-| ---------- | ------------ | ---------- |
+|----------|------------|----------|
 | ![Frustrum](./media/dali_frustrum.png) | ![Cone](./media/dali_cone.png) | ![Cylinder](./media/dali_cylinder.png) |
 
 **Bevel:**
 Bevel percentage ranges from 0.0 to 1.0. It affects the ratio of the outer face widths to the width of the overall cube.
 
 |   0.0 (cube)  |     0.3      |      0.7     |   1.0 (octahedron)  |
-| ------------- | ------------ | ------------ | ------------------- |
+|-------------|------------|------------|-------------------|
 | ![Bevel1](./media/dali_primitive_visual1.png) | ![Bevel2](./media/dali_bevel2.png) | ![Bevel3](./media/dali_bevel3.png) | ![Bevel4](./media/dali_bevel4.png) |
 
 **Slices:**
@@ -512,7 +512,7 @@ The following table lists the supported properties. The visual type is `Visual::
 **Table: Text visual properties**
 
 | Property                                | String         | Type    | Required | Description                              |
-| --------------------------------------- | -------------- | ------- | -------- | ---------------------------------------- |
+|---------------------------------------|--------------|-------|--------|----------------------------------------|
 | `TextVisual::Property::TEXT`            | `text`         | STRING  | Yes      | The text to display in UTF-8 format.     |
 | `TextVisual::Property::FONT_FAMILY`     | `fontFamily`   | STRING  | No       | The requested font family to use.        |
 | `TextVisual::Property::FONT_STYLE`      | `fontStyle`    | MAP     | No       | The requested font style to use.         |
@@ -591,6 +591,6 @@ control.SetProperty( Control::Property::BACKGROUND, map );
 ```
 
 ## Related Information
-* Dependencies
- - Tizen 3.0 and Higher for Mobile
- - Tizen 3.0 and Higher for Wearable
+- Dependencies
+  - Tizen 3.0 and Higher for Mobile
+  - Tizen 3.0 and Higher for Wearable

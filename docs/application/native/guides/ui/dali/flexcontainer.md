@@ -59,7 +59,7 @@ The following basic example shows how to create a gallery-like flexbox layout us
    flexContainer.SetProperty( FlexContainer::Property::FLEX_DIRECTION, FlexContainer::COLUMN );
    ```
 
-4. To make the buttons and title display horizontally and be vertically aligned to the center of the toolbar, set the toolbar flex direction to "row" and set its `ALIGN_ITEMS` property to center.Set the `FLEX` property to make the toolbar and the actual content share the height of the main container, so that the toolbar occupies 10 percent of the whole vertical space and the content occupies the rest of the vertical space.
+4. To make the buttons and title display horizontally and be vertically aligned to the center of the toolbar, set the toolbar flex direction to "row" and set its `ALIGN_ITEMS` property to center. Set the `FLEX` property to make the toolbar and the actual content share the height of the main container, so that the toolbar occupies 10 percent of the whole vertical space and the content occupies the rest of the vertical space.
 
     ```
     // Display toolbar items horizontally
@@ -156,9 +156,11 @@ You can modify the flex container appearance and behavior through the following 
 - `CONTENT_DIRECTION` : This property specifies the primary direction in which content is ordered on a line.
 
   **Figure: CONTENT_DIRECTION LTR**
+
   ![CONTENT_DIRECTION LTR](./media/dali_flexcontainer_content-direction-ltr.png)
 
   **Figure: CONTENT_DIRECTION RTL**
+
   ![CONTENT_DIRECTION RTL](./media/dali_flexcontainer_content-direction-rtl.png)
 
 **Table: CONTENT_DIRECTION values**
@@ -172,6 +174,7 @@ You can modify the flex container appearance and behavior through the following 
 - `FLEX_DIRECTION` : This property specifies the direction of the main axis, which determines the direction in which the flex items are laid out.
 
   **Figure: FLEX_DIRECTION**
+
   ![FLEX_DIRECTION](./media/dali_flexcontainer_flex-direction.png)
 
 **Table: FLEX_DIRECTION values**
@@ -186,11 +189,12 @@ You can modify the flex container appearance and behavior through the following 
 - `FLEX_WRAP` : This property specifies whether the flex items must wrap if there is not enough room for them on 1 flex line.
 
   **Figure: FLEX_WRAP**
+
   ![FLEX_WRAP](./media/dali_flexcontainer_flex-wrap.png)
 
 **Table: FLEX_WRAP values**
 
-  | perty value | Description                              |
+  | Property value | Description                              |
   |-------------|------------------------------------------|
   | `NO_WRAP`   | Flex items laid out in a single line (shrunk to fit the flex container along the main axis) |
   | `WRAP`      | Flex items laid out in multiple lines, if needed |
@@ -198,6 +202,7 @@ You can modify the flex container appearance and behavior through the following 
 - `JUSTIFY_CONTENT` : This property specifies the alignment of flex items when they do not use all available space on the main axis.
 
     **Figure: JUSTIFY_CONTENT**
+
     ![JUSTIFY_CONTENT](./media/dali_flexcontainer_justify-content.png)
 
 **Table: JUSTIFY_CONTENT values**
@@ -213,6 +218,7 @@ You can modify the flex container appearance and behavior through the following 
 - `ALIGN_ITEMS` : This property specifies the alignment of flex items when they do not use all available space on the cross axis.
 
   **Figure: ALIGN_ITEMS**
+
   ![ALIGN_ITEMS](./media/dali_flexcontainer_align-items.png)
 
 **Table: ALIGN_ITEMS values**
@@ -227,6 +233,7 @@ You can modify the flex container appearance and behavior through the following 
 - `ALIGN_CONTENT` : This property specifies the alignment of flex lines when they do not use all available space on the cross axis, so only works when there are multiple lines.
 
   **Figure: ALIGN_CONTENT**
+
   ![ALIGN_CONTENT](./media/dali_flexcontainer_align-content.png)
 
 **Table: ALIGN_CONTENT values**
@@ -246,6 +253,7 @@ The flex item properties are non-animatable properties registered dynamically to
 - `FLEX` : By default, the items in the flex container are not flexible. If set, this property makes the item flexible, which means the item can alter its width and height in order to receive the specified proportion of the free space in the flex container. If all items in the flex container use this pattern, their sizes are proportional to the specified flex factor. Flex items do not shrink below their minimum size (if set using the `Dali::Actor::SetMinimumSize()` function).
 
 	**Figure: FLEX**
+
   ![FLEX](./media/dali_flexcontainer_flex.png)
 
 	The following example shows how the items achieve the proportion of free space as illustrated in the above figure:
@@ -277,6 +285,7 @@ The flex item properties are non-animatable properties registered dynamically to
 - `ALIGN_SELF` : This property specifies how the item aligns along the cross axis. If set, this property overrides the default alignment for all items defined by the container's `ALIGN_ITEMS` property.
 
 	**Figure: ALIGN_SELF**
+
   ![ALIGN_SELF](./media/dali_flexcontainer_align-self.png)
 
 	The following example shows how the items achieve the alignment on the cross axis as illustrated in the above figure:
@@ -307,12 +316,19 @@ The flex item properties are non-animatable properties registered dynamically to
     flexContainer.Add( item4 );
     ```
 
-- `FLEX_MARGIN` : Each flex item inside the flex container is treated as a box (in CSS term) that is made up of:Content: The content of the itemPadding: The space around the content (inside the border) of the itemBorder: The border that goes around the padding and the content of the itemFlex margin: The space outside the border
+- `FLEX_MARGIN` : Each flex item inside the flex container is treated as a box (in CSS term) that is made up of:
+  - Content: The content of the item
+  - Padding: The space around the content (inside the border) of the item
+  - Border: The border that goes around the padding and the content of the item
+  - Flex margin: The space outside the border
 
 	**Figure: FLEX_MARGIN**
+
   ![FLEX_MARGIN](./media/dali_flexcontainer_flex-margin.png)
 
-	In DALi, the size of the flex item = content size + padding + border. The flex margin specifies the space around the flex item.The following example shows how to add some space around the items.
+	In DALi, the size of the flex item = content size + padding + border. The flex margin specifies the space around the flex item.
+
+	The following example shows how to add some space around the items.
 
     ```
     // Create the flex container
@@ -326,6 +342,6 @@ The flex item properties are non-animatable properties registered dynamically to
     ```
 
 ## Related Information
-* Dependencies
+- Dependencies
   - Tizen 3.0 and Higher for Mobile
   - Tizen 3.0 and Higher for Wearable

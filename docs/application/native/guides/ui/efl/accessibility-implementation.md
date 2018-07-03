@@ -70,8 +70,9 @@ In the Tizen 2.4 release, the screen reader is available only inside the UI Comp
 
 ![UI Components sample application](./media/ui-controls.png) ![UI Components sample application](./media/ui-controls-accessibility.png) ![Screen reader](./media/ui-controls-accessibility-screen-reader.png)
 
-> **Note**  
-> If reading of any arbitrary text directly from the application needs to be synchronized with the screen reader voice output, you must use the Tizen platform TTS API (in [mobile](http://org.tizen.native.mobile.apireference/group__CAPI__UIX__TTS__MODULE.html) and [wearable](http://org.tizen.native.wearable.apireference/group__CAPI__UIX__TTS__MODULE.html) applications), which is also used by the screen reader.
+> **Note**
+>
+> If reading of any arbitrary text directly from the application needs to be synchronized with the screen reader voice output, you must use the Tizen platform TTS API (in [mobile](../../../api/mobile/latest/group__CAPI__UIX__TTS__MODULE.html) and [wearable](../../../api/wearable/latest/group__CAPI__UIX__TTS__MODULE.html) applications), which is also used by the screen reader.
 
 ### Making UI Components Readable
 
@@ -102,25 +103,25 @@ The screen reader reads the information in the following order when the user sel
 
 The following table lists the functions you can use to set EFL Elementary UI component information to be read by the screen reader, and to support internationalization (i18n) for the information.
 
-**Table: Functions for making UI components readable**  
+**Table: Functions for making UI components readable**
 
 | Function                                 | Description                              |
 |----------------------------------------|----------------------------------------|
-| `void elm_atspi_accessible_name_set(Elm_Interface_Atspi_Accessible *obj, const char *text)` | Set a text of an object.`obj`: Elementary object`text`: New accessible name for the object |
-| `void elm_atspi_accessible_name_cb_set(Elm_Interface_Atspi_Accessible *obj, Elm_Atspi_Reading_Info_Cb name_cb, const void *data)` | Set the accessible name information callback for an object.`obj`: Elementary object`name_cb`: Accessible name information callback for the object`data`: Data passed to the accessible name information callback |
-| `void elm_atspi_accessible_role_set(Elm_Interface_Atspi_Accessible *obj, Elm_Atspi_Role role)` | Set the accessible role.`obj`: Elementary object`role`: New accessible role for the object |
-| `void elm_atspi_accessible_description_set(Elm_Interface_Atspi_Accessible *obj, const char *text)` | Set the accessible description.`obj`: Elementary object`text`: Description text for the object |
-| `void elm_atspi_accessible_description_cb_set(Elm_Interface_Atspi_Accessible *obj, Elm_Atspi_Reading_Info_Cb description_cb, const void *data)` | Set the accessible description information callback for an object.`obj`: Elementary object`description_cb`: Accessible description information callback for the object`data`: Data passed to the accessible description information callback |
-| `void elm_atspi_accessible_translation_domain_set(Elm_Interface_Atspi_Accessible *obj, const char *domain)` | Bind the translation domain to the accessible object.`obj`: Elementary object`domain`: Translation domain (name space for translation keys) |
+| `void elm_atspi_accessible_name_set(Elm_Interface_Atspi_Accessible *obj, const char *text)` | Set a text of an object.<br><br>- `obj`: Elementary object<br>- `text`: New accessible name for the object |
+| `void elm_atspi_accessible_name_cb_set(Elm_Interface_Atspi_Accessible *obj, Elm_Atspi_Reading_Info_Cb name_cb, const void *data)` | Set the accessible name information callback for an object.<br><br>- `obj`: Elementary object<br>- `name_cb`: Accessible name information callback for the object<br>- `data`: Data passed to the accessible name information callback |
+| `void elm_atspi_accessible_role_set(Elm_Interface_Atspi_Accessible *obj, Elm_Atspi_Role role)` | Set the accessible role.<br><br>- `obj`: Elementary object<br>- `role`: New accessible role for the object |
+| `void elm_atspi_accessible_description_set(Elm_Interface_Atspi_Accessible *obj, const char *text)` | Set the accessible description.<br><br>- `obj`: Elementary object<br>- `text`: Description text for the object |
+| `void elm_atspi_accessible_description_cb_set(Elm_Interface_Atspi_Accessible *obj, Elm_Atspi_Reading_Info_Cb description_cb, const void *data)` | Set the accessible description information callback for an object.<br><br>- `obj`: Elementary object<br>- `description_cb`: Accessible description information callback for the object<br>- `data`: Data passed to the accessible description information callback |
+| `void elm_atspi_accessible_translation_domain_set(Elm_Interface_Atspi_Accessible *obj, const char *domain)` | Bind the translation domain to the accessible object.<br><br>- `obj`: Elementary object<br>- `domain`: Translation domain (name space for translation keys) |
 
 
 **Figure: Readable components in the UI Components sample**
 
-![Readable components in the UI Components sample](./media/ui-controls-accessibility-screen-reader-ui-description.png)  
+![Readable components in the UI Components sample](./media/ui-controls-accessibility-screen-reader-ui-description.png)
 
 The Elementary library sets the default information (label, traits, state) for the components, except for an icon and image. You can override the default information in various ways:
 
-- Button with a custom name  
+- Button with a custom name
 
   Use the `elm_object_text_set()` function to define a custom name.
 
@@ -148,7 +149,7 @@ The Elementary library sets the default information (label, traits, state) for t
 
   If the user highlights the button, the screen reader says "button" (it reads out the component default trait only).
 
-- Button with an internationalized description  
+- Button with an internationalized description
 
   Use the `elm_atspi_accessible_description_set()` function to define a description. To make multiple language versions available define the actual description strings in PO files and use the `elm_atspi_accessible_translation_domain_set()` function to bind the translation domain to the component.
 
@@ -262,9 +263,17 @@ The Elementary library sets the default information (label, traits, state) for t
     If the user highlights the button, the screen reader says "Accessible Name, button, Accessible Description".
 
 You can also create a custom reading of multi-style components. Sometimes, it is necessary to have different voice output depending on the style assigned to the UI component. The `default` style is handled "out of the box" by the accessibility framework, but you must handle any alternative styles on the application side. The Elementary checkbox component offers a good example of alternative styles:
-- `default` style in a checkbox:The reading must be "<label>, <state>", where <label> is a text assigned to the checkbox and <state> is read as "selected" or "not selected", depending on the checkbox state.
-- `favorite` style in a checkbox:The reading must be "Favorite button, <state>", where <state> is read as "selected" or "not selected", depending on the checkbox state.
-- `on&off` style in a checkbox:The reading must be "On/off button, <state>", where <state> is read as "on" or "off", depending on the checkbox state.
+- `default` style in a checkbox:
+
+   The reading must be "\<label\>, \<state\>", where \<label\> is a text assigned to the checkbox and \<state\> is read as "selected" or "not selected", depending on the checkbox state.
+
+- `favorite` style in a checkbox:
+
+   The reading must be "Favorite button, \<state\>", where \<state\> is read as "selected" or "not selected", depending on the checkbox state.
+
+- `on&off` style in a checkbox:
+
+   The reading must be "On/off button, \<state\>", where \<state\> is read as "on" or "off", depending on the checkbox state.
 
 The following source code snippet demonstrates how to handle the `favorite` and `on&off` checkbox styles in the application source code:
 
@@ -290,7 +299,7 @@ The following table lists the function you can use to define the reading informa
 
 | Function                                 | Description                              |
 |----------------------------------------|----------------------------------------|
-| `void elm_atspi_accessible_reading_info_type_set(Elm_Interface_Atspi_Accessible *obj, Elm_Atspi_Reading_Info_Type_Mask reading_info)` | Set the reading information types for an accessible object.`obj`: Elementary object`reading_info`: Reading information types |
+| `void elm_atspi_accessible_reading_info_type_set(Elm_Interface_Atspi_Accessible *obj, Elm_Atspi_Reading_Info_Type_Mask reading_info)` | Set the reading information types for an accessible object.<br><br>- `obj`: Elementary object<br>- `reading_info`: Reading information types |
 
 The following source code snippet demonstrates how to set the reading information types for an accessible object in the application source code:
 
@@ -324,8 +333,8 @@ The following table lists the functions you can use to customize the order in wh
 
 | Function                                 | Description                              |
 |----------------------------------------|----------------------------------------|
-| `Eina_Bool elm_atspi_accessible_relationship_append(Elm_Interface_Atspi_Accessible *obj, Elm_Atspi_Relation_Type type, const Elm_Interface_Atspi_Accessible *relation_object)` | Append the relation to the relation set of a certain object or component object.				`obj`: Elementary accessible object (relation source)		`type`: Type of the ATSPI relation		`relation_object`: Relation target object |
-| `void elm_atspi_accessible_relationship_remove(Elm_Interface_Atspi_Accessible *obj, Elm_Atspi_Relation_Type type, const Elm_Interface_Atspi_Accessible *relation_object)` | Remove the relation from the relation set of a certain object or component object.				`obj`: Elementary accessible object (relation source)		`type`: Type of the ATSPI relation		`relation_object`: Relation target object |
+| `Eina_Bool elm_atspi_accessible_relationship_append(Elm_Interface_Atspi_Accessible *obj, Elm_Atspi_Relation_Type type, const Elm_Interface_Atspi_Accessible *relation_object)` | Append the relation to the relation set of a certain object or component object.<br><br>-		`obj`: Elementary accessible object (relation source)<br>-	`type`: Type of the ATSPI relation<br>-		`relation_object`: Relation target object |
+| `void elm_atspi_accessible_relationship_remove(Elm_Interface_Atspi_Accessible *obj, Elm_Atspi_Relation_Type type, const Elm_Interface_Atspi_Accessible *relation_object)` | Remove the relation from the relation set of a certain object or component object.<br><br>-			`obj`: Elementary accessible object (relation source)<br>-		`type`: Type of the ATSPI relation<br>-	`relation_object`: Relation target object |
 
 The following figure illustrates the UI reading order example in the UI Components sample application. In the top part of the screen, the components have been ordered explicitly by the developer by setting the ATSPI standard relations between accessible objects corresponding to these components. In the bottom part of the screen, the components have no relation-based navigation set at all. This results in the natural reading order of the UI elements maintained implicitly by the screen reader itself. The natural reading order is a heuristic based on the UI elements' geometrical position on the screen (top to bottom, and left to right reading direction).
 

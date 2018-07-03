@@ -27,7 +27,7 @@ To register a callback for the **Menu** or **Back** key, use the `eext_object_ev
 
 To delete a registered event in the EFL Extension, use the `eext_object_event_callback_del()` function.
 
-The EFL Extension also provides other convenient functions to work with the **Menu** and **Back** keys for [popup](./component-popup-m.md), [ctxpopup](./component-ctxpopup-m.md), [naviframe](./container-naviframe.md), and [entry](./component-entry-m.md) components.
+The EFL Extension also provides other convenient functions to work with the **Menu** and **Back** keys for [popup](./mobile/component-popup.md), [ctxpopup](./mobile/component-ctxpopup.md), [naviframe](./container-naviframe.md), and [entry](./mobile/component-entry.md) components.
 
 ## Managing Hardware Key Events
 
@@ -38,7 +38,7 @@ The following example application has a window with a naviframe, and registers t
 
 To manage hardware key events:
 
-1. To use the functions and data types of the [Efl Extension](http://org.tizen.native.mobile.apireference/group__CAPI__EFL__EXTENSION__MODULE.html) API, include the `<efl_extension.h>` header file in your application:
+1. To use the functions and data types of the [Efl Extension](../../../api/mobile/latest/group__CAPI__EFL__EXTENSION__MODULE.html) API, include the `<efl_extension.h>` header file in your application:
 
    ```
    #include <efl_extension.h>
@@ -111,7 +111,9 @@ To manage hardware key events:
 
 5. In the **Back** key callbacks:
 
-   - The `eext_popup_back_cb()` callback is a macro function that removes the popup.To use a hide effect in dismissing the popup, use the `elm_popup_dismiss()` function in the callback:
+   - The `eext_popup_back_cb()` callback is a macro function that removes the popup.
+
+     To use a hide effect in dismissing the popup, use the `elm_popup_dismiss()` function in the callback:
 
      ```
      static void
@@ -135,5 +137,5 @@ To manage hardware key events:
      ```
 
 ## Related Information
-- Dependencies     
+- Dependencies
     - Tizen 2.4 and Higher for Mobile

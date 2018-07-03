@@ -23,7 +23,7 @@ The main features of the Runtime Information API include:
 
 ## Prerequisites
 
-To use the functions and data types of the Runtime information API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__SYSTEM__RUNTIME__INFO__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__SYSTEM__RUNTIME__INFO__MODULE.html) applications), include the `<runtime_info.h>` header file in your application:
+To use the functions and data types of the Runtime information API (in [mobile](../../api/mobile/latest/group__CAPI__SYSTEM__RUNTIME__INFO__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__SYSTEM__RUNTIME__INFO__MODULE.html) applications), include the `<runtime_info.h>` header file in your application:
 
 ```
 #include <runtime_info.h>
@@ -253,6 +253,6 @@ The following table lists the available runtime information keys.
 | `RUNTIME_INFO_KEY_AUTO_ROTATION_ENABLED` | `bool` | Indicates whether auto-rotation is enabled. |
 
 ## Related Information
-* Dependencies
- - Tizen 2.4 and Higher for Mobile
- - Tizen 2.3.1 and Higher for Wearable
+- Dependencies
+  - Tizen 2.4 and Higher for Mobile
+  - Tizen 2.3.1 and Higher for Wearable

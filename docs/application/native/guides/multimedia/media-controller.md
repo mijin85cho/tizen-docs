@@ -25,7 +25,7 @@ To enable your application to use the media controller functionality:
 
 - To use the media controller server:
 
-  1. To use the functions and data types of the Media Controller Server API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__MEDIA__CONTROLLER__SERVER__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__MEDIA__CONTROLLER__SERVER__MODULE.html) applications), include the `<media_controller_server.h>` header file in your application:
+  1. To use the functions and data types of the Media Controller Server API (in [mobile](../../api/mobile/latest/group__CAPI__MEDIA__CONTROLLER__SERVER__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__MEDIA__CONTROLLER__SERVER__MODULE.html) applications), include the `<media_controller_server.h>` header file in your application:
 
      ```
      #include <media_controller_server.h>
@@ -43,7 +43,7 @@ To enable your application to use the media controller functionality:
 
 - To use the media controller client:
 
-  1. To use the functions and data types of the Media Controller Client API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__MEDIA__CONTROLLER__CLIENT__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__MEDIA__CONTROLLER__CLIENT__MODULE.html) applications), include the `<media_controller_client.h>` header file in your application:
+  1. To use the functions and data types of the Media Controller Client API (in [mobile](../../api/mobile/latest/group__CAPI__MEDIA__CONTROLLER__CLIENT__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__MEDIA__CONTROLLER__CLIENT__MODULE.html) applications), include the `<media_controller_client.h>` header file in your application:
 
      ```
      #include <media_controller_client.h>
@@ -251,6 +251,6 @@ The following table lists all the server metadata attributes the client can rece
 | `MC_META_MEDIA_PICTURE`     | Album art of the latest content in the media controller server |
 
 ## Related Information
-* Dependencies
- - Tizen 2.4 and Higher for Mobile
- - Tizen 3.0 and Higher for Wearable
+- Dependencies
+  - Tizen 2.4 and Higher for Mobile
+  - Tizen 3.0 and Higher for Wearable

@@ -21,7 +21,7 @@ The main features of the Data Control API include:
 
 - Monitoring data changes
 
-  You can [monitor data changes and provide notifications about them](#map3). The available notification types are listed in the `data_control_data_change_type_e` enumerator (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__DATA__CONTROL__MODULE.html#ga09ee00edc0c08676b2fa241f30fab378) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__DATA__CONTROL__MODULE.html#ga09ee00edc0c08676b2fa241f30fab378) applications).
+  You can [monitor data changes and provide notifications about them](#map3). The available notification types are listed in the `data_control_data_change_type_e` enumerator (in [mobile](../../api/mobile/latest/group__CAPI__DATA__CONTROL__MODULE.html#ga09ee00edc0c08676b2fa241f30fab378) and [wearable](../../api/wearable/latest/group__CAPI__DATA__CONTROL__MODULE.html#ga09ee00edc0c08676b2fa241f30fab378) applications).
 
 To create a provider, you must [export its provider functionalities](#export) in the application project settings in the IDE. For the consumer to access shared data, it must know the provider ID and data ID.
 
@@ -31,11 +31,11 @@ To create a provider, you must [export its provider functionalities](#export) in
 
 ## Prerequisites
 
-The data control use cases run 2 applications. Each application plays a different role: one as the consumer, the other as the provider.
+The data control use cases run two applications. Each application plays a different role: one as the consumer, the other as the provider.
 
 To enable your application to use the data control functionality:
 
-1. To use the Data Control API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__DATA__CONTROL__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__DATA__CONTROL__MODULE.html) applications), the consumer has to request permission by adding the following privileges to the `tizen-manifest.xml` file:
+1. To use the Data Control API (in [mobile](../../api/mobile/latest/group__CAPI__DATA__CONTROL__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__DATA__CONTROL__MODULE.html) applications), the consumer has to request permission by adding the following privileges to the `tizen-manifest.xml` file:
 
    ```
    <privileges>
@@ -46,11 +46,13 @@ To enable your application to use the data control functionality:
 
 2. For the provider, in the Tizen Studio, double-click **tizen-manifest.xml**, and in the manifest editor, go to **Advanced > Data Control**, and click **+** to add the provider details. Add the **Read** and **Write** access rights to both **SQL** and **Map** types.
 
-   The following code example shows how the `<datacontrol>` element is consequently added to the `tizen-manifest.xml` file:
+    You can set the data access to trusted, to allow other applications that are signed with the same certificate to access the data. Additionally, you can also define privileges to restrict access for applications having certain defined privileges.
+
+    The following sample code explains, how the `<datacontrol>` elements are consequently added to the `tizen-manifest.xml` file:
 
    ```
    <?xml version="1.0" encoding="utf-8"?>
-   <manifest xmlns="http://tizen.org/ns/packages" api-version="2.4"
+    <manifest xmlns="http://tizen.org/ns/packages" api-version="4.0"
              package="@PACKAGE_NAME@" version="@VERSION@" install-location="internal-only">
       <label>datacontrolprovider</label>
       <author email="PUT YOUR EMAIL" href="www.tizen.org">PUT YOUR NAME</author>
@@ -59,16 +61,17 @@ To enable your application to use the data control functionality:
                       exec="datacontrolprovider"
                       nodisplay="true" multiple="false" type="capp" taskmanage="true"
                       auto-restart="false" on-boot="false">
-         <datacontrol providerid = "Your Provider ID"
-                      access="ReadWrite" type="Sql"/>
-         <datacontrol providerid = "Your Provider ID"
-                      access="ReadWrite" type="Map"/>
-      </service-application>
-      <privileges>
-         <privilege>http://tizen.org/privilege/datasharing</privilege>
-      </privileges>
-   </manifest>
-   ```
+          <datacontrol providerid = "Your Provider ID" access="ReadWrite" type="Sql" trusted="True">
+             <privilege>http://tizen.org/privilege/contact.read</privilege>
+             <privilege>http://tizen.org/privilege/email</privilege>
+          </datacontrol>
+          <datacontrol providerid = "Your Provider ID" access="ReadWrite" type="Map" trusted="False"/>
+       </service-application>
+       <privileges>
+          <privilege>http://tizen.org/privilege/datasharing</privilege>
+       </privileges>
+    </manifest>
+    ```
 
 3. To use the functions and data types of the Data Control API, include the `<data_control.h>` header file in your application:
 
@@ -88,7 +91,7 @@ To enable your application to use the data control functionality:
 
 In the consumer, you must first get the unique map-type `datacontrol_h` instance using the `data_control_map_create()`, `data_control_map_set_provider_id()`, or `data_control_map_set_data_id()` function. Afterwards, you can send requests to the provider using the `data_control_map_get()`, `data_control_map_set()`, `data_control_map_add()`, and `data_control_map_remove()` functions.
 
-The provider returns a response to the consumer. The consumer can handle the response in a callback of the `data_control_map_response_cb` struct (in [mobile](../../../../org.tizen.native.mobile.apireference/structdata__control__map__response__cb.html) and [wearable](../../../../org.tizen.native.wearable.apireference/structdata__control__map__response__cb.html) applications), which is triggered when the provider finishes the requested operation.
+The provider returns a response to the consumer. The consumer can handle the response in a callback of the `data_control_map_response_cb` struct (in [mobile](../../api/mobile/latest/structdata__control__map__response__cb.html) and [wearable](../../api/wearable/latest/structdata__control__map__response__cb.html) applications), which is triggered when the provider finishes the requested operation.
 
 > **Note**  
 > Since Tizen 4.0, you can use the `data_control_map_bind_response_cb()` function, which binds a callback to a provider handle. This allows you to register multiple callbacks for a given provider ID.
@@ -415,7 +418,7 @@ To get, set, add, and remove map-type data:
 
 In the consumer, you must first get the unique SQL-type `datacontrol_h` instance using the `data_control_sql_create()`, `data_control_sql_set_provider_id()`, or `data_control_sql_set_data_id()` function. Afterwards, you can send requests to the provider using the `datacontrol_sql_select()`, `data_control_sql_insert()`, `data_control_sql_update()`, and `data_control_sql_delete()` functions.
 
-The provider returns a response to the consumer. The consumer can handle the response in a callback of the `data_control_sql_response_cb` struct (in [mobile](../../../../org.tizen.native.mobile.apireference/structdata__control__sql__response__cb.html) and [wearable](../../../../org.tizen.native.wearable.apireference/structdata__control__sql__response__cb.html) applications), which is triggered when the provider finishes the requested operation.
+The provider returns a response to the consumer. The consumer can handle the response in a callback of the `data_control_sql_response_cb` struct (in [mobile](../../api/mobile/latest/structdata__control__sql__response__cb.html) and [wearable](../../api/wearable/latest/structdata__control__sql__response__cb.html) applications), which is triggered when the provider finishes the requested operation.
 
 > **Note**  
 > Since Tizen 4.0, you can use the `data_control_sql_bind_response_cb()` function, which binds a callback to a provider handle. This allows you to register multiple callbacks for a given provider ID.
@@ -693,93 +696,93 @@ To insert, select, update, and delete SQL-type data:
       - `data_control_sql_get_text_data()`
 
    2. To identify the provider and data, initialize a data control handler within the `app_create()` function generated by the Tizen Studio:
-   ```
-    data_control_sql_response_cb sql_callback;
-    void
-    initialize_datacontrol_consumer(appdata_s *ad)
-    {
-        int ret;
-
-        const char *provider_id = Your Provider ID;
-        const char *data_id = "Dictionary";
-
-        /* Create data control handler */
-        ret = data_control_sql_create(&(ad->provider_h));
-        if (ret != DATA_CONTROL_ERROR_NONE)
-            dlog_print(DLOG_ERROR, LOG_TAG,
-                       "creating data control provider failed with error: %d", ret);
-
-        ret = data_control_sql_set_provider_id(ad->provider_h, provider_id);
-        if (ret != DATA_CONTROL_ERROR_NONE)
-            dlog_print(DLOG_ERROR, LOG_TAG,
-                       "setting provider id failed with error: %d", ret);
-
-        ret = data_control_sql_set_data_id(ad->provider_h, data_id);
-        if (ret != DATA_CONTROL_ERROR_NONE)
-            dlog_print(DLOG_ERROR, LOG_TAG, "setting data id failed with error: %d", ret);
-
-        /* Set response callbacks */
-        sql_callback.delete_cb = sql_delete_response_cb;
-        sql_callback.insert_cb = sql_insert_response_cb;
-        sql_callback.select_cb = sql_select_response_cb;
-        sql_callback.update_cb = sql_update_response_cb;
-
-        /* Register response callbacks */
-        ret = data_control_sql_register_response_cb(ad->provider_h, &sql_callback, NULL);
-        if (ret != DATA_CONTROL_ERROR_NONE)
-            dlog_print(DLOG_ERROR, LOG_TAG,
-                       "Registering the callback function failed with error: %d", ret);
-
-        dlog_print(DLOG_INFO, LOG_TAG, "Init data control success");
-
-        int req_id = 0;
-
-        /* Send a request to insert a row */
-        bundle *b = bundle_create();
-        bundle_add_str(b, "WORD", "'test'");
-        bundle_add_str(b, "WORD_DESC", "'test desc'");
-
-        data_control_sql_insert(ad->provider_h, b, &req_id);
-
-        /* Send a request to select a row */
-        char *column_list[2];
-        column_list[0] = "WORD";
-        column_list[1] = "WORD_DESC";
-
-        const char *where = "WORD = 'test'";
-        const char *order = "WORD ASC";
-
-        data_control_sql_select(ad->provider_h, column_list, 2, where, order, &req_id);
-
-        /* Send a request to add a row */
-        bundle_add_str(b, "WORD", "'test_new'");
-        data_control_sql_update(ad->provider_h, b, where, &req_id);
-
-        /* Send a request to delete a row */
-        const char *where_delete = "WORD = 'test'";
-        result = data_control_sql_delete(ad->provider_h, where_delete, &req_id);
-
-        /* Free memory */
-        bundle_free(b);
-    }
-
-    static bool
-    app_create(void *data)
-    {
-        /*
-           Take necessary actions before main event loop starts
-           Initialize UI resources and application data
-           If this function returns true, the main loop of application starts
-           If this function returns false, the application is terminated
-        */
-        appdata_s *ad = data;
-
-        create_base_gui(ad);
-        initialize_datacontrol_consumer(ad);
-
-        return true;
-    }
-	```
+      ```
+      data_control_sql_response_cb sql_callback;
+      void
+      initialize_datacontrol_consumer(appdata_s *ad)
+      {
+          int ret;
+  
+          const char *provider_id = Your Provider ID;
+          const char *data_id = "Dictionary";
+  
+          /* Create data control handler */
+          ret = data_control_sql_create(&(ad->provider_h));
+          if (ret != DATA_CONTROL_ERROR_NONE)
+              dlog_print(DLOG_ERROR, LOG_TAG,
+                         "creating data control provider failed with error: %d", ret);
+  
+          ret = data_control_sql_set_provider_id(ad->provider_h, provider_id);
+          if (ret != DATA_CONTROL_ERROR_NONE)
+              dlog_print(DLOG_ERROR, LOG_TAG,
+                         "setting provider id failed with error: %d", ret);
+  
+          ret = data_control_sql_set_data_id(ad->provider_h, data_id);
+          if (ret != DATA_CONTROL_ERROR_NONE)
+              dlog_print(DLOG_ERROR, LOG_TAG, "setting data id failed with error: %d", ret);
+  
+          /* Set response callbacks */
+          sql_callback.delete_cb = sql_delete_response_cb;
+          sql_callback.insert_cb = sql_insert_response_cb;
+          sql_callback.select_cb = sql_select_response_cb;
+          sql_callback.update_cb = sql_update_response_cb;
+  
+          /* Register response callbacks */
+          ret = data_control_sql_register_response_cb(ad->provider_h, &sql_callback, NULL);
+          if (ret != DATA_CONTROL_ERROR_NONE)
+              dlog_print(DLOG_ERROR, LOG_TAG,
+                         "Registering the callback function failed with error: %d", ret);
+  
+          dlog_print(DLOG_INFO, LOG_TAG, "Init data control success");
+  
+          int req_id = 0;
+  
+          /* Send a request to insert a row */
+          bundle *b = bundle_create();
+          bundle_add_str(b, "WORD", "'test'");
+          bundle_add_str(b, "WORD_DESC", "'test desc'");
+  
+          data_control_sql_insert(ad->provider_h, b, &req_id);
+  
+          /* Send a request to select a row */
+          char *column_list[2];
+          column_list[0] = "WORD";
+          column_list[1] = "WORD_DESC";
+  
+          const char *where = "WORD = 'test'";
+          const char *order = "WORD ASC";
+  
+          data_control_sql_select(ad->provider_h, column_list, 2, where, order, &req_id);
+  
+          /* Send a request to add a row */
+          bundle_add_str(b, "WORD", "'test_new'");
+          data_control_sql_update(ad->provider_h, b, where, &req_id);
+  
+          /* Send a request to delete a row */
+          const char *where_delete = "WORD = 'test'";
+          result = data_control_sql_delete(ad->provider_h, where_delete, &req_id);
+  
+          /* Free memory */
+          bundle_free(b);
+      }
+  
+      static bool
+      app_create(void *data)
+      {
+          /*
+             Take necessary actions before main event loop starts
+             Initialize UI resources and application data
+             If this function returns true, the main loop of application starts
+             If this function returns false, the application is terminated
+          */
+          appdata_s *ad = data;
+  
+          create_base_gui(ad);
+          initialize_datacontrol_consumer(ad);
+  
+          return true;
+      }
+  	  ```
 
    3. To send requests to a specific table, use the `data_control_sql_set_data_id()` function:
 
@@ -1023,17 +1026,22 @@ The data model must be opened to the public to help other applications to use th
 
 - Data accessibility
 
-  Tizen native applications can control read and write access from other applications by defining data control accessibility.
+  - Tizen native applications can control read and write access from other applications by defining data control accessibility.
+- Trusted
+  - You can allow access from other applications signed with the same certificate by setting the trusted status for the data control.
+- Privileges
+  - Your provider application can restrict access to applications having certain defined privileges.
+
 
 **Table: Data model example of a data control provider**
 
-| Data control type | Data control provider ID                 | Data control data ID | Data schema              | Data schema      | Data accessibility           |
-|-------------------|------------------------------------------|----------------------| ------------------------ | ----------------------- | ---------- |
-| SQL               | `http://<vendor.com>/datacontrol/provider/sample` | `data1`              | `column1`(Type: Integer) | `column2`(Type: String) | Read-Only  |
-| Map               | `http://<vendor.com>/datacontrol/provider/sample2` | `data2`              | `key1`(Type: String)     | `key2`(Type: String)    | Read-Write |
+| Data control type | Data control provider ID                 | Data control data ID | Data schema              | Data accessibility      | Trusted    | Privileges |                                          |
+|-----------------|----------------------------------------|--------------------|------------------------|-----------------------|----------|----------|----------------------------------------|
+| SQL               | `http://<vendor.com>/datacontrol/provider/sample` | `data1`              | `column1`(Type: Integer) | `column2`(Type: String) | Read-Only  | True       | `http://tizen.org/privilege/application.admin` |
+| Map               | `http://<vendor.com>/datacontrol/provider/sample2` | `data2`              | `key1`(Type: String)     | `key2`(Type: String)    | Read-Write | False      | `http://tizen.org/privilege/appmanager.launch` |
 
 
 ## Related Information
-* Dependencies
- - Tizen 2.4 and Higher for Mobile
- - Tizen 2.3.1 and Higher for Wearable
+- Dependencies
+  - Tizen 2.4 and Higher for Mobile
+  - Tizen 2.3.1 and Higher for Wearable

@@ -131,7 +131,7 @@ To manage the record using the handle, you can use the URI, views, or basic type
   | `string`            | `calendar_record_set_str()`     | `calendar_record_get_str()`     |
   | `calendar_time_s`   | `calendar_record_set_caltime()` | `calendar_record_get_caltime()` |
 
-  These functions also require specifying which property to get and set, and for this, every getter and setter function needs a record and property ID. Create a property ID by combining the data-view and property name. For example, the property ID of an event `summary`property is `_calendar_event.summary`.
+  These functions also require specifying which property to get and set, and for this, every getter and setter function needs a record and property ID. Create a property ID by combining the data-view and property name. For example, the property ID of an event `summary` property is `_calendar_event.summary`.
 
   The following example sets the `summary` property of an event record:
 
@@ -164,16 +164,16 @@ To manage the record using the handle, you can use the URI, views, or basic type
 
   Use this structure when setting the calendar time (`_CALENDAR_PROPERTY_CALTIME`) properties of the records.
 
-  The time structure can hold 2 types of data, as defined in the following table. These types are identified by the values of the `calendar_time_type_e` variable (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__SOCIAL__CALENDAR__SVC__RECORD__MODULE.html#ga809c1bb1db41169c65939b929520e9b6) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__SOCIAL__CALENDAR__SVC__RECORD__MODULE.html#ga809c1bb1db41169c65939b929520e9b6) applications), and they determine the usage of the structure.
+  The time structure can hold 2 types of data, as defined in the following table. These types are identified by the values of the `calendar_time_type_e` variable (in [mobile](../../api/mobile/latest/group__CAPI__SOCIAL__CALENDAR__SVC__RECORD__MODULE.html#ga809c1bb1db41169c65939b929520e9b6) and [wearable](../../api/wearable/latest/group__CAPI__SOCIAL__CALENDAR__SVC__RECORD__MODULE.html#ga809c1bb1db41169c65939b929520e9b6) applications), and they determine the usage of the structure.
 
   **Table: Data types**
 
   | Identifier                | Type            | Name  | Purpose                                  |
   |---------------------------|-----------------|-------|------------------------------------------|
-  | `CALENDAR_TIME_UTIME`     | `long long int` | utime | UTC time is used to describe non-all-day events.For non-all-day events, you must convert local time to UTC time. The local time zone identifier must be stored in the record, in the corresponding property.For example, when setting the start time of an event, the local time zone must be stored in the `start_tzid` property. |
-  | `CALENDAR_TIME_LOCALTIME` | `struct`        | date  | Date only (year, month, and day of the month) is used to describe all day events.For all day events, the structure type field must be set to `CALENDAR_TIME_LOCALTIME`. Only the date (no time) is stored.Both the start and end time of the event must be set, and they do not have to be equal. If they are not, the event lasts more than 1 day. Note that in such cases there are no instances created, as this is still a non-recurring event. |
+  | `CALENDAR_TIME_UTIME`     | `long long int` | utime | UTC time is used to describe non-all-day events.<br> For non-all-day events, you must convert local time to UTC time. The local time zone identifier must be stored in the record, in the corresponding property.<br> For example, when setting the start time of an event, the local time zone must be stored in the `start_tzid` property. |
+  | `CALENDAR_TIME_LOCALTIME` | `struct`        | date  | Date only (year, month, and day of the month) is used to describe all day events.<br> For all day events, the structure type field must be set to `CALENDAR_TIME_LOCALTIME`. Only the date (no time) is stored.<br> Both the start and end time of the event must be set, and they do not have to be equal. If they are not, the event lasts more than 1 day. Note that in such cases there are no instances created, as this is still a non-recurring event. |
 
-  When converting local time to UTC time, use the function shown in the following example. It converts the given date and time to the corresponding UTC time, considering the given time zone (first parameter). The function uses the i18n API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__BASE__UTILS__I18N__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__BASE__UTILS__I18N__MODULE.html)applications).
+  When converting local time to UTC time, use the function shown in the following example. It converts the given date and time to the corresponding UTC time, considering the given time zone (first parameter). The function uses the i18n API (in [mobile](../../api/mobile/latest/group__CAPI__BASE__UTILS__I18N__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__BASE__UTILS__I18N__MODULE.html) applications).
 
   ```
   #define ms2sec(ms) (long long int)(ms / 1000.0)
@@ -320,7 +320,7 @@ The following table illustrates an example of a recurring event and its instance
 
 | Event                                    | Instances                                |
 |------------------------------------------|------------------------------------------|
-| Recurrence rules:<br>- Start date on 2012-10-09 (Tuesday)<br>- Frequency set to WEEKLY<br>- Interval set to 1<br>- Count set to 3 | 2012-10-09 Tuesday<br>2012-10-16 Tuesday<br>2012-10-22 Tuesday |
+| Recurrence rules:<br> - Start date on 2012-10-09 (Tuesday)<br> - Frequency set to WEEKLY<br> - Interval set to 1<br> - Count set to 3 | 2012-10-09 Tuesday<br> 2012-10-16 Tuesday<br> 2012-10-22 Tuesday |
 
 The recurrence model in the Calendar API is compliant with the [iCalendar specification](http://www.ietf.org/rfc/rfc2445.txt). The following event properties have the same functionality as their corresponding values in iCalendar:
 
@@ -350,7 +350,7 @@ If 1 of the instances of a recurring event is modified (such as its summary or d
 
 | Event                                    | Instances                                | Exceptions         |
 |------------------------------------------|------------------------------------------|--------------------|
-| Recurrence rules:<br>- Start date on 2012-10-09 (Tuesday)<br> - Frequency set to WEEKLY <br>- Interval set to 1Count set to 3 | 2012-10-09 Tuesday<br>2012-10-16 Tuesday > modified<br>2012-10-22 Tuesday | 2012-10-17 Tuesday |
+| Recurrence rules:<br> - Start date on 2012-10-09 (Tuesday)<br> - Frequency set to WEEKLY<br> - Interval set to 1<br> - Count set to 3 | 2012-10-09 Tuesday<br> 2012-10-16 Tuesday > modified<br> 2012-10-22 Tuesday | 2012-10-17 Tuesday |
 
 To get the changes in an exception, use the `calendar_db_get_changes_exception_by_version()` function. The instances and exceptions are deleted together when the original event is deleted.
 
@@ -399,7 +399,7 @@ To filter calendar data:
   | Condition                                | Result                                   |
   |------------------------------------------|------------------------------------------|
   | Condition C1<br>OR<br>Condition C2<br>AND<br>Condition C3 | (C1 OR C2) AND C3                        |
-  | **Filter F1**:<br>Condition C1<br>ORCondition C2<br><br>**Filter F2**:<br>Condition C3<br>OR<br>Condition C4<br><br>**Filter F3**:<br>Condition C5<br>AND<br>F1<br>AND<br>F2 | (C5 AND F1) AND F2<br>Meaning (C5 AND (C1 OR C2)) AND (C3 OR C4) |
+  | **Filter F1**:<br>Condition C1<br>OR<br>Condition C2<br><br>**Filter F2**:<br>Condition C3<br>OR<br>Condition C4<br><br>**Filter F3**:<br>Condition C5<br>AND<br>F1<br>AND<br>F2 | (C5 AND F1) AND F2<br>Meaning (C5 AND (C1 OR C2)) AND (C3 OR C4) |
 
   The following code creates a filter, accepting events with high priority or those that include the word "meeting" in their description.
 
@@ -543,7 +543,7 @@ To use the vCalendar:
 
 To enable your application to use the calendar functionality:
 
-1. To use the Calendar API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__SOCIAL__CALENDAR__SVC__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__SOCIAL__CALENDAR__SVC__MODULE.html) applications), the application has to request permission by adding the following privileges to the `tizen-manifest.xml` file:
+1. To use the Calendar API (in [mobile](../../api/mobile/latest/group__CAPI__SOCIAL__CALENDAR__SVC__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__SOCIAL__CALENDAR__SVC__MODULE.html) applications), the application has to request permission by adding the following privileges to the `tizen-manifest.xml` file:
 
    ```
    <privileges>
@@ -582,7 +582,7 @@ To enable your application to use the calendar functionality:
 
 Creating a new event involves creating an event handle, setting the event properties, and inserting the event into the calendar database.
 
-Some event properties are defined as child records that are associated with the parent record. For a detailed list of the event properties, see the `_calendar_event` view description in the Calendar API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__SOCIAL__CALENDAR__SVC__VIEW__MODULE.html#CAPI_SOCIAL_CALENDAR_SVC_VIEW_MODULE_calendar_event) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__SOCIAL__CALENDAR__SVC__VIEW__MODULE.html#CAPI_SOCIAL_CALENDAR_SVC_VIEW_MODULE_calendar_event) applications). If the property type is `child list`, the property is defined as a child record.
+Some event properties are defined as child records that are associated with the parent record. For a detailed list of the event properties, see the `_calendar_event` view description in the Calendar API (in [mobile](../../api/mobile/latest/group__CAPI__SOCIAL__CALENDAR__SVC__VIEW__MODULE.html#CAPI_SOCIAL_CALENDAR_SVC_VIEW_MODULE_calendar_event) and [wearable](../../api/wearable/latest/group__CAPI__SOCIAL__CALENDAR__SVC__VIEW__MODULE.html#CAPI_SOCIAL_CALENDAR_SVC_VIEW_MODULE_calendar_event) applications). If the property type is `child list`, the property is defined as a child record.
 
 To create a new event:
 
@@ -654,11 +654,11 @@ To create a new event:
          dlog_print(DLOG_ERROR, LOG_TAG, "set end_time failed: %x\n", error_code);
      ```
 
-     The `calendar_time_s` structure (in [mobile](../../../../org.tizen.native.mobile.apireference/structcalendar__time__s.html) and [wearable](../../../../org.tizen.native.wearable.apireference/structcalendar__time__s.html) applications) has [2 types](#time).
+     The `calendar_time_s` structure (in [mobile](../../api/mobile/latest/structcalendar__time__s.html) and [wearable](../../api/wearable/latest/structcalendar__time__s.html) applications) has [2 types](#time).
 
    - To create a recurring event:
 
-     1. Set the frequency (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__SOCIAL__CALENDAR__SVC__MODULE.html#CAPI_SOCIAL_CALENDAR_SVC_MODULE_Creating_a_recurring_event) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__SOCIAL__CALENDAR__SVC__MODULE.html#CAPI_SOCIAL_CALENDAR_SVC_MODULE_Creating_a_recurring_event) applications).
+     1. Set the frequency (in [mobile](../../api/mobile/latest/group__CAPI__SOCIAL__CALENDAR__SVC__MODULE.html#CAPI_SOCIAL_CALENDAR_SVC_MODULE_Creating_a_recurring_event) and [wearable](../../api/wearable/latest/group__CAPI__SOCIAL__CALENDAR__SVC__MODULE.html#CAPI_SOCIAL_CALENDAR_SVC_MODULE_Creating_a_recurring_event) applications).
 
         In the following example, the event is set to occur every month on the 3rd, 4th, and 5th day:
 
@@ -677,7 +677,7 @@ To create a new event:
             dlog_print(DLOG_ERROR, LOG_TAG, "set bymonthday failed: %x\n", error_code);
         ```
 
-     2. Set the range of recurrence (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__SOCIAL__CALENDAR__SVC__MODULE.html#CAPI_SOCIAL_CALENDAR_SVC_MODULE_Creating_a_recurring_event) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__SOCIAL__CALENDAR__SVC__MODULE.html#CAPI_SOCIAL_CALENDAR_SVC_MODULE_Creating_a_recurring_event) applications).
+     2. Set the range of recurrence (in [mobile](../../api/mobile/latest/group__CAPI__SOCIAL__CALENDAR__SVC__MODULE.html#CAPI_SOCIAL_CALENDAR_SVC_MODULE_Creating_a_recurring_event) and [wearable](../../api/wearable/latest/group__CAPI__SOCIAL__CALENDAR__SVC__MODULE.html#CAPI_SOCIAL_CALENDAR_SVC_MODULE_Creating_a_recurring_event) applications).
 
         In the following example, the event is set to occur a total of 8 times:
 
@@ -724,7 +724,7 @@ To create a new event:
          dlog_print(DLOG_ERROR, LOG_TAG, "adding the alarm failed \n");
      ```
 
-     The `calendar_alarm_time_unit_type_e` enumeration (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__SOCIAL__CALENDAR__SVC__RECORD__MODULE.html#ga631b1b606158479e3a14a921b006b4fe) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__SOCIAL__CALENDAR__SVC__RECORD__MODULE.html#ga631b1b606158479e3a14a921b006b4fe) applications) defines the available alarm tick units.
+     The `calendar_alarm_time_unit_type_e` enumeration (in [mobile](../../api/mobile/latest/group__CAPI__SOCIAL__CALENDAR__SVC__RECORD__MODULE.html#ga631b1b606158479e3a14a921b006b4fe) and [wearable](../../api/wearable/latest/group__CAPI__SOCIAL__CALENDAR__SVC__RECORD__MODULE.html#ga631b1b606158479e3a14a921b006b4fe) applications) defines the available alarm tick units.
 
      > **Note**  
      > If you use `CALENDAR_ALARM_TIME_UNIT_SPECIFIC` as a tick unit, specify the alarm time in Unix time.
@@ -876,7 +876,7 @@ To retrieve multiple events:
             dlog_print(DLOG_ERROR, LOG_TAG, "filter add condition failed: %x\n", error_code);
         ```
 
-        The `type` parameter of the `calendar_time_s` structure (in [mobile](../../../../org.tizen.native.mobile.apireference/structcalendar__time__s.html) and [wearable](../../../../org.tizen.native.wearable.apireference/structcalendar__time__s.html) applications) determines whether the event is an all-day event (`CALENDAR_TIME_LOCALTIME`) or a non-all-day event (`CALENDAR_TIME_UTIME`).
+        The `type` parameter of the `calendar_time_s` structure (in [mobile](../../api/mobile/latest/structcalendar__time__s.html) and [wearable](../../api/wearable/latest/structcalendar__time__s.html) applications) determines whether the event is an all-day event (`CALENDAR_TIME_LOCALTIME`) or a non-all-day event (`CALENDAR_TIME_UTIME`).
 
         To retrieve the specified time period, use 2 conditions using `CALENDAR_MATCH_GREATER_THAN` and `CALENDAR_MATCH_LESS_THAN` with the operator `CALENDAR_FILTER_OPERATOR_AND`. You can also use `CALENDAR_MATCH_EQUAL` to set an equality condition.
 
@@ -1246,7 +1246,7 @@ To receive a notification whenever an event changes:
 
 Creating a new todo involves creating a todo handle, setting the todo properties, and inserting the todo into the calendar database.
 
-Some todo properties are defined as child records that are associated with the parent record. For a detailed list of the todo properties, see the `_calendar_todo` view description in the Calendar API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__SOCIAL__CALENDAR__SVC__VIEW__MODULE.html#CAPI_SOCIAL_CALENDAR_SVC_VIEW_MODULE_calendar_todo) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__SOCIAL__CALENDAR__SVC__VIEW__MODULE.html#CAPI_SOCIAL_CALENDAR_SVC_VIEW_MODULE_calendar_todo) applications). If the property type is `child list`, the property is defined as a child record.
+Some todo properties are defined as child records that are associated with the parent record. For a detailed list of the todo properties, see the `_calendar_todo` view description in the Calendar API (in [mobile](../../api/mobile/latest/group__CAPI__SOCIAL__CALENDAR__SVC__VIEW__MODULE.html#CAPI_SOCIAL_CALENDAR_SVC_VIEW_MODULE_calendar_todo) and [wearable](../../api/wearable/latest/group__CAPI__SOCIAL__CALENDAR__SVC__VIEW__MODULE.html#CAPI_SOCIAL_CALENDAR_SVC_VIEW_MODULE_calendar_todo) applications). If the property type is `child list`, the property is defined as a child record.
 
 To create a new todo:
 
@@ -1300,7 +1300,7 @@ To create a new todo:
 
    - Set the status.
 
-     To set the status for the todo, use the `calendar_record_set_int()` function with the `_calendar_todo.todo_status` property as the second parameter. The `calendar_todo_status_e` enumeration (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__SOCIAL__CALENDAR__SVC__RECORD__MODULE.html#ga3e1b9cae05705d471a4746d8ab6d3622) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__SOCIAL__CALENDAR__SVC__RECORD__MODULE.html#ga3e1b9cae05705d471a4746d8ab6d3622) applications) defines the possible status values.
+     To set the status for the todo, use the `calendar_record_set_int()` function with the `_calendar_todo.todo_status` property as the second parameter. The `calendar_todo_status_e` enumeration (in [mobile](../../api/mobile/latest/group__CAPI__SOCIAL__CALENDAR__SVC__RECORD__MODULE.html#ga3e1b9cae05705d471a4746d8ab6d3622) and [wearable](../../api/wearable/latest/group__CAPI__SOCIAL__CALENDAR__SVC__RECORD__MODULE.html#ga3e1b9cae05705d471a4746d8ab6d3622) applications) defines the possible status values.
 
      ```
      error_code = calendar_record_set_int(todo, _calendar_todo.todo_status,
@@ -1762,6 +1762,6 @@ To parse a vCalendar from a file and insert its content into the calendar databa
    ```
 
 ## Related Information
-* Dependencies
- - Tizen 2.4 and Higher for Mobile
- - Tizen 3.0 and Higher for Wearable
+- Dependencies
+  - Tizen 2.4 and Higher for Mobile
+  - Tizen 3.0 and Higher for Wearable

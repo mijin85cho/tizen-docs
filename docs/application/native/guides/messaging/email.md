@@ -29,7 +29,7 @@ The Email API can be utilized by any component in the application layer which he
 
 To enable your application to use the email functionality:
 
-1. To use the Email API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__MESSAGING__EMAIL__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__MESSAGING__EMAIL__MODULE.html) applications), the application has to request permission by adding the following privilege to the `tizen-manifest.xml` file:
+1. To use the Email API (in [mobile](../../api/mobile/latest/group__CAPI__MESSAGING__EMAIL__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__MESSAGING__EMAIL__MODULE.html) applications), the application has to request permission by adding the following privilege to the `tizen-manifest.xml` file:
 
    ```
    <privileges>
@@ -150,6 +150,6 @@ To create and send email messages:
    ```
 
 ## Related Information
-*  Dependencies
- - Tizen 2.4 and Higher for Mobile
- - Tizen 3.0 and Higher for Wearable
+-  Dependencies
+  - Tizen 2.4 and Higher for Mobile
+  - Tizen 3.0 and Higher for Wearable

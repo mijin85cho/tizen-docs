@@ -37,13 +37,15 @@ The following figure shows an overview of the USB host architecture.
 
 To enable your application to use the USB host functionality:
 
-1. The [USB Host](../../../../org.tizen.native.mobile.apireference/group__CAPI__USB__HOST__MODULE.html) API does not require any Tizen privileges to be defined, instead the user is asked for confirmation when performing a potentially privileged operation.![USB Host access](./media/usb_host_access.png)
+1. The [USB Host](../../api/mobile/latest/group__CAPI__USB__HOST__MODULE.html) API does not require any Tizen privileges to be defined, instead the user is asked for confirmation when performing a potentially privileged operation.
+
+   ![USB Host access](./media/usb_host_access.png)
 
 2. To use the functions and data types of the USB Host API, include the `<usb_host.h>` header file in your application:
 
-    ```
-    #include <usb_host.h>
-    ```
+   ```
+   #include <usb_host.h>
+   ```
 
 3. Initialize the interface context.
 
@@ -165,7 +167,7 @@ To receive notifications when a USB device is attached or detached:
 
 1. Define and register a callback, which is called when the device is attached or detached.
 
-   Define the events you want to monitor in the third parameter of the `usb_host_set_hotplug_cb()` function, using the values of the [usb\_host\_hotplug\_event\_e](../../../../org.tizen.native.mobile.apireference/group__CAPI__USB__HOST__HOTPLUG__MODULE.html#ga1c4a0899703bf547abd2cf4dc36fffe9) enumeration.
+   Define the events you want to monitor in the third parameter of the `usb_host_set_hotplug_cb()` function, using the values of the [usb\_host\_hotplug\_event\_e](../../api/mobile/latest/group__CAPI__USB__HOST__HOTPLUG__MODULE.html#ga1c4a0899703bf547abd2cf4dc36fffe9) enumeration.
 
 
    ```
@@ -236,5 +238,5 @@ dlog_print(DLOG_INFO, LOG_TAG, "%d bytes of response received: %s", bytes_transf
 ```
 
 ## Related Information
-* Dependencies
- - Tizen 3.0 and Higher for Mobile
+- Dependencies
+  - Tizen 3.0 and Higher for Mobile

@@ -41,8 +41,9 @@ The following figure illustrates the general media muxer state changes.
 
 ![Media muxer state changes](./media/muxer.png)
 
-**Note**  
-All file types and container formats are not guaranteed to support the Media Muxer API.
+> **Note**
+>
+> All file types and container formats are not guaranteed to support the Media Muxer API.
 
 <a name="demuxer"></a>
 ## Media Demuxer
@@ -87,13 +88,13 @@ The following figure illustrates the general media demuxer state changes.
 
 To enable your application to use the media muxing functionality:
 
-- To use the functions and data types of the Media Muxer API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__MEDIAMUXER__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__MEDIAMUXER__MODULE.html) applications), include the `<mediamuxer.h>` header file in your application:
+- To use the functions and data types of the Media Muxer API (in [mobile](../../api/mobile/latest/group__CAPI__MEDIAMUXER__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__MEDIAMUXER__MODULE.html) applications), include the `<mediamuxer.h>` header file in your application:
 
   ```
   #include <mediamuxer.h>
   ```
 
-- To use the functions and data types of the Media Demuxer API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__MEDIADEMUXER__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__MEDIADEMUXER__MODULE.html) applications), include the `<mediademuxer.h>` header file in your application:
+- To use the functions and data types of the Media Demuxer API (in [mobile](../../api/mobile/latest/group__CAPI__MEDIADEMUXER__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__MEDIADEMUXER__MODULE.html) applications), include the `<mediademuxer.h>` header file in your application:
 
   ```
   #include <mediademuxer.h>
@@ -232,7 +233,9 @@ To manage the media muxer, the `mediamuxer_write_sample()` function is called in
     }
     ```
 
-2. After you have finished work with the media muxer handle, reset the media muxer and destroy the handle by using the `mediamuxer_stop()` and `mediamuxer_destroy()` functions.The media muxer state changes to `MEDIAMUXER_STATE_NONE`.
+2. After you have finished work with the media muxer handle, reset the media muxer and destroy the handle by using the `mediamuxer_stop()` and `mediamuxer_destroy()` functions.
+
+    The media muxer state changes to `MEDIAMUXER_STATE_NONE`.
 
     ```
     ret = mediamuxer_stop(muxer);
@@ -273,28 +276,30 @@ To prepare the media demuxer:
 
 4. Once the media demuxer is in the ready state, get the total number of individual elementary streams present:
 
-   ```
-   if (mediademuxer_get_track_count(demuxer, &num_tracks) != MEDIADEMUXER_ERROR_NONE)
-       printf("mediademuxer_get_track_count API failed\n");
-   ```
+    ```
+    if (mediademuxer_get_track_count(demuxer, &num_tracks) != MEDIADEMUXER_ERROR_NONE)
+        printf("mediademuxer_get_track_count API failed\n");
+    ```
 
 5. Select all the tracks to be extracted:
 
-   ```
-   for (track = 0; track < num_tracks; track++) {
-       if (mediademuxer_select_track(demuxer, track))
-           g_print("mediademuxer_select track %d failed\n", track);
-   }
-   ```
+    ```
+    for (track = 0; track < num_tracks; track++) {
+        if (mediademuxer_select_track(demuxer, track))
+            g_print("mediademuxer_select track %d failed\n", track);
+    }
+    ```
 
 6. Start the media demuxer:
 
-   ```
-   if (mediademuxer_start(demuxer))
-       g_print("mediademuxer_start failed\n");
-   ```
+    ```
+    if (mediademuxer_start(demuxer))
+        g_print("mediademuxer_start failed\n");
+    ```
 
-7. Once the total track counts are known, the media format for each track must be identified. Before calling the `media_format_create()` function, you must define and create a valid `media_format_h` handle (the `format` parameter in the given function).The following example retrieves the media format for each track:
+7. Once the total track counts are known, the media format for each track must be identified. Before calling the `media_format_create()` function, you must define and create a valid `media_format_h` handle (the `format` parameter in the given function).
+
+    The following example retrieves the media format for each track:
 
     ```
     media_format_h *g_media_format = NULL;
@@ -400,7 +405,9 @@ To manage the media demuxer process:
    }
    ```
 
-2. After you have finished work with the media demuxer, reset the media demuxer and destroy the handle by using the `mediademuxer_unprepare()` and `mediademuxer_destroy()` functions.The media demuxer state changes to `MEDIADEMUXER_STATE_NONE`.
+2. After you have finished work with the media demuxer, reset the media demuxer and destroy the handle by using the `mediademuxer_unprepare()` and `mediademuxer_destroy()` functions.
+
+    The media demuxer state changes to `MEDIADEMUXER_STATE_NONE`.
 
     ```
     ret = mediademuxer_unprepare(demuxer);
@@ -412,6 +419,6 @@ To manage the media demuxer process:
     ```
 
 ## Related Information
-* Dependencies
+- Dependencies
   - Tizen 3.0 and Higher for Mobile
   - Tizen 3.0 and Higher for Wearable

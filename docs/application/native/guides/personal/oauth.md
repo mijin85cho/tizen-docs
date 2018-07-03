@@ -9,7 +9,9 @@ The main features of the OAuth 2.0 API include:
 
   You can [create a request handle, set and retrieve request parameters, and pass the request to the OAuth 2.0 manager](#request) to request a token.
 
-- Sending the request to the server to ask for a [grant or token](#grant)You can [request the authorization server for the required OAuth 2.0 grant or token](#token) using various methods and grant types.
+- Sending the request to the server to ask for a [grant or token](#grant)
+
+  You can [request the authorization server for the required OAuth 2.0 grant or token](#token) using various methods and grant types.
 
 - Managing the server response
 
@@ -72,7 +74,7 @@ To request an access token for the implicit, resource owner password credentials
 
 To enable your application to use the OAuth 2.0 functionality:
 
-1. To use the OAuth 2.0 API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__OAUTH2__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__OAUTH2__MODULE.html) applications), the application has to request permission by adding the following privilege to the `tizen-manifest.xml` file:
+1. To use the OAuth 2.0 API (in [mobile](../../api/mobile/latest/group__CAPI__OAUTH2__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__OAUTH2__MODULE.html) applications), the application has to request permission by adding the following privilege to the `tizen-manifest.xml` file:
 
    ```
    <privileges>
@@ -155,7 +157,10 @@ To make a request with the OAuth 2.0 manager:
    ret = oauth2_request_get_password(request, &password);
    ```
 
-3. When you no longer need it, free the request handle with the `oauth2_request_destroy()` function:`ret = oauth2_request_destroy(request);`
+3. When you no longer need it, free the request handle with the `oauth2_request_destroy()` function:
+   ```
+   ret = oauth2_request_destroy(request);
+   ```
 
 <a name="token"></a>
 ## Requesting the Server for a Grant or Token

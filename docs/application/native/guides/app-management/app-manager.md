@@ -9,19 +9,19 @@ The main features of the Application Manager API include:
 
   You can retrieve the application context and operate on it. The `app_context_h` handle is related to the running applications and can be used to [manage the application context](#manage_context).
 
-  For more information on the functions that use the `app_context_h` handle, see the Application Context API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__APP__CONTEXT__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__APP__CONTEXT__MODULE.html) applications).
+  For more information on the functions that use the `app_context_h` handle, see the Application Context API (in [mobile](../../api/mobile/latest/group__CAPI__APP__CONTEXT__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__APP__CONTEXT__MODULE.html) applications).
 
 - Getting information on filtered applications
 
   The `app_info_h` handle is related to the available applications (installed, but not necessarily running). To [retrieve information on applications through a filter](#filter), you can also use the `app_info_filter_h` handle.
 
-  For more information on the functions that use the `app_info_h` and `app_info_filter_h` handles, see the Application Information API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__APP__INFO__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__APP__INFO__MODULE.html) applications).
+  For more information on the functions that use the `app_info_h` and `app_info_filter_h` handles, see the Application Information API (in [mobile](../../api/mobile/latest/group__CAPI__APP__INFO__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__APP__INFO__MODULE.html) applications).
 
 Iterator functions are used to travel through a list of applications. The `app_manager_foreach_app_context()` function is used in running applications and the `app_manager_foreach_app_info()` function is used in available applications. Each function calls a callback function (`app_manager_app_context_cb()` or `app_manager_app_info_cb()`), passing the handle for each application.
 
 ## Prerequisites
 
-To use the functions and data types of the Application Manager API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__APPLICATION__MANAGER__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__APPLICATION__MANAGER__MODULE.html) applications), include the `<app_manager.h>` header file in your application:
+To use the functions and data types of the Application Manager API (in [mobile](../../api/mobile/latest/group__CAPI__APPLICATION__MANAGER__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__APPLICATION__MANAGER__MODULE.html) applications), include the `<app_manager.h>` header file in your application:
 
 ```
 #include <app_manager.h>
@@ -31,12 +31,14 @@ To use the functions and data types of the Application Manager API (in [mobile](
 
 To get the running application context and its details, and to operate on the context:
 
-1. Get the context of the currently-running application with the `app_manager_get_app_context()` function. Its parameters are the ID of the application from which the context is being obtained, and the handle (`app_context_h*`) to the application context which is filled with the received context.When an application is not running, it is impossible to get its context.
-```
-app_context_h app_context = NULL;
-int ret = app_manager_get_app_context(Your App ID, &app_context);
-```
-If the function returns `APP_MANAGER_ERROR_NONE`, it has executed correctly and the `app_context` variable now contains the handle to the defined application context.
+1. Get the context of the currently-running application with the `app_manager_get_app_context()` function. Its parameters are the ID of the application from which the context is being obtained, and the handle (`app_context_h*`) to the application context which is filled with the received context.
+
+   When an application is not running, it is impossible to get its context.
+   ```
+   app_context_h app_context = NULL;
+   int ret = app_manager_get_app_context(Your App ID, &app_context);
+   ```
+   If the function returns `APP_MANAGER_ERROR_NONE`, it has executed correctly and the `app_context` variable now contains the handle to the defined application context.
 
 2. Operate on the context:
 
@@ -104,10 +106,10 @@ If the function returns `APP_MANAGER_ERROR_NONE`, it has executed correctly and 
 To get information on filtered applications:
 
 1. Create the `app_info_filter_h` handle using the `app_info_filter_create()` function:
-```
-app_info_filter_h app_info_filter = NULL;
-int ret = app_info_filter_create(&app_info_filter);
-```
+   ```
+   app_info_filter_h app_info_filter = NULL;
+   int ret = app_info_filter_create(&app_info_filter);
+   ```
 
 2. Add filter rules:
 

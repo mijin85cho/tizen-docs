@@ -17,7 +17,7 @@ The following figure illustrates the user scenario for the download:
 <a name="state"></a>
 ## Download States
 
-The following figure illustrates the various download states (such as READY and DOWNLOADING), and the functions (such as `download_start()`) that cause transitions between the states. The download states are defined in the [download_state_e](../../../../org.tizen.native.mobile.apireference/group__CAPI__WEB__DOWNLOAD__MODULE.html#gae9d05ac4ab7a2ba2fe6b3c329d273810) enumerator.
+The following figure illustrates the various download states (such as READY and DOWNLOADING), and the functions (such as `download_start()`) that cause transitions between the states. The download states are defined in the [download_state_e](../../api/mobile/latest/group__CAPI__WEB__DOWNLOAD__MODULE.html#gae9d05ac4ab7a2ba2fe6b3c329d273810) enumerator.
 
 Each function can only be called when the download process is in a specific state. To avoid undefined behavior in the application, make sure that you handle every possible scenario in the code.
 
@@ -32,7 +32,7 @@ When you stop the download:
 
 ## Prerequisites
 
-To use the functions and data types of the [Download](../../../../org.tizen.native.mobile.apireference/group__CAPI__WEB__DOWNLOAD__MODULE.html) API, include the `<download.h>` header file in your application:
+To use the functions and data types of the [Download](../../api/mobile/latest/group__CAPI__WEB__DOWNLOAD__MODULE.html) API, include the `<download.h>` header file in your application:
 
 ```
 #include <download.h>
@@ -104,7 +104,7 @@ To download content:
 
    - Network type
 
-     To set the desired network type, use the `download_set_network_type()` function. The [download_network_type_e](../../../../org.tizen.native.mobile.apireference/group__CAPI__WEB__DOWNLOAD__MODULE.html#gadf73239ac2efa6d4214a03751c76c9b8) enumeration defines the network types available for downloading. If no type is set, the `DOWNLOAD_NETWORK_ALL` default value is used.
+     To set the desired network type, use the `download_set_network_type()` function. The [download_network_type_e](../../api/mobile/latest/group__CAPI__WEB__DOWNLOAD__MODULE.html#gadf73239ac2efa6d4214a03751c76c9b8) enumeration defines the network types available for downloading. If no type is set, the `DOWNLOAD_NETWORK_ALL` default value is used.
 
      ```
      download_network_type_e value = 0;
@@ -115,7 +115,7 @@ To download content:
 
    - Notifications
 
-     To set notifications with a service action, use the `download_set_notification_type()` function. The [download_notification_type_e](../../../../org.tizen.native.mobile.apireference/group__CAPI__WEB__DOWNLOAD__MODULE.html#gab2ec29afc07197987eb2b88614fac67f) enumeration defines the available download notification types. If no type is set, the `DOWNLOAD_NOTIFICATION_TYPE_NONE` default value is used.
+     To set notifications with a service action, use the `download_set_notification_type()` function. The [download_notification_type_e](../../api/mobile/latest/group__CAPI__WEB__DOWNLOAD__MODULE.html#gab2ec29afc07197987eb2b88614fac67f) enumeration defines the available download notification types. If no type is set, the `DOWNLOAD_NOTIFICATION_TYPE_NONE` default value is used.
 
      To change the title or description of the notification item, use the `download_set_notification_title()` or `download_set_notification_description()` function. To change the action when the notification item is clicked, use the `download_set_notification_service_handle()` function. If the service action is not set, the default operation is the following:
 
@@ -163,7 +163,6 @@ To download content:
    Use the progress callback to monitor the download progress. The following example prints the number of bytes received and the total size of the file being downloaded. Since you do not know the file size at the beginning, use 0.
 
    1. Create the download:
-
       ```
       unsigned long long content_size = 0;
 
@@ -171,7 +170,6 @@ To download content:
       ```
 
    2. Register the progress callback and start the download:
-
       ```
       error = download_set_progress_cb(download_id, progress_cb, &content_size);
 
@@ -179,7 +177,6 @@ To download content:
       ```
 
    3. When the file is being downloaded, get the total content size:
-
       ```
       download_state_e state = 0;
       content_size = 0;
@@ -189,29 +186,27 @@ To download content:
       ```
 
    4. The received parameter of the `progress_cb()` callback function contains the size of the data received in bytes. In this example, print out the value and the total download size.
-   ```
-    static void
-    progress_cb(int download_id, unsigned long long received, void *user_data)
-    {
-        dlog_print(DLOG_INFO, LOG_TAG, "received: %llu of %llu", received, *((unsigned long long*)user_data));
-    }
-   ```
+      ```
+      static void
+      progress_cb(int download_id, unsigned long long received, void *user_data)
+      {
+          dlog_print(DLOG_INFO, LOG_TAG, "received: %llu of %llu", received, *((unsigned long long*)user_data));
+      }
+      ```
 
 7. Get error information.
 
    To get error information, use the `download_get_error()` function:
-
    ```
    download_error_e error_val = 0;
    error = download_get_error(download_id, &error_val);
    ```
 
-   The [download_error_e](../../../../org.tizen.native.mobile.apireference/group__CAPI__WEB__DOWNLOAD__MODULE.html#ga2d9ccc088c02cf1ab70879f1beda1cd1) enumeration defines the available error types.
+   The [download_error_e](../../api/mobile/latest/group__CAPI__WEB__DOWNLOAD__MODULE.html#ga2d9ccc088c02cf1ab70879f1beda1cd1) enumeration defines the available error types.
 
 8. Clean up.
 
    When the registered download is no longer needed (the downloading is finished or has been canceled), delete it using the `download_destroy()` function. In addition, unset all callback functions.
-
    ```
    download_unset_progress_cb(download_id);
    download_unset_state_changed_cb(download_id);
@@ -219,5 +214,5 @@ To download content:
    ```
 
 ## Related Information
-* Dependencies
- - Tizen 2.4 and Higher for Mobile
+- Dependencies
+  - Tizen 2.4 and Higher for Mobile

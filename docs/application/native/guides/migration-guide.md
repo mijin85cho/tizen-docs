@@ -17,7 +17,9 @@ You can receive an event when the background application goes to the suspended s
 Since Tizen 2.4, the Alarm API is changed to reduce the power consumption of the device:
 
 - Alarm APIs that support exact alarms are changed to be able to launch UI applications only. While launching UI applications when the alarm expires, the framework turns the LCD display on. Because of this you must not use those Alarm APIs for background processing. You can use the `alarm_schedule_after_delay()` function that supports an inexact alarm for background processing.
-- The `alarm_schedule_after_delay()` function is changed to support an inexact alarm. You can pass a period for alarm expiration, but the platform decides when the alarm expires according to the status of the device.The `alarm_schedule_after_delay()` function can launch service applications when it is expired. However, the target service application must specify a background category to be registered as the target application of the function.
+- The `alarm_schedule_after_delay()` function is changed to support an inexact alarm. You can pass a period for alarm expiration, but the platform decides when the alarm expires according to the status of the device.
+
+  The `alarm_schedule_after_delay()` function can launch service applications when it is expired. However, the target service application must specify a background category to be registered as the target application of the function.
 - Regarding the `app_control` parameter of the Alarm APIs, only explicit launch is allowed. You cannot pass `app_control` for an implicit launch because the implicit launch cannot specify the target application when it is registered.
 
 When you migrate your application from Tizen 2.3 to Tizen 2.4, check the changes and modify your application to conform with the Tizen 2.4 Alarm APIs.
@@ -26,7 +28,7 @@ When you migrate your application from Tizen 2.3 to Tizen 2.4, check the changes
 
 Tizen 2.4 introduces new Tizen Application Event APIs for subscribing system events and publishing and subscribing application events to other applications.
 
-Using the Tizen Application Event APIs, you can register your service application to be launched when a specified event is published. You can specify the event name through the `<app-control>` element in the application manifest file. This launch-on-event allows your service application to only run after receiving an event from the platform or other application. Note that UI applications cannot be launched using the launch-on-event mechanism. For more information, see the [Event](../../../org.tizen.native.mobile.apireference/group__CAPI__EVENT__MODULE.html) API.
+Using the Tizen Application Event APIs, you can register your service application to be launched when a specified event is published. You can specify the event name through the `<app-control>` element in the application manifest file. This launch-on-event allows your service application to only run after receiving an event from the platform or other application. Note that UI applications cannot be launched using the launch-on-event mechanism. For more information, see the [Event](../../api/mobile/latest/group__CAPI__EVENT__MODULE.html) API.
 
 ## Application Group Launching Management
 

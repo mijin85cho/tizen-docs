@@ -29,7 +29,7 @@ The main features of the Minicontrol API include:
 
 To enable your application to use the minicontrol functionality:
 
-1. To use the [Minicontrol](../../../../org.tizen.native.mobile.apireference/group__MINICONTROL__LIBRARY.html) API, the application has to request permission by adding the following privilege to the `tizen-manifest.xml` file:
+1. To use the [Minicontrol](../../api/mobile/latest/group__MINICONTROL__LIBRARY.html) API, the application has to request permission by adding the following privilege to the `tizen-manifest.xml` file:
 
     ```
     <privileges>
@@ -105,5 +105,5 @@ To hide the quick panel:
 ![Minicontrol button for hiding the quick panel](./media/minicontrol.png)
 
 ## Related Information
-* Dependencies
- - Tizen 2.4 and Higher for Mobile
+- Dependencies
+  - Tizen 2.4 and Higher for Mobile

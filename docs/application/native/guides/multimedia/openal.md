@@ -1,9 +1,9 @@
 # OpenAL
 
 
-OpenAL is a software interface to audio hardware, which allows you to specify the objects and operations in producing high-quality audio output. Tizen offers OpenAL as a native API, since OpenAL can be used for a variety of audio playback tasks (such as sound effects in games), and it has an excellent performance for real-time rendering. For more information, see [OpenAL 1.1 specification](http://www.openal.org/documentation/openal-1.1-specification.pdf).
+OpenAL is a software interface to audio hardware, which allows you to specify the objects and operations in producing high quality audio output. Tizen offers OpenAL as a native API, since OpenAL can be used for a variety of audio playback tasks (such as sound effects in games), and it has an excellent performance for real-time rendering. For more information, see [OpenAL 1.1 specification](http://www.openal.org/documentation/openal-1.1-specification.pdf).
 
-OpenAL has 3 fundamental objects:
+OpenAL has three fundamental objects:
 
 - Sources
 
@@ -11,13 +11,13 @@ OpenAL has 3 fundamental objects:
 
 - Buffers
 
-  Buffers store compressed or uncompressed audio data in PCM format, either 8- or 16-bit, and in mono or stereo.
+  Buffers store compressed or uncompressed audio data in PCM format. It also stores in 8-bit or 16-bit in mono or stereo format.
 
 - Single listener
 
-  Each audio context has only 1 listener. The listener attributes are used to represent where the user is hearing the audio from.
+  Each audio context consists of one listener. Use listener attribute to represent where the user is hearing the audio from.
 
-Each object can be changed independently; the setting of one object does not affect the setting of others.
+Each object can be changed independently. Ensure that the setting of one object does not affect the settings of other object.
 
 The main features of the OpenAL API include:
 
@@ -44,6 +44,11 @@ The main features of the OpenAL API include:
 
   > **Note**  
   > The device cannot fall into a sleep state while the context is not destroyed. To avoid unwanted battery consumption, destroy the context punctually.
+  >
+  > Since 3.0, extension `alcDevicePauseSOFT()` was introduced to allow applications to pause a playback device explicitly.
+  > The main purpose is to silence output, stop processing, and to allow audio hardware to go into low-power mode.
+  > Additionally, you can use `alcDeviceResumeSOFT()` function to resume playback of a paused device.  
+  > For more information, see [here](http://kcat.strangesoft.net/openal-extensions/SOFT_pause_device.txt).
 
 - Requesting a source and buffer
 
@@ -63,7 +68,7 @@ For additional OpenAL code samples, see [Example Code](http://kcat.strangesoft.n
 
 To enable your application to use the OpenAL functionality:
 
-1. To use the functions and data types of the OpenAL API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__OPENSRC__OPENAL__FRAMEWORK.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__OPENSRC__OPENAL__FRAMEWORK.html) applications), include the `<AL/al.h>` and `<AL/alc.h>` header files in your application:
+1. To use the functions and data types of the OpenAL API (in [mobile](../../api/mobile/latest/group__OPENSRC__OPENAL__FRAMEWORK.html) and [wearable](../../api/wearable/latest/group__OPENSRC__OPENAL__FRAMEWORK.html) applications), include the `<AL/al.h>` and `<AL/alc.h>` header files in your application:
 
    ```
    #include <AL/al.h>
@@ -290,6 +295,6 @@ To queue and play multiple buffers:
    ```
 
 ## Related Information
-* Dependencies
- - Tizen 2.4 and Higher for Mobile
- - Tizen 2.3.1 and Higher for Wearable
+- Dependencies
+  - Tizen 2.4 and Higher for Mobile
+  - Tizen 2.3.1 and Higher for Wearable

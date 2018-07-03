@@ -44,7 +44,8 @@ You can launch an application with an application control using 2 different laun
   - If the underlying application launcher framework finds an application matched with the given application ID in the installed application list, it launches the application in a new process. If the matched application is not found, the framework returns the `APP_CONTROL_ERROR_APP_NOT_FOUND` result. Additional information (such as operation, URI, or MIME type) is not used to select an application for an explicit launch.
   - If the operation setting in the `app_control` handle is set to `APP_CONTROL_OPERATION_DEFAULT`, the application ID must be set. Otherwise the `APP_CONTROL_ERROR_INVALID_PARAMETER` result is returned.
 
-  > **Note**  
+  > **Note**
+  >
   > Be careful when using the explicit launch, because if the target application does not exist on the device, you need to handle the `APP_CONTROL_ERROR_APP_NOT_FOUND` error. If you want to launch any application that supports a certain operation, use the implicit launch.
 
 - Implicit launch
@@ -55,7 +56,8 @@ You can launch an application with an application control using 2 different laun
   2. The application launcher framework iterates the application controls of all applications on the device to [find the applications that match](#resolution) the given conditions.
   3. If only one application is matched for the given conditions, that application is launched. If multiple matching applications are found, the application selector is shown and the user can select the proper application.
 
-	> **Note**  
+	> **Note**
+    >
 	> Since Tizen 2.4, application controls used to launch service applications outside the current package are not supported. Because of this, the service application is only allowed to be launched explicitly by the application in the same package. All service applications are excluded from matches of implicit launch requests.
 
 <a name="request"></a>
@@ -65,8 +67,11 @@ To launch an application with the application control, you must create a launch 
 
 - Operation: Action to be performed by the launched application.
 
-  > **Note**  
-  > The operation name format is `http://tizen.org/appcontrol/operation/<verb>`. You can also use the related macro name, `APP_CONTROL_OPERATION_<VERB>`.The macro name can only be used in the `.c` files, not in the [application manifest file for the application control export](#export_appcontrol).
+  > **Note**
+  >
+  > The operation name format is `http://tizen.org/appcontrol/operation/<verb>`. You can also use the related macro name, `APP_CONTROL_OPERATION_<VERB>`.
+  >
+  > The macro name can only be used in the `.c` files, not in the [application manifest file for the application control export](#export_appcontrol).
 
   The operation is mandatory information for sending the launch request.
 
@@ -167,7 +172,8 @@ The launch request conditions are matched to the available filters using the fol
 
    An exception is applied to the URIs with a "file" scheme for the value. If the launch request URI contains an existing file path and no MIME types are supplied, the filters that have the MIME type of the given file path are also added to the results.
 
-   > **Note**  
+   > **Note**
+   >
    > A filter (application) that expects to match with any form of URI and any type of MIME must use `'*'` and `*/*` in their application control information in the `tizen-manifest.xml` file, instead of leaving the value to `NULL`. Otherwise, the application is discarded by the platform when the application control is resolved.
 
 3. Unlike the operation, the URI and MIME types support wildcards on the filters. Detailed conditions for matches are:
@@ -197,7 +203,7 @@ The following examples show different scenarios for the results of resolving the
   | Filter ID | Operation                                | URI        | MIME   | Result |
   |-----------|------------------------------------------|------------|--------|--------|
   | 1         | `http://tizen.org/appcontrol/operation/view` | `NULL`     | `NULL` | Pass   |
-  | 2         | `**http://tizen.org/appcontrol/operation/default**` | `NULL`       |   `NULL`     |  Fail      |
+  | 2         | `http://tizen.org/appcontrol/operation/default` | `NULL`       |   `NULL`     |  Fail      |
   | 3         | `http://tizen.org/appcontrol/operation/view` | `file` |  `NULL`       |   Fail        |
 
 - Operation and URI provided:
@@ -212,13 +218,13 @@ The following examples show different scenarios for the results of resolving the
 
  | Filter ID | Operation                                | URI                                  | MIME      | Result |
 |-----------|--------------------------------------------|---------------------------------------|-----------|--------|
-| 1         | http://tizen.org/appcontrol/operation/view | NULL                                 | NULL      | Fail   |
-| 2         | http://tizen.org/appcontrol/operation/view | file:///usr/share/icons/calendar.png | */*       | Pass   |
-| 3         | http://tizen.org/appcontrol/operation/view | file:///*                            | */*       | Pass   |
-| 4         | http://tizen.org/appcontrol/operation/view | file                                 | */*       | Pass   |
-| 5         | http://tizen.org/appcontrol/operation/view | http                                 | */*       | Fail   |
-| 6         | http://tizen.org/appcontrol/operation/view | NULL                                 | image/png | Pass   |
-| 7         | http://tizen.org/appcontrol/operation/view | NULL                                 | image/jpg | Fail   |
+| 1         | `http://tizen.org/appcontrol/operation/view` | `NULL`                                 | `NULL`      | Fail   |
+| 2         | `http://tizen.org/appcontrol/operation/view` | `file:///usr/share/icons/calendar.png` | `*/*`       | Pass   |
+| 3         | `http://tizen.org/appcontrol/operation/view` | `file:///*`                            | `*/*`       | Pass   |
+| 4         | `http://tizen.org/appcontrol/operation/view` | `file`                                 | `*/*`       | Pass   |
+| 5         | `http://tizen.org/appcontrol/operation/view` | `http`                                 | `*/*`       | Fail   |
+| 6         | `http://tizen.org/appcontrol/operation/view` | `NULL`                                 | `image/png` | Pass   |
+| 7         | `http://tizen.org/appcontrol/operation/view` | `NULL`                                 | `image/jpg` | Fail   |
 
 - Operation and MIME type provided:
 
@@ -232,13 +238,13 @@ The following examples show different scenarios for the results of resolving the
 
 | Filter ID | Operation                                | URI                                  | MIME      | Result |
 |-----------|------------------------------------------|--------------------------------------|-----------|--------|
-| 1         | http://tizen.org/appcontrol/operation/view | NULL                                 | image/png | Pass   |
-| 2         | http://tizen.org/appcontrol/operation/view | NULL                                 | image/*   | Pass   |
-| 3         | http://tizen.org/appcontrol/operation/view | NULL                                 | */*       | Pass   |
-| 4         | http://tizen.org/appcontrol/operation/view | file:///usr/share/icons/calendar.png | NULL      | Fail   |
-| 5         | http://tizen.org/appcontrol/operation/view | NULL                                 | image/jpg | Fail   |
-| 6         | http://tizen.org/appcontrol/operation/view | NULL                                 | video/*   | Fail   |
-| 7         | http://tizen.org/appcontrol/operation/view | http://tizen.org/favorites.png       | image/png | Fail   |
+| 1         | `http://tizen.org/appcontrol/operation/view` | `NULL`                                 | `image/png` | Pass   |
+| 2         | `http://tizen.org/appcontrol/operation/view` | `NULL`                                 | `image/*`   | Pass   |
+| 3         | `http://tizen.org/appcontrol/operation/view` | `NULL`                                 | `*/*`       | Pass   |
+| 4         | `http://tizen.org/appcontrol/operation/view` | `file:///usr/share/icons/calendar.png` | `NULL`      | Fail   |
+| 5         | `http://tizen.org/appcontrol/operation/view` | `NULL`                                 | `image/jpg` | Fail   |
+| 6         | `http://tizen.org/appcontrol/operation/view` | `NULL`                                 | `video/*`   | Fail   |
+| 7         | `http://tizen.org/appcontrol/operation/view` | `http://tizen.org/favorites.png`       | `image/png` | Fail   |
 
 - Operation, URI, and MIME type provided:
 
@@ -252,12 +258,12 @@ The following examples show different scenarios for the results of resolving the
 
  | Filter ID | Operation                                | URI                                | MIME      | Result |
 |-----------|------------------------------------------|------------------------------------|-----------|--------|
-| 1         | http://tizen.org/appcontrol/operation/view | http://www.tizen.org/favorites.png | image/png | Pass   |
-| 2         | http://tizen.org/appcontrol/operation/view | http://www.tizen.org/favorites.png | NULL      | Fail   |
-| 3         | http://tizen.org/appcontrol/operation/view | http://www.tizen.org/*             | image/png | Pass   |
-| 4         | http://tizen.org/appcontrol/operation/view | http                               | image/png | Pass   |
-| 5         | http://tizen.org/appcontrol/operation/view | NULL                               | image/png | Fail   |
-| 6         | http://tizen.org/appcontrol/operation/view | *                                  | */*       | Pass   |
+| 1         | `http://tizen.org/appcontrol/operation/view` | `http://www.tizen.org/favorites.png` | `image/png` | Pass   |
+| 2         | `http://tizen.org/appcontrol/operation/view` | `http://www.tizen.org/favorites.png` | `NULL`      | Fail   |
+| 3         | `http://tizen.org/appcontrol/operation/view` | `http://www.tizen.org/*`             | `image/png` | Pass   |
+| 4         | `http://tizen.org/appcontrol/operation/view` | `http`                               | `image/png` | Pass   |
+| 5         | `http://tizen.org/appcontrol/operation/view` | `NULL`                               | `image/png` | Fail   |
+| 6         | `http://tizen.org/appcontrol/operation/view` | `*`                                  | `*/*`       | Pass   |
 
 <a name="process"></a>
 ## Launch Process
@@ -323,11 +329,19 @@ Regardless of the launch request type, when the application launcher framework h
 	```
 
 2. The `ui_app_main()` function initializes the application and starts the main loop.
-It takes 4 parameters and uses them to initialize the application. The `argc` and `argv` parameters contain the values from the application framework, and you must never change their values. The third parameter is a state transition handler that is responsible for managing the state transitions the application goes through while it is running. The fourth parameter is application data to be passed to each state handler.
 
-3. When the `ui_app_main()` is first invoked, the application moves from the ready state to the created state, and must initialize itself. During this transition, the application framework calls the application's `app_create_cb()` state transition callback just before the application enters the main loop. Within the registered callback, you must initialize the application resources and create the main window.If the `app_create_cb()` callback function returns `false`, the application moves to the terminated state. If it returns `true`, the application enters the main loop.
+    It takes 4 parameters and uses them to initialize the application. The `argc` and `argv` parameters contain the values from the application framework, and you must never change their values. The third parameter is a state transition handler that is responsible for managing the state transitions the application goes through while it is running. The fourth parameter is application data to be passed to each state handler.
 
-4. Just after the application enters the main loop, the application framework calls the application's `app_control_cb()` callback.The callback is passed to the `app_control` handle containing the reason why the application was launched. For example, the application can be launched to open a file to handle the request that has been sent by other application. The application is always responsible for checking the content of the `app_control` handle and responding appropriately. The content of the `app_control` handle can be empty, if the application is launched by the user from the launcher.If the application wants to return the result of the application control operation to the application that originally sent the launch request, the result can be sent with the `app_control_reply_to_launch_request()` function.
+3. When the `ui_app_main()` is first invoked, the application moves from the ready state to the created state, and must initialize itself. During this transition, the application framework calls the application's `app_create_cb()` state transition callback just before the application enters the main loop. Within the registered callback, you must initialize the application resources and create the main window.
+
+    If the `app_create_cb()` callback function returns `false`, the application moves to the terminated state. If it returns `true`, the application enters the main loop.
+
+
+4. Just after the application enters the main loop, the application framework calls the application's `app_control_cb()` callback.
+
+    The callback is passed to the `app_control` handle containing the reason why the application was launched. For example, the application can be launched to open a file to handle the request that has been sent by other application. The application is always responsible for checking the content of the `app_control` handle and responding appropriately. The content of the `app_control` handle can be empty, if the application is launched by the user from the launcher.
+
+    If the application wants to return the result of the application control operation to the application that originally sent the launch request, the result can be sent with the `app_control_reply_to_launch_request()` function.
 
 	```
 	static void
@@ -367,6 +381,7 @@ It takes 4 parameters and uses them to initialize the application. The `argc` an
         }
     }
 	```
+
 <a name="results"></a>
 ## Launch Results
 
@@ -427,26 +442,25 @@ app_control_result(app_control_h request, app_control_h reply, app_control_resul
 <a name="export_appcontrol"></a>
 ## Application Control Export
 
-You can allow other applications to launch your application and use your application features through application controls by exporting your application control functionalities. To allow other applications to launch your application implicitly without the application ID, declare your application control information in the `tizen-manifest.xml` file:
+You can allow other applications to launch your application and use your application features through application controls by exporting your application control functionalities. To allow other applications to launch your application implicitly without the application ID, specify your application control information in the Tizen Studio.
 
-```
-<app-control>
-   <mime name="application/xhtml+xml"/>
-   <operation name="http://tizen.org/appcontrol/operation/view"/>
-   <uri name="http://test.com"/>
-</app-control>
-<app-control>
-   <operation name="http://tizen.org/appcontrol/operation/call"/>
-</app-control>
-```
+**Figure: Exporting app control**
 
-	> **Note**  
-	> In the application manifest file, the valid operation name format is `http://tizen.org/appcontrol/operation/<verb>`. You cannot use the related macro name, `APP_CONTROL_OPERATION_<VERB>`.
+![Exporting app control](./media/exporting_appcontrol.png)
+
+> **Note**
+>
+> In the application manifest file, the valid operation name format is `http://tizen.org/appcontrol/operation/<verb>`. You cannot use the related macro name, `APP_CONTROL_OPERATION_<VERB>`.
 
 The operation, URI, and MIME type information is used when [resolving the application control](#resolution). The operation information is mandatory, while the URI or MIME type information is optional. Any application requesting a launch of your application must either specify your application ID (for an explicit launch) or have the same operation value and applicable URI and MIME type information (for an implicit launch).
+You can define privileges to restrict your application from launching. To launch your application, the caller application must request for launch permission by defining privileges in the `tizen-manifest.xml` file.
 
-> **Note**  
-> The URI or MIME type can contain wildcards, such as '*', to match against given conditions in the app control:In the MIME type, you can use 2 types of wildcards: `image/*` and `*/*`.In the URI, a more complex pattern of wildcards with similar semantics as the standard `glob()` function is available: '*' matches an arbitrary, possibly empty, string, and '?' matches an arbitrary character. Unlike in the `glob()` function, the '/' character can be matched by the wildcards. There are no [...] character ranges, and the wildcards '*' and '?' cannot be escaped to include them literally in a pattern.
+> **Note**
+>
+> The URI or MIME type can contain wildcards, such as '\*', to match against given conditions in the app control:
+>
+> - In the MIME type, you can use two types of wildcards: `image/*` and `*/*`.
+> - In the URI, a more complex pattern of wildcards with similar semantics as the standard `glob()` function is available: '\*' matches an arbitrary, possibly empty, string, and '?' matches an arbitrary character. Unlike in the `glob()` function, the '/' character can be matched by the wildcards. There are no [...] character ranges, and the wildcards '\*' and '?' cannot be escaped to include them literally in a pattern.
 
 You can specify the application control information for your application in the [application project settings](../../tutorials/process/setting-properties.md#manifest) in the Tizen Studio.
 
@@ -480,7 +494,7 @@ The main application group features include:
 
 To enable your application to use the application control functionality:
 
-1. To use the App Control API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__APP__CONTROL__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__APP__CONTROL__MODULE.html) applications), the application has to request permission by adding the following privilege to the `tizen-manifest.xml` file:
+1. To use the App Control API (in [mobile](../../api/mobile/latest/group__CAPI__APP__CONTROL__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__APP__CONTROL__MODULE.html) applications), the application has to request permission by adding the following privilege to the `tizen-manifest.xml` file:
 
    ```
    <privileges>
@@ -539,7 +553,8 @@ To run a specific application control with some preconfigured parameters:
        dlog_print(DLOG_ERROR, LOG_TAG, "app_control_send_launch_request() failed. err = %d", ret);
    ```
 
-   > **Note**  
+   > **Note**
+   >
    > Since Tizen 2.4, service applications are only allowed to be launched explicitly and the caller must be an application in the same package. Otherwise, the `app_control` instance returns an error.
 
 5. In the launched application, read the extra data set to the `app_control` instance using the `app_control_foreach_extra_data()` function. The same function can be used in the original application to read the reply message, when the `app_control_h` instance is returned by the `app_control` reply.
@@ -620,7 +635,7 @@ create_base_gui(appdata_s *ad)
 
 2. When the button is clicked, use an application control to launch the sub application.
 
-   Define the launch mode for the application to be called using the `app_control_set_launch_mode()` function. The second parameter defines the launch mode with the `app_control_launch_mode_e` enumerator (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__APP__CONTROL__MODULE.html#gadf26b03f2f6b18acba4a946e7eb7b31c) applications).
+   Define the launch mode for the application to be called using the `app_control_set_launch_mode()` function. The second parameter defines the launch mode with the `app_control_launch_mode_e` enumerator (in [mobile](../../api/mobile/latest/group__CAPI__APP__CONTROL__MODULE.html#gadf26b03f2f6b18acba4a946e7eb7b31c) applications).
 
    ```
    static void
@@ -668,10 +683,7 @@ The following common application controls are available:
 	- [Settings for NFC](common-appcontrol.md#settings_nfc)
 	- [Settings for Wi-Fi](common-appcontrol.md#settings_wifi)
 - [Voice Recorder](common-appcontrol.md#voice)
-- [VPN Service](common-appcontrol.md#vpnservice)  
-
-
-
+- [VPN Service](common-appcontrol.md#vpnservice)
 
 ## Related Information
 - Dependencies

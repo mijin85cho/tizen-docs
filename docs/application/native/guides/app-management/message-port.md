@@ -19,7 +19,10 @@ The main features of the Message Port API include:
 
 You can communicate using 2 types of message ports:
 
-- **Local port** is used to register your message port and prepare to receive messages from another application.To receive messages from the another application, set the callback from the local message port.
+- **Local port** is used to register your message port and prepare to receive messages from another application.
+
+  To receive messages from the another application, set the callback from the local message port.
+
 - **Remote port** is used to send messages to other applications. The local message port information can be sent to the other application for bi-directional communication.
 
 ## Prerequisites
@@ -28,9 +31,9 @@ To enable your application to use the message port functionality:
 
 1. You need 2 applications to communicate with each other through the message port.
 
-2. To use trusted message port communication, both applications must have the same certificate. To create and register an author certificate, go to the Tizen Studio menu and select **Tools > Certificate Manager**. For more information, see [Working with the Certificate Profile](../../../tizen-studio/common_tools/certificate-registration.md).
+2. To use trusted message port communication, both applications must have the same certificate. To create and register an author certificate, go to the Tizen Studio menu and select **Tools > Certificate Manager**. For more information, see [Working with the Certificate Profile](../../tizen-studio/common_tools/certificate-registration.md).
 
-3. To use the functions and data types of the Message Port API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__CAPI__MESSAGE__PORT__MODULE.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__CAPI__MESSAGE__PORT__MODULE.html) applications), include the `<message_port.h>` header file in your application:
+3. To use the functions and data types of the Message Port API (in [mobile](../../api/mobile/latest/group__CAPI__MESSAGE__PORT__MODULE.html) and [wearable](../../api/wearable/latest/group__CAPI__MESSAGE__PORT__MODULE.html) applications), include the `<message_port.h>` header file in your application:
 
    ```
    #include <message_port.h>
@@ -216,6 +219,6 @@ Trusted communication works similarly as normal message port communication. The 
 | `message_port_register_local_port()` | `message_port_register_trusted_local_port()` |
 
 ## Related Information
-* Dependencies
- - Tizen 2.4 and Higher for Mobile
- - Tizen 2.3.1 and Higher for Wearable
+- Dependencies
+  - Tizen 2.4 and Higher for Mobile
+  - Tizen 2.3.1 and Higher for Wearable

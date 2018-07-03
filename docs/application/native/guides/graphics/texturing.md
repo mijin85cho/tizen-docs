@@ -37,7 +37,7 @@ In the figure, the texture is depicted as a grid of dotted lines, where a texel 
 
 ### Filtering for Magnification
 
-For magnification, you have 2 options. The first is **nearest point sampling**. Then, as you can see in the left example below, a block of fragments can be mapped to a single texel. Consequently, a blocky image is often produced. The second option is **bilinear interpolation**illustrated in the right example below. In general, bilinear interpolation is preferred to nearest point sampling.
+For magnification, you have 2 options. The first is **nearest point sampling**. Then, as you can see in the left example below, a block of fragments can be mapped to a single texel. Consequently, a blocky image is often produced. The second option is **bilinear interpolation** illustrated in the right example below. In general, bilinear interpolation is preferred to nearest point sampling.
 
 **Figure: Nearest point sampling (left) vs. bilinear interpolation (right)**
 
@@ -105,11 +105,11 @@ When an image file is to be used as a texture, it is first loaded into the OpenG
 
 ## Texturing Example
 
-In order to generate a texture in OpenGL&reg; ES, you usually have to decode the image file stored in the file system. In Tizen, you can use the Evas API (in [mobile](../../../../org.tizen.native.mobile.apireference/group__Evas.html) and [wearable](../../../../org.tizen.native.wearable.apireference/group__Evas.html) applications) to get the decoded bitmap buffer from the image file, as shown in the following example. The code creates an independent `Ecore_Evas` object, which contains `Evas_Object`. It provides a method to decode the designated image file and store the bitmap data into its own buffer. You can get the internal buffer pointer and then upload the buffer to the texture.
+In order to generate a texture in OpenGL&reg; ES, you usually have to decode the image file stored in the file system. In Tizen, you can use the Evas API (in [mobile](../../api/mobile/latest/group__Evas.html) and [wearable](../../api/wearable/latest/group__Evas.html) applications) to get the decoded bitmap buffer from the image file, as shown in the following example. The code creates an independent `Ecore_Evas` object, which contains `Evas_Object`. It provides a method to decode the designated image file and store the bitmap data into its own buffer. You can get the internal buffer pointer and then upload the buffer to the texture.
 
 ```
 /*
-   Create OpenGL&reg; ES Texture object from image file path
+   Create OpenGL ES Texture object from image file path
    @param[in] parent Evas object
    @param[in] filename image file path
    @return texture id
@@ -172,6 +172,6 @@ create_texture(Evas_Object *parent, const char *filename)
 
 
 ## Related Information
-* Dependencies
- - Tizen 2.4 and Higher for Mobile
- - Tizen 2.3.1 and Higher for Wearable
+- Dependencies
+  - Tizen 2.4 and Higher for Mobile
+  - Tizen 2.3.1 and Higher for Wearable
