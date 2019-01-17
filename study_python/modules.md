@@ -2,21 +2,15 @@
 
 ### Need...
 
-- If you quit from the Python interpreter, the definitions you have made (functions and variables) are lost.
+- For the longer program, use a text editor => "script"
 
-   - For the longer program? Use a text editor => "script"
+   - If the script gets longer...
 
-      - If the script gets longer...
-
-          you may want to split it into several files for easier maintenance.
+       you may want to split it into several files for easier maintenance.
 
 - Without copying its definition, using handy function in several programs.
 
-### To suport the need...
-
-Python has a way to put definitions in a file and use them in a script or in an interactive instance of the interpreter.
-
-Such a file is called a **module**.
+   => **module**
 
 ### Modules
 
@@ -27,7 +21,7 @@ Such a file is called a **module**.
    - Definitions from a module can be imported into other modules or into the main module.
    - file name format : `*.py`
 
-   - Within a module, the module name (as a string) is available as the value of the global variable `__name__`.
+   - `__name__` : the module name (as a string) is available as the value of the global variable
 
       EX) To use `fibo.py`
 
@@ -162,9 +156,6 @@ Modules can import other modules. The imported module names are placed in the im
       - Python doesn't check the cache if
          - loaded directly from the command line
          - no source module (compiled only). The compiled module must be in the source directory.
-
-   - Standard Modules
-   @@@
 
    - The `dir()` Function
 
@@ -313,27 +304,19 @@ ex) Handling sound files and sound data:
 
    - Importing \* From a Package
    
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+      In `__init__.py`, `__all__` must be set, to show which modules will be merged with \*
+
+      In sound/effects/\_\_init\_\_.py :
+
+      ```
+      __all__ = ["echo", "surround", "reverse"]
+      ```
+
+   - Intra-package References
+
+      From surround module
+      ```
+      from . import echo
+      from .. import formats
+      from ..filters import equalizer
+      ```
