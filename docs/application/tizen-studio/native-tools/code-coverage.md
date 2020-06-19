@@ -10,7 +10,7 @@ The Code Coverage tool is based on the llvm-cov tool. With it, you can detect pa
 > Before you run the Code Coverage:
 >
 > - Make sure that you have an emulator or a connected target device running.
-> - If you want to try out the tool and do not have an applicable project to test, create a test project with the Project Wizard using a template or sample. For more information on creating a project, see [Creating Your First Tizen Mobile Native Application](../../native/getting-started/mobile/first-app.md).
+> - If you want to try out the tool and do not have an applicable project to test, create a test project with the Project Wizard using a template or sample. For more information on creating a project, see [Creating Your First Tizen Mobile Native Application](../../native/get-started/mobile/first-app.md).
 
 To use the Code Coverage tool:
  
@@ -24,11 +24,11 @@ To use the Code Coverage tool:
 
    ![Application running](./media/code_coverage_run.png)
 
-3. To get the coverage report, press the **Stop/Cancel Operation** button in the **Progress** view of the Tizen Studio.
+3. To get the coverage report, press the **Stop/Cancel Operation** button in the **Progress** view of Tizen Studio.
 
    ![Stop/Cancel Operation button](./media/code_coverage_end.png)
 
-4. The Tizen Studio shows the code coverage information in the editor after the application has closed. A **Code Coverage** view also opens to give a summary of the code coverage percentage for each file.
+4. Tizen Studio shows the code coverage information in the editor after the application has closed. A **Code Coverage** view also opens to give a summary of the code coverage percentage for each file.
 
    The code covered during the scenario has a green highlight and the uncovered code has a red highlight.
 

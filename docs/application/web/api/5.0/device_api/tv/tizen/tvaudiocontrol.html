@@ -4,10 +4,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="../../../scripts/tizen.css" media="screen">
 <script type="text/javascript" src="../../../scripts/snippet.js"></script><title>TVAudioControl API</title>
+<meta data-version="5.0" data-profile="tv">
 </head>
 <body id="page-content" onload="prettyPrint()">
 <div class="api" id="::TVAudioControl">
- <div class="supported-platforms"><img class="tv-optional" title="Optional, Not supported by Tizen Tv emulator" src="tv_s_w_optional.png"></div>
+<div class="supported-platforms"><img class="tv-optional" title="Optional, Not supported by Tizen Tv emulator" src="tv_s_w_optional.png"></div>
 <div class="title"><h1>TVAudioControl API</h1></div>
 <div class="brief">
         </div>
@@ -218,6 +219,9 @@ are used, then mute is disabled.
 <p><span class="privilege">Privilege: </span>
  http://tizen.org/privilege/tv.audio
             </p>
+<p class="warning"><b>Warning:</b>
+ http://tizen.org/privilege/tv.audio (public level) has been deprecated since 5.0.
+            </p>
 <div class="parameters">
 <p><span class="param">Parameters:</span></p>
 <ul>
@@ -232,9 +236,10 @@ are used, then mute is disabled.
           <ul class="exception"><li>WebAPIException<ul>
 <li class="list"><p>
  with error type SecurityError, if the application does not have the privilege to call this method.
+This type of error is deprecated since Tizen 5.0.
                 </p></li>
 <li class="list"><p>
- with error type UnknownError in any other error case.
+ with error type UnknownError in an unspecified error case.
                 </p></li>
 </ul>
 </li></ul>
@@ -267,11 +272,13 @@ tizen.tvaudiocontrol.setMute(false);
 <p><span class="privilege">Privilege: </span>
  http://tizen.org/privilege/tv.audio
             </p>
+<p class="warning"><b>Warning:</b>
+ http://tizen.org/privilege/tv.audio (public level) has been deprecated since 5.0.
+            </p>
 <div class="returntype">
 <p><span class="return">Return value:</span></p>
 <ul>
-<span class="return">boolean:
-                  </span>
+<span class="return">boolean:</span>
  boolean The current mute state
               </ul>
 </div>
@@ -280,9 +287,10 @@ tizen.tvaudiocontrol.setMute(false);
           <ul class="exception"><li>WebAPIException<ul>
 <li class="list"><p>
  with error type SecurityError, if the application does not have the privilege to call this method.
+This type of error is deprecated since Tizen 5.0.
                 </p></li>
 <li class="list"><p>
- with error type UnknownError in any other error case.
+ with error type UnknownError in an unspecified error case.
                 </p></li>
 </ul>
 </li></ul>
@@ -345,6 +353,9 @@ The value of <em>volume</em> is allowed from 0 to 100. If an invalid value is pa
 <p><span class="privilege">Privilege: </span>
  http://tizen.org/privilege/tv.audio
             </p>
+<p class="warning"><b>Warning:</b>
+ http://tizen.org/privilege/tv.audio (public level) has been deprecated since 5.0.
+            </p>
 <div class="parameters">
 <p><span class="param">Parameters:</span></p>
 <ul>
@@ -362,9 +373,10 @@ The value of <em>volume</em> is allowed from 0 to 100. If an invalid value is pa
                 </p></li>
 <li class="list"><p>
  with error type SecurityError, if the application does not have the privilege to call this method.
+This type of error is deprecated since Tizen 5.0.
                 </p></li>
 <li class="list"><p>
- with error type UnknownError in any other error case.
+ with error type UnknownError in an unspecified error case.
                 </p></li>
 </ul>
 </li></ul>
@@ -411,14 +423,18 @@ then execution of this functions will disable it.
 <p><span class="privilege">Privilege: </span>
  http://tizen.org/privilege/tv.audio
             </p>
+<p class="warning"><b>Warning:</b>
+ http://tizen.org/privilege/tv.audio (public level) has been deprecated since 5.0.
+            </p>
 <div class="exceptionlist">
 <p><span class="except">Exceptions:</span></p>
           <ul class="exception"><li>WebAPIException<ul>
 <li class="list"><p>
  with error type SecurityError, if the application does not have the privilege to call this method.
+This type of error is deprecated since Tizen 5.0.
                 </p></li>
 <li class="list"><p>
- with error type UnknownError in any other error case.
+ with error type UnknownError in an unspecified error case.
                 </p></li>
 </ul>
 </li></ul>
@@ -469,14 +485,18 @@ then execution of this functions will disable it.
 <p><span class="privilege">Privilege: </span>
  http://tizen.org/privilege/tv.audio
             </p>
+<p class="warning"><b>Warning:</b>
+ http://tizen.org/privilege/tv.audio (public level) has been deprecated since 5.0.
+            </p>
 <div class="exceptionlist">
 <p><span class="except">Exceptions:</span></p>
           <ul class="exception"><li>WebAPIException<ul>
 <li class="list"><p>
  with error type SecurityError, if the application does not have the privilege to call this method.
+This type of error is deprecated since Tizen 5.0.
                 </p></li>
 <li class="list"><p>
- with error type UnknownError in any other error case.
+ with error type UnknownError in an unspecified error case.
                 </p></li>
 </ul>
 </li></ul>
@@ -520,11 +540,13 @@ if (tizen.tvaudiocontrol.getVolume() === 0)
 <p><span class="privilege">Privilege: </span>
  http://tizen.org/privilege/tv.audio
             </p>
+<p class="warning"><b>Warning:</b>
+ http://tizen.org/privilege/tv.audio (public level) has been deprecated since 5.0.
+            </p>
 <div class="returntype">
 <p><span class="return">Return value:</span></p>
 <ul>
-<span class="return">unsigned short:
-                  </span>
+<span class="return">unsigned short:</span>
  unsigned short The current volume (the volume range is 0 ~ 100)
               </ul>
 </div>
@@ -533,9 +555,10 @@ if (tizen.tvaudiocontrol.getVolume() === 0)
           <ul class="exception"><li>WebAPIException<ul>
 <li class="list"><p>
  with error type SecurityError, if the application does not have the privilege to call this method.
+This type of error is deprecated since Tizen 5.0.
                 </p></li>
 <li class="list"><p>
- with error type UnknownError in any other error case.
+ with error type UnknownError in an unspecified error case.
                 </p></li>
 </ul>
 </li></ul>
@@ -563,6 +586,9 @@ Note that this method overwrites the previously registered listener.
 <p><span class="privilege">Privilege: </span>
  http://tizen.org/privilege/tv.audio
             </p>
+<p class="warning"><b>Warning:</b>
+ http://tizen.org/privilege/tv.audio (public level) has been deprecated since 5.0.
+            </p>
 <div class="parameters">
 <p><span class="param">Parameters:</span></p>
 <ul>
@@ -580,9 +606,10 @@ Note that this method overwrites the previously registered listener.
                 </p></li>
 <li class="list"><p>
  with error type SecurityError, if the application does not have the privilege to call this method.
+This type of error is deprecated since Tizen 5.0.
                 </p></li>
 <li class="list"><p>
- with error type UnknownError in any other error case.
+ with error type UnknownError in an unspecified error case.
                 </p></li>
 </ul>
 </li></ul>
@@ -622,20 +649,29 @@ tizen.tvaudiocontrol.setVolume(expectedVolumeLevel);
 <p><span class="version">Since: </span>
  2.3
             </p>
+<div class="description">
+            <p>
+Calling this function has no effect if listener is not set.
+            </p>
+           </div>
 <p><span class="privilegelevel">Privilege level: </span>
  public
             </p>
 <p><span class="privilege">Privilege: </span>
  http://tizen.org/privilege/tv.audio
             </p>
+<p class="warning"><b>Warning:</b>
+ http://tizen.org/privilege/tv.audio (public level) has been deprecated since 5.0.
+            </p>
 <div class="exceptionlist">
 <p><span class="except">Exceptions:</span></p>
           <ul class="exception"><li>WebAPIException<ul>
 <li class="list"><p>
  with error type SecurityError, if the application does not have the privilege to call this method.
+This type of error is deprecated since Tizen 5.0.
                 </p></li>
 <li class="list"><p>
- with error type UnknownError in any other error case.
+ with error type UnknownError in an unspecified error case.
                 </p></li>
 </ul>
 </li></ul>
@@ -674,11 +710,13 @@ tizen.tvaudiocontrol.setVolume(expectedVolumeLevel);
 <p><span class="privilege">Privilege: </span>
  http://tizen.org/privilege/tv.audio
             </p>
+<p class="warning"><b>Warning:</b>
+ http://tizen.org/privilege/tv.audio (public level) has been deprecated since 5.0.
+            </p>
 <div class="returntype">
 <p><span class="return">Return value:</span></p>
 <ul>
-<span class="return">AudioOutputMode:
-                  </span>
+<span class="return">AudioOutputMode:</span>
  AudioOutputMode The current audio output mode
               </ul>
 </div>
@@ -687,9 +725,10 @@ tizen.tvaudiocontrol.setVolume(expectedVolumeLevel);
           <ul class="exception"><li>WebAPIException<ul>
 <li class="list"><p>
  with error type SecurityError, if the application does not have the privilege to call this method.
+This type of error is deprecated since Tizen 5.0.
                 </p></li>
 <li class="list"><p>
- with error type UnknownError in any other error case.
+ with error type UnknownError in an unspecified error case.
                 </p></li>
 </ul>
 </li></ul>
@@ -712,6 +751,9 @@ tizen.tvaudiocontrol.setVolume(expectedVolumeLevel);
 <p><span class="privilege">Privilege: </span>
  http://tizen.org/privilege/tv.audio
             </p>
+<p class="warning"><b>Warning:</b>
+ http://tizen.org/privilege/tv.audio (public level) has been deprecated since 5.0.
+            </p>
 <div class="parameters">
 <p><span class="param">Parameters:</span></p>
 <ul>
@@ -729,9 +771,10 @@ tizen.tvaudiocontrol.setVolume(expectedVolumeLevel);
                 </p></li>
 <li class="list"><p>
  with error type SecurityError, if the application does not have the privilege to call this method.
+This type of error is deprecated since Tizen 5.0.
                 </p></li>
 <li class="list"><p>
- with error type UnknownError in any other error case.
+ with error type UnknownError in an unspecified error case.
                 </p></li>
 </ul>
 </li></ul>
@@ -745,7 +788,7 @@ tizen.tvaudiocontrol.setVolume(expectedVolumeLevel);
 <div class="brief">
  This interface defines a volume change callback for getting notified information about the volume changes.
           </div>
-<pre class="webidl prettyprint">  [Callback = FunctionOnly, NoInterfaceObject] interface VolumeChangeCallback {
+<pre class="webidl prettyprint">  [Callback=FunctionOnly, NoInterfaceObject] interface VolumeChangeCallback {
     void onchanged(unsigned short volume);
   };</pre>
 <p><span class="version">Since: </span>
@@ -781,7 +824,9 @@ tizen.tvaudiocontrol.setVolume(expectedVolumeLevel);
 </div>
 <h2 id="api-features">3. Related Feature</h2>
 <div id="def-api-features" class="def-api-features">
-        Method <a href="systeminfo.html#SystemInfo::getCapability">tizen.systeminfo.getCapability()</a> can be used in application runtime to check whether this API is supported.
+            Method
+            <a href="systeminfo.html#SystemInfo::getCapability">tizen.systeminfo.getCapability()</a>
+         can be used in application runtime to check whether this API is supported.
                     <div class="def-api-feature">
 <p><div class="description">
             <p>
@@ -791,17 +836,17 @@ To guarantee the running of this application on a device with a TV audio control
 <li class="feature">http://tizen.org/feature/tv.audio</li>
 </div>
 <p></p>
-                    For more information, see <a href="https://developer.tizen.org/development/training/web-application/understanding-tizen-programming/application-filtering">Application Filtering.</a>
+                    For more information, see <a href="/application/web/tutorials/app-filtering">Application Filtering.</a>
 </div>
 <h2 id="full-webidl">4. Full WebIDL</h2>
 <pre class="webidl prettyprint">module TVAudioControl {
   enum AudioOutputMode { "PCM", "DOLBY", "DTS", "AAC" };
   enum AudioBeepType { "UP", "DOWN", "LEFT", "RIGHT", "PAGE_LEFT", "PAGE_RIGHT", "BACK", "SELECT", "CANCEL", "WARNING", "KEYPAD",
     "KEYPAD_ENTER", "KEYPAD_DEL", "MOVE", "PREPARING" };
+  <a href="tizen.html#Tizen">Tizen</a> implements <a href="#AudioControlManagerObject">AudioControlManagerObject</a>;
   [NoInterfaceObject] interface AudioControlManagerObject {
     readonly attribute <a href="#AudioControlManager">AudioControlManager</a> tvaudiocontrol;
   };
-  <a href="tizen.html#Tizen">Tizen</a> implements <a href="#AudioControlManagerObject">AudioControlManagerObject</a>;
   [NoInterfaceObject] interface AudioControlManager {
     void setMute(boolean mute) raises(<a href="tizen.html#WebAPIException">WebAPIException</a>);
     boolean isMute() raises(<a href="tizen.html#WebAPIException">WebAPIException</a>);
@@ -814,7 +859,7 @@ To guarantee the running of this application on a device with a TV audio control
     <a href="#AudioOutputMode">AudioOutputMode</a> getOutputMode() raises(<a href="tizen.html#WebAPIException">WebAPIException</a>);
     void playSound(<a href="#AudioBeepType">AudioBeepType</a> type) raises(<a href="tizen.html#WebAPIException">WebAPIException</a>);
   };
-  [Callback = FunctionOnly, NoInterfaceObject] interface VolumeChangeCallback {
+  [Callback=FunctionOnly, NoInterfaceObject] interface VolumeChangeCallback {
     void onchanged(unsigned short volume);
   };
 };</pre>

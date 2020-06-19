@@ -2,7 +2,7 @@
 
 You can access and monitor the [device and system properties](#system-information-properties) (both hardware and capability), such as the battery level, available device storage, version number, model name, and the cellular network being used.
 
-The System Information API is mandatory for Tizen mobile, wearable, and TV profiles, which means that it is supported on all mobile, wearable, and TV devices. All mandatory APIs are supported on the Tizen Emulators.
+The System Information API is mandatory for Tizen Mobile, Wearable, and TV profiles, which means that it is supported on all mobile, wearable, and TV devices. All mandatory APIs are supported on the Tizen emulators.
 
 The main features of the System Information API include:
 
@@ -234,6 +234,29 @@ To receive notifications on property value changes:
    var id = tizen.systeminfo.addPropertyValueArrayChangeListener('SIM', successCallback);
    ```
 
+
+> **Note**  
+> In case of `WIFI_NETWORK` property, value change listener is triggered on `ipAddress` and `ip6Address` properties change in the network layer. These changes are not consistent with the `status` or `signalStrength` properties of a physical adapter in physical layer.  
+According to the previous constraints, in a specific situation, the listener could be triggered just before network adapter shutdown. In this case, the value of `status` returned by the listener will be outdated.
+
+To ensure receiving proper values, use the following code example:
+
+```
+function errorCallback(err) {
+    console.log('Error occurred ' + err.code)
+};
+
+function successCallback() {
+    setTimeout(function() {
+        tizen.systeminfo.getPropertyValue('WIFI_NETWORK', function(wifi) {
+            console.log("Wi-Fi status: " + wifi.status);
+        }, errorCallback);
+    }, 500);
+};
+
+tizen.systeminfo.addPropertyValueChangeListener('WIFI_NETWORK', successCallback, errorCallback);
+```
+
 <a name="property"></a>
 ## System Information Properties
 
@@ -259,6 +282,10 @@ The system properties are defined as subtypes of the `SystemInfoProperty` interf
 | `SystemInfoPeripheral` (in [mobile](../../api/latest/device_api/mobile/tizen/systeminfo.html#SystemInfoPeripheral), [wearable](../../api/latest/device_api/wearable/tizen/systeminfo.html#SystemInfoPeripheral), and [TV](../../api/latest/device_api/tv/tizen/systeminfo.html#SystemInfoPeripheral) applications) | `PERIPHERAL`         | Provides information about the video output status. |
 | `SystemInfoMemory` (in [mobile](../../api/latest/device_api/mobile/tizen/systeminfo.html#SystemInfoMemory), [wearable](../../api/latest/device_api/wearable/tizen/systeminfo.html#SystemInfoMemory), and [TV](../../api/latest/device_api/tv/tizen/systeminfo.html#SystemInfoMemory) applications) | `MEMORY`             | Provides information about the memory state of the device. |
 | `SystemInfoADS` (in [mobile](../../api/latest/device_api/mobile/tizen/systeminfo.html#SystemInfoADS), [wearable](../../api/latest/device_api/wearable/tizen/systeminfo.html#SystemInfoADS), and [TV](../../api/latest/device_api/tv/tizen/systeminfo.html#SystemInfoADS) applications) | `ADS`                | Provides information about the advertisement service. |
+| [`SystemInfoVideoSource`](../../api/latest/device_api/tv/tizen/systeminfo.html#SystemInfoVideoSource) | `VIDEOSOURCE`                | Provides information about the connected and disconnected devices. |
+| `SystemInfoCameraFlash` (in [mobile](../../api/latest/device_api/mobile/tizen/systeminfo.html#SystemInfoCameraFlash), [wearable](../../api/latest/device_api/wearable/tizen/systeminfo.html#SystemInfoCameraFlash), and [TV](../../api/latest/device_api/tv/tizen/systeminfo.html#SystemInfoCameraFlash) applications) | `CAMERA_FLASH`                | Provides a way to control the attached camera flash. |
+| [`SystemInfoServiceCountry`](../../api/latest/device_api/tv/tizen/systeminfo.html#SystemInfoServiceCountry) | `SERVICE_COUNTRY`                | Represents a country for which the basic policy of terms and conditions is set. |
+| [`SystemInfoSourceInfo`](../../api/latest/device_api/tv/tizen/systeminfo.html#SystemInfoVideoSourceInfo) | `SOURCE_INFO`                | Provides information about the current video source of device, for example TV, HDMI1, HDMI2, and so on. |
 
 ## Related Information
 * Dependencies

@@ -1,6 +1,6 @@
 # Cleaning Up Your Code
 
-The Tizen Studio provides features to assist with productive development. This topic describes the **Code Beautifier** and **Code Minifier** features in the Tizen Web Editor.
+Tizen Studio provides features to assist with productive development. This topic describes the **Code Beautifier** and **Code Minifier** features in the Tizen Web Editor.
 
 ## Using the Code Beautifier
 
@@ -16,7 +16,7 @@ You can use the Code Beautifier in 3 ways:
 
 - In the **Project Explorer** view, right-click an HTML, CSS, or JavaScript file in the project and select **Code Beautifier**.	 
 
-  A beautified file with the `.beaut.<extension>` extension is generated, and a notification popup appears in the Tizen Studio.
+  A beautified file with the `.beaut.<extension>` extension is generated, and a notification popup appears in Tizen Studio.
 
 - In the **Source Editor** view, right-click the code and select **Code Beautifier**.
 
@@ -36,7 +36,7 @@ If you use the Code Beautifier in the **Source Editor** view, no new file is gen
 
 Minification is the process of compressing the code from its original size to the smallest size, without affecting its operation. The Code Minifier is a smart compression tool which removes or modifies unnecessary characters from the code.
 
-The Code Minifier removes characters, such as white space, line breaks, and commented-out code. It then places all of the code on 1 line.
+The Code Minifier removes characters, such as white space, line breaks, and commented-out code. It then places all the code on 1 line.
 
 The Code Minifier has the following features:
 
@@ -61,7 +61,7 @@ You can use the Code Minifier in 3 ways:
 
 - In the **Project Explorer** view, right-click an HTML, CSS, or JavaScript file in the project and select **Code Minifier**.
 
-  A minified (compressed) file with the `.min.<extension>` extension is generated, and a notification popup appears in the Tizen Studio.
+  A minified (compressed) file with the `.min.<extension>` extension is generated, and a notification popup appears in Tizen Studio.
 
 - In the **Source Editor** view, right-click the code and select **Code Minifier**.
 

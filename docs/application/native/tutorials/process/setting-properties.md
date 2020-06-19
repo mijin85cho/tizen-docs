@@ -7,7 +7,7 @@ Before you implement the actual application functionality, define all the necess
 
 > **Note**
 >
-> Only modify the manifest file by using the manifest editor in the Tizen Studio. If you create or edit the `tizen-manifest.xml` file using any other text editor, your application may not work as expected.
+> Only modify the manifest file by using the manifest editor in Tizen Studio. If you create or edit the `tizen-manifest.xml` file using any other text editor, your application may not work as expected.
 
 After you have finished setting the project properties, you are ready to [design the UI and implement the application code](app-dev-process.md#designing).
 
@@ -49,7 +49,7 @@ You can perform the following tasks using the **Overview** tab:
 
 - View the application ID.
 
-  The Tizen Studio creates automatically an application ID, which uniquely identifies the application within the package.
+  Tizen Studio creates automatically an application ID, which uniquely identifies the application within the package.
 
 - Set the package name of the application.
 
@@ -84,15 +84,15 @@ You can perform the following tasks using the **Overview** tab:
 
 - Set the application author.
 
-  The application author represents the creator of the Tizen native application package. You can set the name, email ID, and Web site of the author.
+  The application author represents the creator of the Tizen Native application package. You can set the name, email ID, and Web site of the author.
 
 - Set the application description.
 
-  The application description represents the human-readable description of the Tizen native application package.
+  The application description represents the human-readable description of the Tizen Native application package.
 
 ### Declaring Required Software or Hardware Features in the Features Tab
 
-You can declare any device software or hardware features that your application requires to run properly. The declaration can be used for application filtering in the Tizen Store.
+You can declare any device software or hardware features that your application requires to run properly. The declaration can be used for application filtering in Tizen Store.
 
 To enable filtering for your native application:
 
@@ -104,7 +104,7 @@ To enable filtering for your native application:
 
 3. Click **OK**.
 
-4. Upload and publish the application package on the Tizen Store.
+4. Upload and publish the application package on Tizen Store.
 
    If a Tizen-powered device requests applications, the store displays a list containing only applications compatible with the user's device.
 
@@ -167,7 +167,8 @@ You can perform the following tasks using the **Advanced** tab:
 - Export [data control](../../guides/app-management/data-control.md) functionality.
 
   A service application can act as a service provider and allow other applications to access specific data.
-To define the kind of access and data your service application provides to other applications, click **+** in the **Data Control** section, and define the data control details.
+
+  To define the kind of access and data your service application provides to other applications, click **+** in the **Data Control** section, and define the data control details.
 
 - Set miscellaneous options.
 
@@ -207,13 +208,13 @@ To define the kind of access and data your service application provides to other
 
   | Acount property1  | Acount property2 | Data type | Property type                            |
   |-------------------|------------------|-----------|------------------------------------------|
-  | Multiple account  |             | bool      | Indicates  whether multiple accounts are supported. This is a mandatory property. |
+  | Multiple account  |             | bool      | Indicates  whether multiple accounts are supported.<br>This is a mandatory property. |
   | Provider ID       |             | String    | ID  of the account provider.             |
-  | Default label     |             | String    | Display  name of the account provider. This is a mandatory property. |
+  | Default label     |             | String    | Display  name of the account provider.<br>This is a mandatory property. |
   | Icons             | Icon        | String    | File  path of the account provider icon.<br> The  icon size is:<br> - 72 x 72 for Xhigh (HD)<br> - 48 x 48 for High (WVGA)<br> Since the  icon is used in Settings > Accounts, place the icon in a shared  directory.<br> This is a mandatory property. |
   | Icons             | Icon  small | String    | File  path of the account provider icon. <br>The icon size is: <br> -  45 x 45 for Xhigh  (HD)<br> - 30 x 30 for High  (WVGA)<br>  Since the small icon is used  in other applications, place the icon in a shared directory.<br>  This is a mandatory property. |
   | Name              |             | String    | Localization  support for the display name.<br> To add a localized name, click + in  the Name panel, select the language, define the display name for  that language, and click OK. |
-  | Capabilities      |             | String    | Capability  of the account provider.    Capabilities are defined in the `http://<VENDOR_INFORMATION>/accounts/capability/<NAME>` IRI  format.    <br>The following predefined capabilities can be used in Tizen:    <br>- `http://tizen.org/account/capability/calendar` <br>&nbsp;&nbsp;&nbsp;Used when the account is related to a calendar.    <br>- `http://tizen.org/account/capability/contact`    <br>&nbsp;&nbsp;&nbsp;Used when the account is related to contacts.    <br>- `http://tizen.org/account/capability/document`    <br>&nbsp;&nbsp;&nbsp;Used when the account is related to a document.    <br>- `http://tizen.org/account/capability/email`    <br>&nbsp;&nbsp;&nbsp;Used when the account is related to email.    <br>- `http://tizen.org/account/capability/game`    <br>&nbsp;&nbsp;&nbsp;Used when the account is related to a game.    <br>- `http://tizen.org/account/capability/message`    <br>&nbsp;&nbsp;&nbsp;Used when the account is related to a message.    <br>- `http://tizen.org/account/capability/music`    <br>&nbsp;&nbsp;&nbsp;Used when the account is related to music.    <br>- `http://tizen.org/account/capability/photo`    <br>&nbsp;&nbsp;&nbsp;Used when the account is related to a photo.    <br>- `http://tizen.org/account/capability/video`    <br>&nbsp;&nbsp;&nbsp;Used when the account is related to a video.    <br>To add a capability, click + in the Capabilities panel. A default  capability is added to the table. Click the default capability and change it  to the one you need.    <br>This is an optional property. |
+  | Capabilities      |             | String    | Capability  of the account provider.<br>Capabilities are defined in the `http://<VENDOR_INFORMATION>/accounts/capability/<NAME>` IRI  format.    <br>The following predefined capabilities can be used in Tizen:    <br>- `http://tizen.org/account/capability/calendar` <br>&nbsp;&nbsp;&nbsp;Used when the account is related to a calendar.    <br>- `http://tizen.org/account/capability/contact`    <br>&nbsp;&nbsp;&nbsp;Used when the account is related to contacts.    <br>- `http://tizen.org/account/capability/document`    <br>&nbsp;&nbsp;&nbsp;Used when the account is related to a document.    <br>- `http://tizen.org/account/capability/email`    <br>&nbsp;&nbsp;&nbsp;Used when the account is related to email.    <br>- `http://tizen.org/account/capability/game`    <br>&nbsp;&nbsp;&nbsp;Used when the account is related to a game.    <br>- `http://tizen.org/account/capability/message`    <br>&nbsp;&nbsp;&nbsp;Used when the account is related to a message.    <br>- `http://tizen.org/account/capability/music`    <br>&nbsp;&nbsp;&nbsp;Used when the account is related to music.    <br>- `http://tizen.org/account/capability/photo`    <br>&nbsp;&nbsp;&nbsp;Used when the account is related to a photo.    <br>- `http://tizen.org/account/capability/video`    <br>&nbsp;&nbsp;&nbsp;Used when the account is related to a video.    <br>To add a capability, click + in the Capabilities panel. A default  capability is added to the table. Click the default capability and change it  to the one you need.    <br>This is an optional property. |
 
 - Add the background category type (since Tizen 2.4).
 
@@ -233,7 +234,7 @@ To define the kind of access and data your service application provides to other
   | Key               | String  | Key for user content.                    |
   | Data              | String  | Data for user content.                   |
   | Default label     | String  | Display name of the shortcut.            |
-  | Icon              | String  | File path of the shortcut icon.This is a mandatory property. |
+  | Icon              | String  | File path of the shortcut icon.<br>This is a mandatory property. |
   | Name              | String  | Localization support for the display name.<br> To add a localized name, click **+** in the **Name** panel, select the language, define the display name for that language, and click **OK**. |
 
 ### Editing the tizen-manifest.xml File in the Source Tab

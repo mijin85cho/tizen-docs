@@ -1,6 +1,6 @@
 # Building UIs with Components
 
-The Tizen native UI Builder is a graphical user interface builder tool that simplifies the creation of Tizen native application UIs by allowing you to arrange UI components using drag-and-drop operations. You can also create [customized UI components](custom-ui-component.md) for application-specific purposes.
+The Tizen Native UI Builder is a graphical user interface builder tool that simplifies the creation of Tizen native application UIs by allowing you to arrange UI components using drag-and-drop operations. You can also create [customized UI components](custom-ui-component.md) for application-specific purposes.
 
 The native UI Builder is not only a UI layout code generating tool. It also supports an easy-to-use programming model, allows you to [support multiple screens](multiple-screens.md) within a single application, and makes it possible to [manage various data sources through databinding](databind.md). If you have an existing EFL UI project, you can [convert it to a UI Builder project](convert-projects.md) to ease the task of expanding the application and optimizing it to new devices.
 
@@ -76,13 +76,13 @@ While editing in the **Source** editor, you can preview the resulting layout in 
 
 **Figure: Source editor**
 
-![Source tab](./media/ui_builder_source_tab.png)
+![Source editor](./media/ui_builder_source_tab.png)
 
 The native UI Builder provides content assist functionality, which helps you to write code faster and more efficiently. To use this functionality, type a few characters of the word and press **Ctrl + Space**.
 
 If you select an element in the suggested list with content assist, the auto-complete feature automatically adds the end element.
 
-If you move a focus to another UI component in the **Source** editor, the selection in the preview pane is automatically synchronized. Similarly, if you change the selection in the preview pane, the focus in the **Source** tab moves accordingly.
+If you move a focus to another UI component in the **Source** editor, the selection in the preview pane is automatically synchronized. Similarly, if you change the selection in the preview pane, the focus in the **Source** editor moves accordingly.
 
 ## Binding an Event Handler
 
@@ -124,21 +124,21 @@ void view1_button1_onclicked(uib_view1_view_context *vc, Evas_Object *obj, void 
 - `vc`: View context related to the event. You can access the UI component in the view through this structure. The following code example shows a sample of the view context.  
 ```csharp
 struct _uib_view1_view_context {
-      /* Parent evas_object which was a parameter of the create function */
-      Evas_Object *parent;    
-      /* Root container UI component of this view */    
-      Evas_Object* root_container;    
-      /* View class name */    
-      const char *view_name;    
-      /* Control context to control this view */    
-      struct _uib_view1_control_context *cc;   
+    /* Parent evas_object which was a parameter of the create function */
+    Evas_Object *parent;
+    /* Root container UI component of this view */
+    Evas_Object* root_container;
+    /* View class name */
+    const char *view_name;
+    /* Control context to control this view */
+    struct _uib_view1_control_context *cc;
 
-      /* UI components in this view */    
-      Evas_Object *grid1;    
-      Evas_Object *button1;    
-      Evas_Object *check1;
-    };
-    typedef struct _uib_view1_view_context;
+    /* UI components in this view */
+    Evas_Object *grid1;
+    Evas_Object *button1;
+    Evas_Object *check1;
+};
+typedef struct _uib_view1_view_context;
 ```
 
 - `obj`: UI component where the event occurs.

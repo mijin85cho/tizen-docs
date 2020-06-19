@@ -24,6 +24,7 @@ To obtain the information, query a feature or system key.
 
 - [Feature keys](#feature)
    - [Account](#account)
+   - [Accessibility](#accessibility)
    - [Application history](#apphistory)
    - [Attach panel](#attachpanel)
    - [Battery](#battery)
@@ -58,7 +59,9 @@ To obtain the information, query a feature or system key.
    - [Shell](#shell)
    - [Sip](#sip)
    - [Speech](#speech)
+   - [Storage](#storage)
    - [System setting](#systemsetting)
+   - [Thermistor](#thermistor)
    - [USB](#usb)
    - [Vibration](#vibration)
    - [Vision](#vision)
@@ -67,6 +70,7 @@ To obtain the information, query a feature or system key.
 - [System keys](#system)
 
    - [Build](#build)
+   - [Device type](#devicetype)
    - [Manufacturer](#manufacturer)
    - [Model name](#modelname)
    - [Platform](#platformsys)
@@ -154,6 +158,17 @@ The following table lists the account feature keys:
 | `http://tizen.org/feature/account`      | `bool` | The platform returns `true` for this key, if the device supports the Account Manager API. |
 | `http://tizen.org/feature/account.sync` | `bool` | The platform returns `true` for this key, if the device supports the Sync Manager API. |
 
+The following table lists the accessibility feature keys:
+
+<a name="accessibility"></a>
+**Table: Accessibility feature keys**
+
+| Key                                     | Type   | Description                              |
+|-----------------------------------------|--------|------------------------------------------|
+| `http://tizen.org/feature/accessibility.grayscale` | `bool` | The platform returns `true` for this key, if the device supports the accessibility grayscale feature. |
+| `http://tizen.org/feature/accessibility.negative` | `bool` | The platform returns `true` for this key, if the device supports the accessibility negative feature. |
+
+
 The following table lists the application history feature keys:
 
 <a name="apphistory"></a>
@@ -203,7 +218,7 @@ The following table lists the consumer IR feature keys:
 |----------------------------------------|--------|------------------------------------------|
 | `http://tizen.org/feature/consumer_ir` | `bool` | The platform returns `true` for this key, if the device supports the Consumer Infrared (CIR) feature. |
 
-The following table lists the content feature keys.
+The following table lists the content feature keys:
 
 <a name="content"></a>
 **Table: Content feature keys**
@@ -213,7 +228,7 @@ The following table lists the content feature keys.
 | `http://tizen.org/feature/content.scanning.others` | `bool` | The platform returns `true` for this key, if the device supports the media scanning feature for OTHERS type files which are not included in the media content-types such as IMAGE, VIDEO, SOUND or MUSIC. |
 | `http://tizen.org/feature/content.filter.pinyin ` | `bool` | The platform returns `true` for this key, if the device supports the Media Filter feature for Pinyin. |
 
-The following table lists the contextual trigger feature keys.
+The following table lists the contextual trigger feature keys:
 
 <a name="trigger"></a>
 **Table: Contextual trigger feature keys**
@@ -295,6 +310,7 @@ The following table lists the input feature keys:
 | `http://tizen.org/feature/input.keyboard` | `bool`   | The platform returns `true` for this key, if the device provides a built-in keyboard supporting any keyboard layout. |
 | `http://tizen.org/feature/input.keyboard.layout` | `String` | The platform returns the keyboard layout (such as `"qwerty"`) supported by the built-in keyboard for this key and returns `true` for the `http://tizen.org/feature/input.keyboard` key.<br>If the device does not provide a built-in keyboard, the platform returns an empty string for this key and returns `false` for the `http://tizen.org/feature/input.keyboard` key. |
 | `http://tizen.org/feature/input.rotating_bezel` | `bool`   | The platform returns `true` for this key, if the device supports the rotating bezel feature. |
+| `http://tizen.org/feature/input.rotating_bezel.virtual` | `bool`   | The platform returns `true` for this key,  if the device supports the virtual rotating bezel feature. |
 
 The following table lists the IOT feature keys:
 
@@ -364,8 +380,11 @@ The following table lists the multimedia feature keys:
 
 | Key                                      | Type   | Description                              |
 |------------------------------------------|--------|------------------------------------------|
-| `http://tizen.org/feature/multimedia.transcoder` | `bool` | The platform returns `true` for this key, if the device supports the transcoder. |
+| `http://tizen.org/feature/multimedia.media_codec` | `bool` | The platform returns `true` for this key, if the device supports the media codec feature. |
 | `http://tizen.org/feature/multimedia.player.spherical_video` | `bool` | The platform returns `true` for this key, if the device supports the 360-degree video playback feature. |
+| `http://tizen.org/feature/multimedia.stream_recorder` | `bool` | The platform returns `true` for this key, if the device supports the stream recorder feature. |
+| `http://tizen.org/feature/multimedia.transcoder` | `bool` | The platform returns `true` for this key, if the device supports the transcoder. |
+
 
 The following table lists the multi-point touch feature keys:
 
@@ -393,9 +412,14 @@ The following table lists the network feature keys:
 | `http://tizen.org/feature/network.bluetooth.hid.device` | `bool` | The platform returns `true` for this key, if the device supports the Bluetooth Human Interface Device (HID) device feature. |
 | `http://tizen.org/feature/network.bluetooth.le` | `bool` | The platform returns `true` for this key, if the device supports Bluetooth Low Energy (BLE). |
 | `http://tizen.org/feature/network.bluetooth.le.5_0` | `bool` | The platform returns `true` for this key, if the device supports Bluetooth 5 feature. |
+| `http://tizen.org/feature/network.bluetooth.le.gatt.client` | `bool` | The platform returns `true` for this key, if the device supports the Bluetooth Generic Attribute Profile (GATT) Client. |
+| `http://tizen.org/feature/network.bluetooth.le.gatt.server` | `bool` | The platform returns `true` for this key, if the device supports the Bluetooth Generic Attribute Profile (GATT) Server. |
+| `http://tizen.org/feature/network.bluetooth.le.ipsp` | `bool` | The platform returns `true` for this key, if the device supports Bluetooth Internet Protocol Support Profile (IPSP). |
+| `http://tizen.org/feature/network.bluetooth.oob` | `bool` | The platform returns `true` for this key, if the device supports Bluetooth Out Of Band (OOB). |
 | `http://tizen.org/feature/network.bluetooth.opp` | `bool` | The platform returns `true` for this key, if the device supports Bluetooth Object Push Profile (OPP). |
 | `http://tizen.org/feature/network.bluetooth.phonebook.client` | `bool` | The platform returns `true` for this key, if the device supports the Bluetooth Phone Book Access (PBAP) client feature. |
 | `http://tizen.org/feature/network.ethernet` | `bool` | The platform returns `true` for this key, if the device supports Ethernet. |
+| `http://tizen.org/feature/network.inm` | `bool` | The platform returns `true` for this key, if the device supports the Intelligent Network Monitoring (INM) feature. |
 | `http://tizen.org/feature/network.internet` | `bool` | The platform returns `true` for this key, if the device supports Internet access. |
 | `http://tizen.org/feature/network.mtp`   | `bool` | The platform returns `true` for this key, if the device supports the Media Transfer Protocol (MTP) Host (Initiator) feature. |
 | `http://tizen.org/feature/network.net_proxy` | `bool` | The platform returns `true` for this key, if the device supports the net-proxy, a proxy type connection for a device that acts as an intermediary between client (network service customer) and server (network service provider). |
@@ -435,6 +459,7 @@ The following table lists the network feature keys:
 | `http://tizen.org/feature/network.wifi.direct.display` | `bool` | The platform returns `true` for this key and the `http://tizen.org/feature/network.wifi` key, if the device supports Wi-Fi Direct display feature. |
 | `http://tizen.org/feature/network.wifi.direct.service_discovery` | `bool` | The platform returns `true` for this key and the `http://tizen.org/feature/network.wifi` key, if the device supports Wi-Fi Direct service discovery. |
 | `http://tizen.org/feature/network.wifi.tdls` | `bool` | The platform returns `true` for this key, if the device supports the Wi-Fi Tunneled Direct Link Setup (TDLS). |
+
 
 The following table lists the OAuth 2.0 feature keys:
 
@@ -487,10 +512,11 @@ The following table lists the platform feature keys:
 
 | Key                                      | Type     | Description                              |
 |------------------------------------------|----------|------------------------------------------|
-| `http://tizen.org/feature/platform.core.api.version` | `String` | The platform returns the version of the Tizen Core API in the "[Major].[Minor]" format.<br>If a device does not provide the Tizen Core API, it returns an empty string for this key. |
+| `http://tizen.org/feature/platform.core.api.version` | `String` | The platform returns the version of Tizen Core API in the "[Major].[Minor]" format.<br>If a device does not provide Tizen Core API, it returns an empty string for this key. |
 | `http://tizen.org/feature/platform.core.cpu.arch` | `String` | The platform returns the CPU architecture. |
 | `http://tizen.org/feature/platform.core.cpu.arch.armv6` | `bool`   | The platform returns `true` for this key, if the device runs on the ARMv6 CPU architecture. |
 | `http://tizen.org/feature/platform.core.cpu.arch.armv7` | `bool`   | The platform returns `true` for this key, if the device runs on the ARMv7 CPU architecture. |
+| `http://tizen.org/feature/platform.core.cpu.arch.armv8` | `bool`   | The platform returns `true` for this key, if the device runs on the ARMv8 CPU architecture. |
 | `http://tizen.org/feature/platform.core.cpu.arch.x86` | `bool`   | The platform returns `true` for this key, if the device runs on the x86 CPU architecture. |
 | `http://tizen.org/feature/platform.core.cpu.frequency` | `int`    | The platform returns the frequency at which a core CPU is running. |
 | `http://tizen.org/feature/platform.core.fpu.arch` | `String` | The platform returns the FPU architecture. |
@@ -499,6 +525,7 @@ The following table lists the platform feature keys:
 | `http://tizen.org/feature/platform.core.fpu.arch.ssse3` | `bool`   | The platform returns `true` for this key, if the device runs on the SSSE3 FPU architecture. |
 | `http://tizen.org/feature/platform.core.fpu.arch.vfpv2` | `bool`   | The platform returns `true` for this key, if the device runs on the VFPV2 FPU architecture. |
 | `http://tizen.org/feature/platform.core.fpu.arch.vfpv3` | `bool`   | The platform returns `true` for this key, if the device runs on the VFPV3 FPU architecture. |
+| `http://tizen.org/feature/platform.core.fpu.arch.vfpv4` | `bool`   | The platform returns `true` for this key, if the device runs on the VFPV4 FPU architecture. |
 | `http://tizen.org/feature/platform.native.api.version` | `String` | The platform returns the version of the native API in the "[Major].[Minor]" format. |
 | `http://tizen.org/feature/platform.native.osp_compatible` | `bool`   | The platform returns `true` for this key, if the device supports the bada compatibility mode. |
 | `http://tizen.org/feature/platform.version` | `String` | The platform returns the version of the platform in the "[Major].[Minor].[Patch Version]" format. |
@@ -579,7 +606,9 @@ The following table lists the sensor feature keys:
 | `http://tizen.org/feature/sensor.gyroscope.uncalibrated` | `bool` | The platform returns `true` for this key, if the device supports the uncalibrated gyroscope sensor. |
 | `http://tizen.org/feature/sensor.gyroscope.wakeup` | `bool` | The platform returns `true` for this key and the `http://tizen.org/feature/sensor.gyroscope` key, if the device supports the wake-up operation by the gyro sensor. |
 | `http://tizen.org/feature/sensor.heart_rate_monitor` | `bool` | The platform returns `true` for this key, if the device supports the heart rate monitor. |
+| `http://tizen.org/feature/sensor.heart_rate_monitor.batch` | `bool` | The platform returns `true` for this key, if the device supports the heart rate monitor batch sensor. |
 | `http://tizen.org/feature/sensor.heart_rate_monitor.led_green` | `bool` | The platform returns `true` for this key, if the device supports the LED green sensor of the heart rate monitor. |
+| `http://tizen.org/feature/sensor.heart_rate_monitor.led_green.batch` | `bool` | The platform returns `true` for this key, if the device supports the LED green batch sensor of the heart rate monitor. |
 | `http://tizen.org/feature/sensor.heart_rate_monitor.led_ir` | `bool` | The platform returns `true` for this key, if the device supports the LED infrared sensor of the heart rate monitor. |
 | `http://tizen.org/feature/sensor.heart_rate_monitor.led_red` | `bool` | The platform returns `true` for this key, if the device supports the LED red sensor of the heart rate monitor. |
 | `http://tizen.org/feature/sensor.humidity` | `bool` | The platform returns `true` for this key, if the device supports the humidity sensor. |
@@ -628,8 +657,18 @@ The following table lists the speech feature keys:
 | Key                                      | Type   | Description                              |
 |------------------------------------------|--------|------------------------------------------|
 | `http://tizen.org/feature/speech.control` | `bool` | The platform returns `true` for this key, if the device supports voice control. |
+| `http://tizen.org/feature/speech.control_manager` | `bool` | The platform returns `true` for this key, if the device supports voice control manager. |
 | `http://tizen.org/feature/speech.recognition` | `bool` | The platform returns `true` for this key, if the device supports speech recognition (STT). |
 | `http://tizen.org/feature/speech.synthesis` | `bool` | The platform returns `true` for this key, if the device supports speech synthesis (TTS). |
+
+The following table lists the external storage feature keys:
+
+<a name="storage"></a>
+**Table: External storage feature keys**
+
+| Key                                 | Type   | Description                              |
+|-------------------------------------|--------|------------------------------------------|
+| `http://tizen.org/feature/storage.external` | `bool` | The platform returns `true` for this key, if the device supports external storage. |
 
 The following table lists the system setting feature keys:
 
@@ -643,6 +682,17 @@ The following table lists the system setting feature keys:
 | `http://tizen.org/feature/systemsetting.incoming_call` | `bool` | The platform returns `true` for this key and the `http://tizen.org/feature/systemsetting` key, if the device supports a way to change or get a ringtone for all incoming calls. |
 | `http://tizen.org/feature/systemsetting.lock_screen` | `bool` | The platform returns `true` for this key and the `http://tizen.org/feature/systemsetting` key, if the device supports a way to change or get the lock screen wallpaper. |
 | `http://tizen.org/feature/systemsetting.notification_email` | `bool` | The platform returns `true` for this key and the `http://tizen.org/feature/systemsetting` key, if the device supports a way to change or get a ringtone for all email notifications. |
+
+The following table lists the thermistor feature keys:
+
+<a name="thermistor"></a>
+**Table: Thermistor feature keys**
+
+| Key                                      | Type   | Description                              |
+|------------------------------------------|--------|------------------------------------------|
+| `http://tizen.org/feature/thermistor.ap` | `bool` | The platform returns `true` for this key, if the device supports a thermistor for the application processor. |
+| `http://tizen.org/feature/thermistor.cp` | `bool` | The platform returns `true` for this key, if the device supports a thermistor for the communications processor. |
+| `http://tizen.org/feature/thermistor.battery` | `bool` | The platform returns `true` for this key, if the device supports a thermistor for the battery. |
 
 The following table lists the USB feature keys:
 
@@ -695,6 +745,15 @@ The following table lists the build system keys:
 | `http://tizen.org/system/build.type`     | `String` | The platform returns the build type, such as `"user"` or `"eng"`. The build type is made when the platform image is created. |
 | `http://tizen.org/system/build.variant`  | `String` | The platform returns the variant release information. The variant release information is made when the platform image is created. |
 | `http://tizen.org/system/build.release` | `String` | The platform returns the build version information. The build version information is made when the platform image is created. |
+
+The following table lists the device type system keys:
+
+<a name="devicetype"></a>
+**Table: Device type system keys**
+
+| Key                                    | Type     | Description                              |
+|----------------------------------------|----------|------------------------------------------|
+| `http://tizen.org/system/device_type`  | `String` | The platform returns the device type name, which represents a device family the device belongs to. |
 
 The following table lists the manufacturer keys:
 

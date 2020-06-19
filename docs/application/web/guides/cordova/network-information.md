@@ -2,7 +2,7 @@
 
 You can access information about the connection (such as cellular, Wi-Fi, or Ethernet) by reading the `navigator.connection.type` property. It is a textual representation of the current network status. Each time a connection is established or closed, the type changes.
 
-The Network Information API is mandatory for Tizen mobile, wearable, and TV profiles, which means that it is supported on all mobile, wearable, and TV devices. All mandatory APIs are supported on the Tizen Emulators.
+The Network Information API is mandatory for Tizen Mobile, Wearable, and TV profiles, which means that it is supported on all mobile, wearable, and TV devices. All mandatory APIs are supported on the Tizen emulators.
 
 The main features of the Network Information API include:
 
@@ -70,13 +70,13 @@ To determine whether the device is connected to a Wi-Fi network:
 
 3. Compare the connection type to one of the defined values in the `Connection` global dictionary:
 
-  ```
-  if (state == Connection.WIFI) {
-      document.querySelector('#wifi-indicator').textContent = 'Connected to WiFi';
-  } else {
-      document.querySelector('#wifi-indicator').textContent = 'Not connected to WiFi';
-  }
-  ```
+   ```
+   if (state == Connection.WIFI) {
+       document.querySelector('#wifi-indicator').textContent = 'Connected to WiFi';
+   } else {
+       document.querySelector('#wifi-indicator').textContent = 'Not connected to WiFi';
+   }
+   ```
 
 The above code fills the `div` element with text, based on whether the device is connected to a Wi-Fi network.
 
@@ -92,7 +92,7 @@ Manage the situations where the device connects to and disconnects from a networ
    function register() {
        document.addEventListener('online', went_online);
        document.addEventListener('offline', went_offline);
-   }   
+   }
    ```
 
 2. Define the handlers:

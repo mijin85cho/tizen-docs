@@ -66,7 +66,6 @@ The main features of the NFC API include:
 
   > **Note**
   >
-  > Pay attention to the following:
   > - Secure element access is not supported in Tizen 2.3. The Card Emulation API of Tizen 2.3 only supports enabling and disabling the NFC card emulation mode, and retrieving the card emulation status.
   >
   > - Security problems can occur in some Card Emulation APIs. The security level can be determined by the manufacturer usage. If a security issue occurs, contact the product manufacturer. For more information on the security levels, see the [GSMA specification](http://www.gsma.com/digitalcommerce/wp-content/uploads/2013/12/GSMA-NFC05-NFC-Handset-APIs-Requirement-Specification-version-4-1.pdf).
@@ -97,6 +96,12 @@ The main features of the NFC API include:
   **Figure: HCE routing**
 
   ![HCE routing](./media/nfc_hce_routing.png)
+
+  > **Note**
+  >
+  > - HCE operations begin with the launch of HCE application in Tizen Application Framework. With the execution of these operations, the data transfer to the application needs more time.
+  > - In case, you consider time efficiency, it is recommend not to create HCE applications and communicate with the Secure Elements provided in the device.
+  > - Alternatively, ensure that the HCE application is always in the launch state.
 
 ## Prerequisites
 
@@ -164,7 +169,7 @@ To enable your application to use the NFC functionality:
 <a name="enable"></a>
 ## Enabling and Disabling NFC
 
-To allow the user to enable or disable NFC, use the [application control](../app-management/common_appcontrol.md#settings_nfc) to display the NFC settings.
+To allow the user to enable or disable NFC, use the [application control](../app-management/common-appcontrols.md#settings_nfc) to display the NFC settings.
 
 The NFC API does not contain functions for enabling or disabling NFC. You must display the NFC settings application to allow the user to toggle the NFC state.
 
@@ -1108,19 +1113,22 @@ NFC application controls are events sent by the system to applications when NFC-
 The platform supports the following application control operations for NFC applications:
 
 - `default_changed`
-The system sends the `http://tizen.org/appcontrol/operation/nfc/card_emulation/default_changed` application control event when the default wallet is changed. For example, in **Setting > NFC > Set Default Wallet App**, if the default wallet is changed, an application control with this operation is sent to the selected application (wallet).
+
+  The system sends the `http://tizen.org/appcontrol/operation/nfc/card_emulation/default_changed` application control event when the default wallet is changed. For example, in **Setting > NFC > Set Default Wallet App**, if the default wallet is changed, an application control with this operation is sent to the selected application (wallet).
 
   You have to define the `app_control_cb()` callback and register it to `ui_app_lifecycle_callback::app_control`.
 
 - `host_apdu_service`
-The system sends the `http://tizen.org/appcontrol/operation/nfc/card_emulation/host_apdu_service` application control event when an HCE event occurs. For example, when a mobile device receives a host-based APDU (HCE) event from a POS terminal, an application control with this operation is sent to NFC applications.
 
-  You can get the target AID information using the `app_control_get_extra_data()` function with the `data` key. The target AID key comes packaged when the `http://tizen.org/appcontrol/operation/nfc/card_emulation/host_apdu_service`operation is launching.
+  The system sends the `http://tizen.org/appcontrol/operation/nfc/card_emulation/host_apdu_service` application control event when an HCE event occurs. For example, when a mobile device receives a host-based APDU (HCE) event from a POS terminal, an application control with this operation is sent to NFC applications.
+
+  You can get the target AID information using the `app_control_get_extra_data()` function with the `data` key. The target AID key comes packaged when the `http://tizen.org/appcontrol/operation/nfc/card_emulation/host_apdu_service` operation is launching.
 
   You have to define the `app_control_cb()` callback and register it to `ui_app_lifecycle_callback::app_control`.
 
 - `off_host_apdu_service`
-The system sends the `http://tizen.org/appcontrol/operation/nfc/card_emulation/off_host_apdu_service` application control event when an SE transaction occurs. For example, when a mobile device receives an off-host APDU event from a POS terminal, an application control with this operation is sent to NFC applications.
+
+  The system sends the `http://tizen.org/appcontrol/operation/nfc/card_emulation/off_host_apdu_service` application control event when an SE transaction occurs. For example, when a mobile device receives an off-host APDU event from a POS terminal, an application control with this operation is sent to NFC applications.
 
   You can get the target AID information using the `app_control_get_extra_data()` function with the `data` key. The target AID key comes packaged when the `http://tizen.org/appcontrol/operation/nfc/card_emulation/off_host_apdu_service` operation is launching.
 

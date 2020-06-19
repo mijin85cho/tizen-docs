@@ -19,7 +19,8 @@ In case of raw data, if the requested media is a video, thumbnail is RGB colorsp
 
 In case of a file, thumbnails are encoded with a user-specified extension.
 
-> **Note**  
+> **Note**
+>
 > See `thumbnail_util_extract_to_file()` for details regarding extensions.
 
 
@@ -117,6 +118,10 @@ To extract a thumbnail from the file:
    ```
 
    You get a BGRA color image.
+
+> **Note**  
+>
+> Since Tizen 5.5, if the requested width and height of the thumbnail are bigger than the image, then the thumbnail size is changed to the image size.
 
 ## Related Information
 - Dependencies

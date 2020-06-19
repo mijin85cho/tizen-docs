@@ -7,7 +7,7 @@ Tizen Web Editor provides support for JavaScript, HTML, and CSS file editing.
 <a name="syntax"></a>
 ## Checking the Syntax
 
-The Tizen Studio provides a code checking tool to help you to identify and correct problems with the structural quality of your code.
+Tizen Studio provides a code checking tool to help you to identify and correct problems with the structural quality of your code.
 
 There are 2 ways, manual and automatic, to inspect your code:
 
@@ -78,11 +78,11 @@ The advanced content assist has the following features:
   - List of HTML files included in the project
 - Proposes code completion of the `src` attribute value of the `<img>` element:
   - List of image files included in the project
-- Proposes code completion of `id` or `class` attribute values of all elements: `id`:
-  - List of ID selectors of linked CSS files
+- Proposes code completion of `id` or `class` attribute values of all elements:
+  - `id`: List of ID selectors of linked CSS files
   - `class`: List of class selectors of linked CSS files
 
-**Figure: Content assist with the <img> element**
+**Figure: Content assist with the \<img> element**
 
 ![Content assist with the img element](./media/web_editor_img.png)
 
@@ -111,7 +111,7 @@ The advanced content hover has the following features:
 - Supports a preview of the image file at the `src` attribute value of the `<img>` element.
 - Support a preview of the CSS rule at the `id` or `class` attribute value of all elements, if the selector (that is made by the `id` or `class` value) exists.
 
-**Figure: Content hover with the <link> element**
+**Figure: Content hover with the \<link> element**
 
 ![Content hover with the link element](./media/web_editor_hover.png)
 
@@ -119,7 +119,7 @@ To use the hover feature in the HTML editor, hover the mouse cursor at the above
 
 ### Advanced File Refactoring in Mobile Applications
 
-The Tizen Studio supports file refactoring in the **Project Explorer** view. When file refactoring occurs, other files to which the refactored file belongs are changed.
+Tizen Studio supports file refactoring in the **Project Explorer** view. When file refactoring occurs, other files to which the refactored file belongs are changed.
 
 The advanced file refactoring has the following features:
 
@@ -176,7 +176,7 @@ Using the console functions provided to JavaScript code, the view shows the log 
 <a name="live_edit"></a>
 ## Live Edit
 
-When you change the source code in the Tizen Studio, the running application is updated instantly without any reloading process.
+When you change the source code in Tizen Studio, the running application is updated instantly without any reloading process.
 
 For more information, see [Live Editing of HTML, CSS, and JavaScript](live-editing.md).
 
